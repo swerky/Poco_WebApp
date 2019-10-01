@@ -1,0 +1,46 @@
+type Student {
+  id: ID! @id
+  firstName: String!
+  lastName: String!
+  sexe: Sexe!
+  privateEmail: String
+  pocoEmail: String
+  residencePermit: String!
+  birthday: DateTime!
+  nationality: String!
+  addressStreet: String!
+  addressCity: String!
+  addressNPA: String!
+  addressCanton: String!
+  organisation: String
+  socialAssistant: SocialAssistant
+  financialParticipation: FinancialParticipation! 
+  financialParticipationComment: String
+  borrowLaptops: Boolean!
+  FoodCost: String
+  absences: [Absence!] @relation(link: TABLE, name: "StudentAbscence")
+  createDate: DateTime! @createDate
+  updateDate: DateTime! @updateDate
+}
+
+type SocialAssistant {
+  id: ID! @id
+  firstName: String!
+  lastName: String!
+  phone: String
+  email: String
+  
+}
+
+enum FinancialParticipation {
+  YES
+  NO
+  EXTERN
+  OTHER
+}
+
+enum Sexe {
+  MALE
+  FEMAIL
+  OTHER
+}
