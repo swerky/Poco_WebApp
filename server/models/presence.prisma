@@ -1,0 +1,9 @@
+type Presence {
+  id: ID! @id
+  date: DateTime!
+  timeMissed: DateTime!
+  goodExcuse: Boolean
+  reason: String
+  #createAt: DateTime! @createAt
+  #updateAt: DateTime! @updateAt
+}

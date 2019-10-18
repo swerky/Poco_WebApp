@@ -10,17 +10,18 @@ type Student {
   nationality: String!
   addressStreet: String!
   addressCity: String!
-  addressNPA: String!
+  addressNPA: Int!
   addressCanton: String!
   organisation: String
   socialAssistant: SocialAssistant
   financialParticipation: FinancialParticipation! 
   financialParticipationComment: String
   borrowLaptops: Boolean!
-  FoodCost: String
-  absences: [Absence!] @relation(link: TABLE, name: "StudentAbscence")
-  createDate: DateTime! @createDate
-  updateDate: DateTime! @updateDate
+  foodCost: String
+  presences: [Presence] @relation(link: TABLE, name: "StudentPresence")
+  batch: Batch! @relation(link: INLINE)
+  #createDate: DateTime! @createAt
+  #updateDate: DateTime! @updateAt
 }
 
 type SocialAssistant {
@@ -29,7 +30,13 @@ type SocialAssistant {
   lastName: String!
   phone: String
   email: String
-  
+}
+
+type Batch {
+  id: ID! @id
+  name: String! @unique
+  startingTime: DateTime!
+  endTime: DateTime!
 }
 
 enum FinancialParticipation {
@@ -41,6 +48,6 @@ enum FinancialParticipation {
 
 enum Sexe {
   MALE
-  FEMAIL
+  FEMALE
   OTHER
 }

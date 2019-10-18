@@ -17,7 +17,8 @@ export interface NexusPrismaTypes {
       Query: QueryObject
       Student: StudentObject
       SocialAssistant: SocialAssistantObject
-      Absence: AbsenceObject
+      Presence: PresenceObject
+      Batch: BatchObject
       StudentConnection: StudentConnectionObject
       PageInfo: PageInfoObject
       StudentEdge: StudentEdgeObject
@@ -25,9 +26,12 @@ export interface NexusPrismaTypes {
       SocialAssistantConnection: SocialAssistantConnectionObject
       SocialAssistantEdge: SocialAssistantEdgeObject
       AggregateSocialAssistant: AggregateSocialAssistantObject
-      AbsenceConnection: AbsenceConnectionObject
-      AbsenceEdge: AbsenceEdgeObject
-      AggregateAbsence: AggregateAbsenceObject
+      BatchConnection: BatchConnectionObject
+      BatchEdge: BatchEdgeObject
+      AggregateBatch: AggregateBatchObject
+      PresenceConnection: PresenceConnectionObject
+      PresenceEdge: PresenceEdgeObject
+      AggregatePresence: AggregatePresenceObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
@@ -35,14 +39,17 @@ export interface NexusPrismaTypes {
       StudentPreviousValues: StudentPreviousValuesObject
       SocialAssistantSubscriptionPayload: SocialAssistantSubscriptionPayloadObject
       SocialAssistantPreviousValues: SocialAssistantPreviousValuesObject
-      AbsenceSubscriptionPayload: AbsenceSubscriptionPayloadObject
-      AbsencePreviousValues: AbsencePreviousValuesObject
+      BatchSubscriptionPayload: BatchSubscriptionPayloadObject
+      BatchPreviousValues: BatchPreviousValuesObject
+      PresenceSubscriptionPayload: PresenceSubscriptionPayloadObject
+      PresencePreviousValues: PresencePreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
       Student: StudentFieldDetails
       SocialAssistant: SocialAssistantFieldDetails
-      Absence: AbsenceFieldDetails
+      Presence: PresenceFieldDetails
+      Batch: BatchFieldDetails
       StudentConnection: StudentConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
       StudentEdge: StudentEdgeFieldDetails
@@ -50,9 +57,12 @@ export interface NexusPrismaTypes {
       SocialAssistantConnection: SocialAssistantConnectionFieldDetails
       SocialAssistantEdge: SocialAssistantEdgeFieldDetails
       AggregateSocialAssistant: AggregateSocialAssistantFieldDetails
-      AbsenceConnection: AbsenceConnectionFieldDetails
-      AbsenceEdge: AbsenceEdgeFieldDetails
-      AggregateAbsence: AggregateAbsenceFieldDetails
+      BatchConnection: BatchConnectionFieldDetails
+      BatchEdge: BatchEdgeFieldDetails
+      AggregateBatch: AggregateBatchFieldDetails
+      PresenceConnection: PresenceConnectionFieldDetails
+      PresenceEdge: PresenceEdgeFieldDetails
+      AggregatePresence: AggregatePresenceFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
@@ -60,50 +70,63 @@ export interface NexusPrismaTypes {
       StudentPreviousValues: StudentPreviousValuesFieldDetails
       SocialAssistantSubscriptionPayload: SocialAssistantSubscriptionPayloadFieldDetails
       SocialAssistantPreviousValues: SocialAssistantPreviousValuesFieldDetails
-      AbsenceSubscriptionPayload: AbsenceSubscriptionPayloadFieldDetails
-      AbsencePreviousValues: AbsencePreviousValuesFieldDetails
+      BatchSubscriptionPayload: BatchSubscriptionPayloadFieldDetails
+      BatchPreviousValues: BatchPreviousValuesFieldDetails
+      PresenceSubscriptionPayload: PresenceSubscriptionPayloadFieldDetails
+      PresencePreviousValues: PresencePreviousValuesFieldDetails
     }
   }
   inputTypes: {
     fields: {
       StudentWhereUniqueInput: StudentWhereUniqueInputInputObject
-      AbsenceWhereInput: AbsenceWhereInputInputObject
+      PresenceWhereInput: PresenceWhereInputInputObject
       StudentWhereInput: StudentWhereInputInputObject
       SocialAssistantWhereInput: SocialAssistantWhereInputInputObject
+      BatchWhereInput: BatchWhereInputInputObject
       SocialAssistantWhereUniqueInput: SocialAssistantWhereUniqueInputInputObject
-      AbsenceWhereUniqueInput: AbsenceWhereUniqueInputInputObject
+      BatchWhereUniqueInput: BatchWhereUniqueInputInputObject
+      PresenceWhereUniqueInput: PresenceWhereUniqueInputInputObject
       StudentCreateInput: StudentCreateInputInputObject
       SocialAssistantCreateOneInput: SocialAssistantCreateOneInputInputObject
       SocialAssistantCreateInput: SocialAssistantCreateInputInputObject
-      AbsenceCreateManyInput: AbsenceCreateManyInputInputObject
-      AbsenceCreateInput: AbsenceCreateInputInputObject
+      PresenceCreateManyInput: PresenceCreateManyInputInputObject
+      PresenceCreateInput: PresenceCreateInputInputObject
+      BatchCreateOneInput: BatchCreateOneInputInputObject
+      BatchCreateInput: BatchCreateInputInputObject
       StudentUpdateInput: StudentUpdateInputInputObject
       SocialAssistantUpdateOneInput: SocialAssistantUpdateOneInputInputObject
       SocialAssistantUpdateDataInput: SocialAssistantUpdateDataInputInputObject
       SocialAssistantUpsertNestedInput: SocialAssistantUpsertNestedInputInputObject
-      AbsenceUpdateManyInput: AbsenceUpdateManyInputInputObject
-      AbsenceUpdateWithWhereUniqueNestedInput: AbsenceUpdateWithWhereUniqueNestedInputInputObject
-      AbsenceUpdateDataInput: AbsenceUpdateDataInputInputObject
-      AbsenceUpsertWithWhereUniqueNestedInput: AbsenceUpsertWithWhereUniqueNestedInputInputObject
-      AbsenceScalarWhereInput: AbsenceScalarWhereInputInputObject
-      AbsenceUpdateManyWithWhereNestedInput: AbsenceUpdateManyWithWhereNestedInputInputObject
-      AbsenceUpdateManyDataInput: AbsenceUpdateManyDataInputInputObject
+      PresenceUpdateManyInput: PresenceUpdateManyInputInputObject
+      PresenceUpdateWithWhereUniqueNestedInput: PresenceUpdateWithWhereUniqueNestedInputInputObject
+      PresenceUpdateDataInput: PresenceUpdateDataInputInputObject
+      PresenceUpsertWithWhereUniqueNestedInput: PresenceUpsertWithWhereUniqueNestedInputInputObject
+      PresenceScalarWhereInput: PresenceScalarWhereInputInputObject
+      PresenceUpdateManyWithWhereNestedInput: PresenceUpdateManyWithWhereNestedInputInputObject
+      PresenceUpdateManyDataInput: PresenceUpdateManyDataInputInputObject
+      BatchUpdateOneRequiredInput: BatchUpdateOneRequiredInputInputObject
+      BatchUpdateDataInput: BatchUpdateDataInputInputObject
+      BatchUpsertNestedInput: BatchUpsertNestedInputInputObject
       StudentUpdateManyMutationInput: StudentUpdateManyMutationInputInputObject
       SocialAssistantUpdateInput: SocialAssistantUpdateInputInputObject
       SocialAssistantUpdateManyMutationInput: SocialAssistantUpdateManyMutationInputInputObject
-      AbsenceUpdateInput: AbsenceUpdateInputInputObject
-      AbsenceUpdateManyMutationInput: AbsenceUpdateManyMutationInputInputObject
+      BatchUpdateInput: BatchUpdateInputInputObject
+      BatchUpdateManyMutationInput: BatchUpdateManyMutationInputInputObject
+      PresenceUpdateInput: PresenceUpdateInputInputObject
+      PresenceUpdateManyMutationInput: PresenceUpdateManyMutationInputInputObject
       StudentSubscriptionWhereInput: StudentSubscriptionWhereInputInputObject
       SocialAssistantSubscriptionWhereInput: SocialAssistantSubscriptionWhereInputInputObject
-      AbsenceSubscriptionWhereInput: AbsenceSubscriptionWhereInputInputObject
+      BatchSubscriptionWhereInput: BatchSubscriptionWhereInputInputObject
+      PresenceSubscriptionWhereInput: PresenceSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
     Sexe: SexeValues,
     FinancialParticipation: FinancialParticipationValues,
-    AbsenceOrderByInput: AbsenceOrderByInputValues,
+    PresenceOrderByInput: PresenceOrderByInputValues,
     StudentOrderByInput: StudentOrderByInputValues,
     SocialAssistantOrderByInput: SocialAssistantOrderByInputValues,
+    BatchOrderByInput: BatchOrderByInputValues,
     MutationType: MutationTypeValues,
   }
 }
@@ -118,9 +141,12 @@ type QueryObject =
   | { name: 'socialAssistant', args?: QuerySocialAssistantArgs[] | false, alias?: string  } 
   | { name: 'socialAssistants', args?: QuerySocialAssistantsArgs[] | false, alias?: string  } 
   | { name: 'socialAssistantsConnection', args?: QuerySocialAssistantsConnectionArgs[] | false, alias?: string  } 
-  | { name: 'absence', args?: QueryAbsenceArgs[] | false, alias?: string  } 
-  | { name: 'absences', args?: QueryAbsencesArgs[] | false, alias?: string  } 
-  | { name: 'absencesConnection', args?: QueryAbsencesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'batch', args?: QueryBatchArgs[] | false, alias?: string  } 
+  | { name: 'batches', args?: QueryBatchesArgs[] | false, alias?: string  } 
+  | { name: 'batchesConnection', args?: QueryBatchesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'presence', args?: QueryPresenceArgs[] | false, alias?: string  } 
+  | { name: 'presences', args?: QueryPresencesArgs[] | false, alias?: string  } 
+  | { name: 'presencesConnection', args?: QueryPresencesConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
   | 'student'
@@ -129,9 +155,12 @@ type QueryFields =
   | 'socialAssistant'
   | 'socialAssistants'
   | 'socialAssistantsConnection'
-  | 'absence'
-  | 'absences'
-  | 'absencesConnection'
+  | 'batch'
+  | 'batches'
+  | 'batchesConnection'
+  | 'presence'
+  | 'presences'
+  | 'presencesConnection'
 
 
 type QueryStudentArgs =
@@ -170,9 +199,9 @@ type QuerySocialAssistantsConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryAbsenceArgs =
+type QueryBatchArgs =
   | 'where'
-type QueryAbsencesArgs =
+type QueryBatchesArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -180,7 +209,25 @@ type QueryAbsencesArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryAbsencesConnectionArgs =
+type QueryBatchesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryPresenceArgs =
+  | 'where'
+type QueryPresencesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryPresencesConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -269,44 +316,83 @@ export interface QueryFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.SocialAssistantConnection> | prisma.SocialAssistantConnection
   }
-  absence: {
-    type: 'Absence'
-    args: Record<QueryAbsenceArgs, core.NexusArgDef<string>>
+  batch: {
+    type: 'Batch'
+    args: Record<QueryBatchArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where: AbsenceWhereUniqueInput }  ,
+      args: { where: BatchWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence | null> | prisma.Absence | null
+    ) => Promise<prisma.Batch | null> | prisma.Batch | null
   }
-  absences: {
-    type: 'Absence'
-    args: Record<QueryAbsencesArgs, core.NexusArgDef<string>>
+  batches: {
+    type: 'Batch'
+    args: Record<QueryBatchesArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: AbsenceWhereInput | null, orderBy?: prisma.AbsenceOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: BatchWhereInput | null, orderBy?: prisma.BatchOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence[]> | prisma.Absence[]
+    ) => Promise<prisma.Batch[]> | prisma.Batch[]
   }
-  absencesConnection: {
-    type: 'AbsenceConnection'
-    args: Record<QueryAbsencesConnectionArgs, core.NexusArgDef<string>>
+  batchesConnection: {
+    type: 'BatchConnection'
+    args: Record<QueryBatchesConnectionArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: AbsenceWhereInput | null, orderBy?: prisma.AbsenceOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: BatchWhereInput | null, orderBy?: prisma.BatchOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AbsenceConnection> | prisma.AbsenceConnection
+    ) => Promise<prisma.BatchConnection> | prisma.BatchConnection
+  }
+  presence: {
+    type: 'Presence'
+    args: Record<QueryPresenceArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: PresenceWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Presence | null> | prisma.Presence | null
+  }
+  presences: {
+    type: 'Presence'
+    args: Record<QueryPresencesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: PresenceWhereInput | null, orderBy?: prisma.PresenceOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Presence[]> | prisma.Presence[]
+  }
+  presencesConnection: {
+    type: 'PresenceConnection'
+    args: Record<QueryPresencesConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: PresenceWhereInput | null, orderBy?: prisma.PresenceOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PresenceConnection> | prisma.PresenceConnection
   }
 }
   
@@ -333,10 +419,9 @@ type StudentObject =
   | { name: 'financialParticipation', args?: [] | false, alias?: string  } 
   | { name: 'financialParticipationComment', args?: [] | false, alias?: string  } 
   | { name: 'borrowLaptops', args?: [] | false, alias?: string  } 
-  | { name: 'FoodCost', args?: [] | false, alias?: string  } 
-  | { name: 'absences', args?: StudentAbsencesArgs[] | false, alias?: string  } 
-  | { name: 'createDate', args?: [] | false, alias?: string  } 
-  | { name: 'updateDate', args?: [] | false, alias?: string  } 
+  | { name: 'foodCost', args?: [] | false, alias?: string  } 
+  | { name: 'presences', args?: StudentPresencesArgs[] | false, alias?: string  } 
+  | { name: 'batch', args?: [] | false, alias?: string  } 
 
 type StudentFields =
   | 'id'
@@ -357,13 +442,12 @@ type StudentFields =
   | 'financialParticipation'
   | 'financialParticipationComment'
   | 'borrowLaptops'
-  | 'FoodCost'
-  | 'absences'
-  | 'createDate'
-  | 'updateDate'
+  | 'foodCost'
+  | 'presences'
+  | 'batch'
 
 
-type StudentAbsencesArgs =
+type StudentPresencesArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -468,7 +552,7 @@ export interface StudentFieldDetails {
     resolve: undefined
   }
   addressNPA: {
-    type: 'String'
+    type: 'Int'
     args: {}
     description: string
     list: undefined
@@ -533,7 +617,7 @@ export interface StudentFieldDetails {
     nullable: false
     resolve: undefined
   }
-  FoodCost: {
+  foodCost: {
     type: 'String'
     args: {}
     description: string
@@ -541,34 +625,31 @@ export interface StudentFieldDetails {
     nullable: true
     resolve: undefined
   }
-  absences: {
-    type: 'Absence'
-    args: Record<StudentAbsencesArgs, core.NexusArgDef<string>>
+  presences: {
+    type: 'Presence'
+    args: Record<StudentPresencesArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"Student">,
-      args: { where?: AbsenceWhereInput | null, orderBy?: prisma.AbsenceOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: PresenceWhereInput | null, orderBy?: prisma.PresenceOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence[]> | prisma.Absence[]
+    ) => Promise<prisma.Presence[]> | prisma.Presence[]
   }
-  createDate: {
-    type: 'DateTime'
+  batch: {
+    type: 'Batch'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: undefined
-  }
-  updateDate: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
+    resolve: (
+      root: core.RootValue<"Student">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Batch> | prisma.Batch
   }
 }
   
@@ -638,17 +719,17 @@ export interface SocialAssistantFieldDetails {
 }
   
 
-// Types for Absence
+// Types for Presence
 
-type AbsenceObject =
-  | AbsenceFields
+type PresenceObject =
+  | PresenceFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'date', args?: [] | false, alias?: string  } 
   | { name: 'timeMissed', args?: [] | false, alias?: string  } 
   | { name: 'goodExcuse', args?: [] | false, alias?: string  } 
   | { name: 'reason', args?: [] | false, alias?: string  } 
 
-type AbsenceFields =
+type PresenceFields =
   | 'id'
   | 'date'
   | 'timeMissed'
@@ -659,7 +740,7 @@ type AbsenceFields =
 
   
 
-export interface AbsenceFieldDetails {
+export interface PresenceFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -689,7 +770,7 @@ export interface AbsenceFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   reason: {
@@ -698,6 +779,61 @@ export interface AbsenceFieldDetails {
     description: string
     list: undefined
     nullable: true
+    resolve: undefined
+  }
+}
+  
+
+// Types for Batch
+
+type BatchObject =
+  | BatchFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'startingTime', args?: [] | false, alias?: string  } 
+  | { name: 'endTime', args?: [] | false, alias?: string  } 
+
+type BatchFields =
+  | 'id'
+  | 'name'
+  | 'startingTime'
+  | 'endTime'
+
+
+
+  
+
+export interface BatchFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  startingTime: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  endTime: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
     resolve: undefined
   }
 }
@@ -1008,15 +1144,15 @@ export interface AggregateSocialAssistantFieldDetails {
 }
   
 
-// Types for AbsenceConnection
+// Types for BatchConnection
 
-type AbsenceConnectionObject =
-  | AbsenceConnectionFields
+type BatchConnectionObject =
+  | BatchConnectionFields
   | { name: 'pageInfo', args?: [] | false, alias?: string  } 
   | { name: 'edges', args?: [] | false, alias?: string  } 
   | { name: 'aggregate', args?: [] | false, alias?: string  } 
 
-type AbsenceConnectionFields =
+type BatchConnectionFields =
   | 'pageInfo'
   | 'edges'
   | 'aggregate'
@@ -1025,7 +1161,7 @@ type AbsenceConnectionFields =
 
   
 
-export interface AbsenceConnectionFieldDetails {
+export interface BatchConnectionFieldDetails {
   pageInfo: {
     type: 'PageInfo'
     args: {}
@@ -1033,49 +1169,49 @@ export interface AbsenceConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"AbsenceConnection">,
+      root: core.RootValue<"BatchConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
   edges: {
-    type: 'AbsenceEdge'
+    type: 'BatchEdge'
     args: {}
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"AbsenceConnection">,
+      root: core.RootValue<"BatchConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AbsenceEdge[]> | prisma.AbsenceEdge[]
+    ) => Promise<prisma.BatchEdge[]> | prisma.BatchEdge[]
   }
   aggregate: {
-    type: 'AggregateAbsence'
+    type: 'AggregateBatch'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"AbsenceConnection">,
+      root: core.RootValue<"BatchConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateAbsence> | prisma.AggregateAbsence
+    ) => Promise<prisma.AggregateBatch> | prisma.AggregateBatch
   }
 }
   
 
-// Types for AbsenceEdge
+// Types for BatchEdge
 
-type AbsenceEdgeObject =
-  | AbsenceEdgeFields
+type BatchEdgeObject =
+  | BatchEdgeFields
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'cursor', args?: [] | false, alias?: string  } 
 
-type AbsenceEdgeFields =
+type BatchEdgeFields =
   | 'node'
   | 'cursor'
 
@@ -1083,19 +1219,19 @@ type AbsenceEdgeFields =
 
   
 
-export interface AbsenceEdgeFieldDetails {
+export interface BatchEdgeFieldDetails {
   node: {
-    type: 'Absence'
+    type: 'Batch'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"AbsenceEdge">,
+      root: core.RootValue<"BatchEdge">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence> | prisma.Absence
+    ) => Promise<prisma.Batch> | prisma.Batch
   }
   cursor: {
     type: 'String'
@@ -1108,20 +1244,145 @@ export interface AbsenceEdgeFieldDetails {
 }
   
 
-// Types for AggregateAbsence
+// Types for AggregateBatch
 
-type AggregateAbsenceObject =
-  | AggregateAbsenceFields
+type AggregateBatchObject =
+  | AggregateBatchFields
   | { name: 'count', args?: [] | false, alias?: string  } 
 
-type AggregateAbsenceFields =
+type AggregateBatchFields =
   | 'count'
 
 
 
   
 
-export interface AggregateAbsenceFieldDetails {
+export interface AggregateBatchFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for PresenceConnection
+
+type PresenceConnectionObject =
+  | PresenceConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type PresenceConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface PresenceConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PresenceConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'PresenceEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PresenceConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PresenceEdge[]> | prisma.PresenceEdge[]
+  }
+  aggregate: {
+    type: 'AggregatePresence'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PresenceConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregatePresence> | prisma.AggregatePresence
+  }
+}
+  
+
+// Types for PresenceEdge
+
+type PresenceEdgeObject =
+  | PresenceEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type PresenceEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface PresenceEdgeFieldDetails {
+  node: {
+    type: 'Presence'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PresenceEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Presence> | prisma.Presence
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregatePresence
+
+type AggregatePresenceObject =
+  | AggregatePresenceFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregatePresenceFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregatePresenceFieldDetails {
   count: {
     type: 'Int'
     args: {}
@@ -1149,12 +1410,18 @@ type MutationObject =
   | { name: 'upsertSocialAssistant', args?: MutationUpsertSocialAssistantArgs[] | false, alias?: string  } 
   | { name: 'deleteSocialAssistant', args?: MutationDeleteSocialAssistantArgs[] | false, alias?: string  } 
   | { name: 'deleteManySocialAssistants', args?: MutationDeleteManySocialAssistantsArgs[] | false, alias?: string  } 
-  | { name: 'createAbsence', args?: MutationCreateAbsenceArgs[] | false, alias?: string  } 
-  | { name: 'updateAbsence', args?: MutationUpdateAbsenceArgs[] | false, alias?: string  } 
-  | { name: 'updateManyAbsences', args?: MutationUpdateManyAbsencesArgs[] | false, alias?: string  } 
-  | { name: 'upsertAbsence', args?: MutationUpsertAbsenceArgs[] | false, alias?: string  } 
-  | { name: 'deleteAbsence', args?: MutationDeleteAbsenceArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyAbsences', args?: MutationDeleteManyAbsencesArgs[] | false, alias?: string  } 
+  | { name: 'createBatch', args?: MutationCreateBatchArgs[] | false, alias?: string  } 
+  | { name: 'updateBatch', args?: MutationUpdateBatchArgs[] | false, alias?: string  } 
+  | { name: 'updateManyBatches', args?: MutationUpdateManyBatchesArgs[] | false, alias?: string  } 
+  | { name: 'upsertBatch', args?: MutationUpsertBatchArgs[] | false, alias?: string  } 
+  | { name: 'deleteBatch', args?: MutationDeleteBatchArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyBatches', args?: MutationDeleteManyBatchesArgs[] | false, alias?: string  } 
+  | { name: 'createPresence', args?: MutationCreatePresenceArgs[] | false, alias?: string  } 
+  | { name: 'updatePresence', args?: MutationUpdatePresenceArgs[] | false, alias?: string  } 
+  | { name: 'updateManyPresences', args?: MutationUpdateManyPresencesArgs[] | false, alias?: string  } 
+  | { name: 'upsertPresence', args?: MutationUpsertPresenceArgs[] | false, alias?: string  } 
+  | { name: 'deletePresence', args?: MutationDeletePresenceArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyPresences', args?: MutationDeleteManyPresencesArgs[] | false, alias?: string  } 
 
 type MutationFields =
   | 'createStudent'
@@ -1169,12 +1436,18 @@ type MutationFields =
   | 'upsertSocialAssistant'
   | 'deleteSocialAssistant'
   | 'deleteManySocialAssistants'
-  | 'createAbsence'
-  | 'updateAbsence'
-  | 'updateManyAbsences'
-  | 'upsertAbsence'
-  | 'deleteAbsence'
-  | 'deleteManyAbsences'
+  | 'createBatch'
+  | 'updateBatch'
+  | 'updateManyBatches'
+  | 'upsertBatch'
+  | 'deleteBatch'
+  | 'deleteManyBatches'
+  | 'createPresence'
+  | 'updatePresence'
+  | 'updateManyPresences'
+  | 'upsertPresence'
+  | 'deletePresence'
+  | 'deleteManyPresences'
 
 
 type MutationCreateStudentArgs =
@@ -1209,21 +1482,37 @@ type MutationDeleteSocialAssistantArgs =
   | 'where'
 type MutationDeleteManySocialAssistantsArgs =
   | 'where'
-type MutationCreateAbsenceArgs =
+type MutationCreateBatchArgs =
   | 'data'
-type MutationUpdateAbsenceArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyAbsencesArgs =
+type MutationUpdateBatchArgs =
   | 'data'
   | 'where'
-type MutationUpsertAbsenceArgs =
+type MutationUpdateManyBatchesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertBatchArgs =
   | 'where'
   | 'create'
   | 'update'
-type MutationDeleteAbsenceArgs =
+type MutationDeleteBatchArgs =
   | 'where'
-type MutationDeleteManyAbsencesArgs =
+type MutationDeleteManyBatchesArgs =
+  | 'where'
+type MutationCreatePresenceArgs =
+  | 'data'
+type MutationUpdatePresenceArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyPresencesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertPresenceArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeletePresenceArgs =
+  | 'where'
+type MutationDeleteManyPresencesArgs =
   | 'where'
   
 
@@ -1384,80 +1673,158 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  createAbsence: {
-    type: 'Absence'
-    args: Record<MutationCreateAbsenceArgs, core.NexusArgDef<string>>
+  createBatch: {
+    type: 'Batch'
+    args: Record<MutationCreateBatchArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: AbsenceCreateInput }  ,
+      args: { data: BatchCreateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence> | prisma.Absence
+    ) => Promise<prisma.Batch> | prisma.Batch
   }
-  updateAbsence: {
-    type: 'Absence'
-    args: Record<MutationUpdateAbsenceArgs, core.NexusArgDef<string>>
+  updateBatch: {
+    type: 'Batch'
+    args: Record<MutationUpdateBatchArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: AbsenceUpdateInput, where: AbsenceWhereUniqueInput }  ,
+      args: { data: BatchUpdateInput, where: BatchWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence | null> | prisma.Absence | null
+    ) => Promise<prisma.Batch | null> | prisma.Batch | null
   }
-  updateManyAbsences: {
+  updateManyBatches: {
     type: 'BatchPayload'
-    args: Record<MutationUpdateManyAbsencesArgs, core.NexusArgDef<string>>
+    args: Record<MutationUpdateManyBatchesArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: AbsenceUpdateManyMutationInput, where?: AbsenceWhereInput | null }  ,
+      args: { data: BatchUpdateManyMutationInput, where?: BatchWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  upsertAbsence: {
-    type: 'Absence'
-    args: Record<MutationUpsertAbsenceArgs, core.NexusArgDef<string>>
+  upsertBatch: {
+    type: 'Batch'
+    args: Record<MutationUpsertBatchArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: AbsenceWhereUniqueInput, create: AbsenceCreateInput, update: AbsenceUpdateInput }  ,
+      args: { where: BatchWhereUniqueInput, create: BatchCreateInput, update: BatchUpdateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence> | prisma.Absence
+    ) => Promise<prisma.Batch> | prisma.Batch
   }
-  deleteAbsence: {
-    type: 'Absence'
-    args: Record<MutationDeleteAbsenceArgs, core.NexusArgDef<string>>
+  deleteBatch: {
+    type: 'Batch'
+    args: Record<MutationDeleteBatchArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: AbsenceWhereUniqueInput }  ,
+      args: { where: BatchWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence | null> | prisma.Absence | null
+    ) => Promise<prisma.Batch | null> | prisma.Batch | null
   }
-  deleteManyAbsences: {
+  deleteManyBatches: {
     type: 'BatchPayload'
-    args: Record<MutationDeleteManyAbsencesArgs, core.NexusArgDef<string>>
+    args: Record<MutationDeleteManyBatchesArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where?: AbsenceWhereInput | null }  ,
+      args: { where?: BatchWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createPresence: {
+    type: 'Presence'
+    args: Record<MutationCreatePresenceArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PresenceCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Presence> | prisma.Presence
+  }
+  updatePresence: {
+    type: 'Presence'
+    args: Record<MutationUpdatePresenceArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PresenceUpdateInput, where: PresenceWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Presence | null> | prisma.Presence | null
+  }
+  updateManyPresences: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyPresencesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PresenceUpdateManyMutationInput, where?: PresenceWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertPresence: {
+    type: 'Presence'
+    args: Record<MutationUpsertPresenceArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: PresenceWhereUniqueInput, create: PresenceCreateInput, update: PresenceUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Presence> | prisma.Presence
+  }
+  deletePresence: {
+    type: 'Presence'
+    args: Record<MutationDeletePresenceArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: PresenceWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Presence | null> | prisma.Presence | null
+  }
+  deleteManyPresences: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyPresencesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: PresenceWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
@@ -1496,19 +1863,23 @@ type SubscriptionObject =
   | SubscriptionFields
   | { name: 'student', args?: SubscriptionStudentArgs[] | false, alias?: string  } 
   | { name: 'socialAssistant', args?: SubscriptionSocialAssistantArgs[] | false, alias?: string  } 
-  | { name: 'absence', args?: SubscriptionAbsenceArgs[] | false, alias?: string  } 
+  | { name: 'batch', args?: SubscriptionBatchArgs[] | false, alias?: string  } 
+  | { name: 'presence', args?: SubscriptionPresenceArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
   | 'student'
   | 'socialAssistant'
-  | 'absence'
+  | 'batch'
+  | 'presence'
 
 
 type SubscriptionStudentArgs =
   | 'where'
 type SubscriptionSocialAssistantArgs =
   | 'where'
-type SubscriptionAbsenceArgs =
+type SubscriptionBatchArgs =
+  | 'where'
+type SubscriptionPresenceArgs =
   | 'where'
   
 
@@ -1539,18 +1910,31 @@ export interface SubscriptionFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.SocialAssistantSubscriptionPayload | null> | prisma.SocialAssistantSubscriptionPayload | null
   }
-  absence: {
-    type: 'AbsenceSubscriptionPayload'
-    args: Record<SubscriptionAbsenceArgs, core.NexusArgDef<string>>
+  batch: {
+    type: 'BatchSubscriptionPayload'
+    args: Record<SubscriptionBatchArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Subscription">,
-      args: { where?: AbsenceSubscriptionWhereInput | null }  ,
+      args: { where?: BatchSubscriptionWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AbsenceSubscriptionPayload | null> | prisma.AbsenceSubscriptionPayload | null
+    ) => Promise<prisma.BatchSubscriptionPayload | null> | prisma.BatchSubscriptionPayload | null
+  }
+  presence: {
+    type: 'PresenceSubscriptionPayload'
+    args: Record<SubscriptionPresenceArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: PresenceSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PresenceSubscriptionPayload | null> | prisma.PresenceSubscriptionPayload | null
   }
 }
   
@@ -1646,9 +2030,7 @@ type StudentPreviousValuesObject =
   | { name: 'financialParticipation', args?: [] | false, alias?: string  } 
   | { name: 'financialParticipationComment', args?: [] | false, alias?: string  } 
   | { name: 'borrowLaptops', args?: [] | false, alias?: string  } 
-  | { name: 'FoodCost', args?: [] | false, alias?: string  } 
-  | { name: 'createDate', args?: [] | false, alias?: string  } 
-  | { name: 'updateDate', args?: [] | false, alias?: string  } 
+  | { name: 'foodCost', args?: [] | false, alias?: string  } 
 
 type StudentPreviousValuesFields =
   | 'id'
@@ -1668,9 +2050,7 @@ type StudentPreviousValuesFields =
   | 'financialParticipation'
   | 'financialParticipationComment'
   | 'borrowLaptops'
-  | 'FoodCost'
-  | 'createDate'
-  | 'updateDate'
+  | 'foodCost'
 
 
 
@@ -1771,7 +2151,7 @@ export interface StudentPreviousValuesFieldDetails {
     resolve: undefined
   }
   addressNPA: {
-    type: 'String'
+    type: 'Int'
     args: {}
     description: string
     list: undefined
@@ -1823,28 +2203,12 @@ export interface StudentPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  FoodCost: {
+  foodCost: {
     type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: true
-    resolve: undefined
-  }
-  createDate: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updateDate: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
     resolve: undefined
   }
 }
@@ -1985,16 +2349,16 @@ export interface SocialAssistantPreviousValuesFieldDetails {
 }
   
 
-// Types for AbsenceSubscriptionPayload
+// Types for BatchSubscriptionPayload
 
-type AbsenceSubscriptionPayloadObject =
-  | AbsenceSubscriptionPayloadFields
+type BatchSubscriptionPayloadObject =
+  | BatchSubscriptionPayloadFields
   | { name: 'mutation', args?: [] | false, alias?: string  } 
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'updatedFields', args?: [] | false, alias?: string  } 
   | { name: 'previousValues', args?: [] | false, alias?: string  } 
 
-type AbsenceSubscriptionPayloadFields =
+type BatchSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
@@ -2004,7 +2368,7 @@ type AbsenceSubscriptionPayloadFields =
 
   
 
-export interface AbsenceSubscriptionPayloadFieldDetails {
+export interface BatchSubscriptionPayloadFieldDetails {
   mutation: {
     type: 'MutationType'
     args: {}
@@ -2012,24 +2376,24 @@ export interface AbsenceSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"AbsenceSubscriptionPayload">,
+      root: core.RootValue<"BatchSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
   node: {
-    type: 'Absence'
+    type: 'Batch'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"AbsenceSubscriptionPayload">,
+      root: core.RootValue<"BatchSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Absence | null> | prisma.Absence | null
+    ) => Promise<prisma.Batch | null> | prisma.Batch | null
   }
   updatedFields: {
     type: 'String'
@@ -2040,32 +2404,157 @@ export interface AbsenceSubscriptionPayloadFieldDetails {
     resolve: undefined
   }
   previousValues: {
-    type: 'AbsencePreviousValues'
+    type: 'BatchPreviousValues'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"AbsenceSubscriptionPayload">,
+      root: core.RootValue<"BatchSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AbsencePreviousValues | null> | prisma.AbsencePreviousValues | null
+    ) => Promise<prisma.BatchPreviousValues | null> | prisma.BatchPreviousValues | null
   }
 }
   
 
-// Types for AbsencePreviousValues
+// Types for BatchPreviousValues
 
-type AbsencePreviousValuesObject =
-  | AbsencePreviousValuesFields
+type BatchPreviousValuesObject =
+  | BatchPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'startingTime', args?: [] | false, alias?: string  } 
+  | { name: 'endTime', args?: [] | false, alias?: string  } 
+
+type BatchPreviousValuesFields =
+  | 'id'
+  | 'name'
+  | 'startingTime'
+  | 'endTime'
+
+
+
+  
+
+export interface BatchPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  startingTime: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  endTime: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for PresenceSubscriptionPayload
+
+type PresenceSubscriptionPayloadObject =
+  | PresenceSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type PresenceSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface PresenceSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PresenceSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Presence'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PresenceSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Presence | null> | prisma.Presence | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'PresencePreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PresenceSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PresencePreviousValues | null> | prisma.PresencePreviousValues | null
+  }
+}
+  
+
+// Types for PresencePreviousValues
+
+type PresencePreviousValuesObject =
+  | PresencePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'date', args?: [] | false, alias?: string  } 
   | { name: 'timeMissed', args?: [] | false, alias?: string  } 
   | { name: 'goodExcuse', args?: [] | false, alias?: string  } 
   | { name: 'reason', args?: [] | false, alias?: string  } 
 
-type AbsencePreviousValuesFields =
+type PresencePreviousValuesFields =
   | 'id'
   | 'date'
   | 'timeMissed'
@@ -2076,7 +2565,7 @@ type AbsencePreviousValuesFields =
 
   
 
-export interface AbsencePreviousValuesFieldDetails {
+export interface PresencePreviousValuesFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -2106,7 +2595,7 @@ export interface AbsencePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   reason: {
@@ -2128,7 +2617,7 @@ export type StudentWhereUniqueInputInputObject =
   | Extract<keyof StudentWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
-export interface AbsenceWhereInput {
+export interface PresenceWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -2175,12 +2664,12 @@ export interface AbsenceWhereInput {
   reason_not_starts_with?: string | null
   reason_ends_with?: string | null
   reason_not_ends_with?: string | null
-  AND?: AbsenceWhereInput[]
-  OR?: AbsenceWhereInput[]
-  NOT?: AbsenceWhereInput[]
+  AND?: PresenceWhereInput[]
+  OR?: PresenceWhereInput[]
+  NOT?: PresenceWhereInput[]
 }
-export type AbsenceWhereInputInputObject =
-  | Extract<keyof AbsenceWhereInput, string>
+export type PresenceWhereInputInputObject =
+  | Extract<keyof PresenceWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -2370,20 +2859,14 @@ export interface StudentWhereInput {
   addressCity_not_starts_with?: string | null
   addressCity_ends_with?: string | null
   addressCity_not_ends_with?: string | null
-  addressNPA?: string | null
-  addressNPA_not?: string | null
-  addressNPA_in?: string[]
-  addressNPA_not_in?: string[]
-  addressNPA_lt?: string | null
-  addressNPA_lte?: string | null
-  addressNPA_gt?: string | null
-  addressNPA_gte?: string | null
-  addressNPA_contains?: string | null
-  addressNPA_not_contains?: string | null
-  addressNPA_starts_with?: string | null
-  addressNPA_not_starts_with?: string | null
-  addressNPA_ends_with?: string | null
-  addressNPA_not_ends_with?: string | null
+  addressNPA?: number | null
+  addressNPA_not?: number | null
+  addressNPA_in?: number[]
+  addressNPA_not_in?: number[]
+  addressNPA_lt?: number | null
+  addressNPA_lte?: number | null
+  addressNPA_gt?: number | null
+  addressNPA_gte?: number | null
   addressCanton?: string | null
   addressCanton_not?: string | null
   addressCanton_in?: string[]
@@ -2433,39 +2916,24 @@ export interface StudentWhereInput {
   financialParticipationComment_not_ends_with?: string | null
   borrowLaptops?: boolean | null
   borrowLaptops_not?: boolean | null
-  FoodCost?: string | null
-  FoodCost_not?: string | null
-  FoodCost_in?: string[]
-  FoodCost_not_in?: string[]
-  FoodCost_lt?: string | null
-  FoodCost_lte?: string | null
-  FoodCost_gt?: string | null
-  FoodCost_gte?: string | null
-  FoodCost_contains?: string | null
-  FoodCost_not_contains?: string | null
-  FoodCost_starts_with?: string | null
-  FoodCost_not_starts_with?: string | null
-  FoodCost_ends_with?: string | null
-  FoodCost_not_ends_with?: string | null
-  absences_every?: AbsenceWhereInput | null
-  absences_some?: AbsenceWhereInput | null
-  absences_none?: AbsenceWhereInput | null
-  createDate?: string | null
-  createDate_not?: string | null
-  createDate_in?: string[]
-  createDate_not_in?: string[]
-  createDate_lt?: string | null
-  createDate_lte?: string | null
-  createDate_gt?: string | null
-  createDate_gte?: string | null
-  updateDate?: string | null
-  updateDate_not?: string | null
-  updateDate_in?: string[]
-  updateDate_not_in?: string[]
-  updateDate_lt?: string | null
-  updateDate_lte?: string | null
-  updateDate_gt?: string | null
-  updateDate_gte?: string | null
+  foodCost?: string | null
+  foodCost_not?: string | null
+  foodCost_in?: string[]
+  foodCost_not_in?: string[]
+  foodCost_lt?: string | null
+  foodCost_lte?: string | null
+  foodCost_gt?: string | null
+  foodCost_gte?: string | null
+  foodCost_contains?: string | null
+  foodCost_not_contains?: string | null
+  foodCost_starts_with?: string | null
+  foodCost_not_starts_with?: string | null
+  foodCost_ends_with?: string | null
+  foodCost_not_ends_with?: string | null
+  presences_every?: PresenceWhereInput | null
+  presences_some?: PresenceWhereInput | null
+  presences_none?: PresenceWhereInput | null
+  batch?: BatchWhereInput | null
   AND?: StudentWhereInput[]
   OR?: StudentWhereInput[]
   NOT?: StudentWhereInput[]
@@ -2618,12 +3086,6 @@ export type StudentWhereInputInputObject =
   | { name: 'addressNPA_lte', alias?: string  } 
   | { name: 'addressNPA_gt', alias?: string  } 
   | { name: 'addressNPA_gte', alias?: string  } 
-  | { name: 'addressNPA_contains', alias?: string  } 
-  | { name: 'addressNPA_not_contains', alias?: string  } 
-  | { name: 'addressNPA_starts_with', alias?: string  } 
-  | { name: 'addressNPA_not_starts_with', alias?: string  } 
-  | { name: 'addressNPA_ends_with', alias?: string  } 
-  | { name: 'addressNPA_not_ends_with', alias?: string  } 
   | { name: 'addressCanton', alias?: string  } 
   | { name: 'addressCanton_not', alias?: string  } 
   | { name: 'addressCanton_in', alias?: string  } 
@@ -2673,39 +3135,24 @@ export type StudentWhereInputInputObject =
   | { name: 'financialParticipationComment_not_ends_with', alias?: string  } 
   | { name: 'borrowLaptops', alias?: string  } 
   | { name: 'borrowLaptops_not', alias?: string  } 
-  | { name: 'FoodCost', alias?: string  } 
-  | { name: 'FoodCost_not', alias?: string  } 
-  | { name: 'FoodCost_in', alias?: string  } 
-  | { name: 'FoodCost_not_in', alias?: string  } 
-  | { name: 'FoodCost_lt', alias?: string  } 
-  | { name: 'FoodCost_lte', alias?: string  } 
-  | { name: 'FoodCost_gt', alias?: string  } 
-  | { name: 'FoodCost_gte', alias?: string  } 
-  | { name: 'FoodCost_contains', alias?: string  } 
-  | { name: 'FoodCost_not_contains', alias?: string  } 
-  | { name: 'FoodCost_starts_with', alias?: string  } 
-  | { name: 'FoodCost_not_starts_with', alias?: string  } 
-  | { name: 'FoodCost_ends_with', alias?: string  } 
-  | { name: 'FoodCost_not_ends_with', alias?: string  } 
-  | { name: 'absences_every', alias?: string  } 
-  | { name: 'absences_some', alias?: string  } 
-  | { name: 'absences_none', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'createDate_not', alias?: string  } 
-  | { name: 'createDate_in', alias?: string  } 
-  | { name: 'createDate_not_in', alias?: string  } 
-  | { name: 'createDate_lt', alias?: string  } 
-  | { name: 'createDate_lte', alias?: string  } 
-  | { name: 'createDate_gt', alias?: string  } 
-  | { name: 'createDate_gte', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
-  | { name: 'updateDate_not', alias?: string  } 
-  | { name: 'updateDate_in', alias?: string  } 
-  | { name: 'updateDate_not_in', alias?: string  } 
-  | { name: 'updateDate_lt', alias?: string  } 
-  | { name: 'updateDate_lte', alias?: string  } 
-  | { name: 'updateDate_gt', alias?: string  } 
-  | { name: 'updateDate_gte', alias?: string  } 
+  | { name: 'foodCost', alias?: string  } 
+  | { name: 'foodCost_not', alias?: string  } 
+  | { name: 'foodCost_in', alias?: string  } 
+  | { name: 'foodCost_not_in', alias?: string  } 
+  | { name: 'foodCost_lt', alias?: string  } 
+  | { name: 'foodCost_lte', alias?: string  } 
+  | { name: 'foodCost_gt', alias?: string  } 
+  | { name: 'foodCost_gte', alias?: string  } 
+  | { name: 'foodCost_contains', alias?: string  } 
+  | { name: 'foodCost_not_contains', alias?: string  } 
+  | { name: 'foodCost_starts_with', alias?: string  } 
+  | { name: 'foodCost_not_starts_with', alias?: string  } 
+  | { name: 'foodCost_ends_with', alias?: string  } 
+  | { name: 'foodCost_not_ends_with', alias?: string  } 
+  | { name: 'presences_every', alias?: string  } 
+  | { name: 'presences_some', alias?: string  } 
+  | { name: 'presences_none', alias?: string  } 
+  | { name: 'batch', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -2861,6 +3308,105 @@ export type SocialAssistantWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface BatchWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  startingTime?: string | null
+  startingTime_not?: string | null
+  startingTime_in?: string[]
+  startingTime_not_in?: string[]
+  startingTime_lt?: string | null
+  startingTime_lte?: string | null
+  startingTime_gt?: string | null
+  startingTime_gte?: string | null
+  endTime?: string | null
+  endTime_not?: string | null
+  endTime_in?: string[]
+  endTime_not_in?: string[]
+  endTime_lt?: string | null
+  endTime_lte?: string | null
+  endTime_gt?: string | null
+  endTime_gte?: string | null
+  AND?: BatchWhereInput[]
+  OR?: BatchWhereInput[]
+  NOT?: BatchWhereInput[]
+}
+export type BatchWhereInputInputObject =
+  | Extract<keyof BatchWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'startingTime', alias?: string  } 
+  | { name: 'startingTime_not', alias?: string  } 
+  | { name: 'startingTime_in', alias?: string  } 
+  | { name: 'startingTime_not_in', alias?: string  } 
+  | { name: 'startingTime_lt', alias?: string  } 
+  | { name: 'startingTime_lte', alias?: string  } 
+  | { name: 'startingTime_gt', alias?: string  } 
+  | { name: 'startingTime_gte', alias?: string  } 
+  | { name: 'endTime', alias?: string  } 
+  | { name: 'endTime_not', alias?: string  } 
+  | { name: 'endTime_in', alias?: string  } 
+  | { name: 'endTime_not_in', alias?: string  } 
+  | { name: 'endTime_lt', alias?: string  } 
+  | { name: 'endTime_lte', alias?: string  } 
+  | { name: 'endTime_gt', alias?: string  } 
+  | { name: 'endTime_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 export interface SocialAssistantWhereUniqueInput {
   id?: string | null
 }
@@ -2868,11 +3414,20 @@ export type SocialAssistantWhereUniqueInputInputObject =
   | Extract<keyof SocialAssistantWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
-export interface AbsenceWhereUniqueInput {
+export interface BatchWhereUniqueInput {
+  id?: string | null
+  name?: string | null
+}
+export type BatchWhereUniqueInputInputObject =
+  | Extract<keyof BatchWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  
+export interface PresenceWhereUniqueInput {
   id?: string | null
 }
-export type AbsenceWhereUniqueInputInputObject =
-  | Extract<keyof AbsenceWhereUniqueInput, string>
+export type PresenceWhereUniqueInputInputObject =
+  | Extract<keyof PresenceWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
 export interface StudentCreateInput {
@@ -2887,17 +3442,16 @@ export interface StudentCreateInput {
   nationality?: string
   addressStreet?: string
   addressCity?: string
-  addressNPA?: string
+  addressNPA?: number
   addressCanton?: string
   organisation?: string | null
   socialAssistant?: SocialAssistantCreateOneInput | null
   financialParticipation?: prisma.FinancialParticipation
   financialParticipationComment?: string | null
   borrowLaptops?: boolean
-  FoodCost?: string | null
-  absences?: AbsenceCreateManyInput | null
-  createDate?: string
-  updateDate?: string
+  foodCost?: string | null
+  presences?: PresenceCreateManyInput | null
+  batch?: BatchCreateOneInput
 }
 export type StudentCreateInputInputObject =
   | Extract<keyof StudentCreateInput, string>
@@ -2919,10 +3473,9 @@ export type StudentCreateInputInputObject =
   | { name: 'financialParticipation', alias?: string  } 
   | { name: 'financialParticipationComment', alias?: string  } 
   | { name: 'borrowLaptops', alias?: string  } 
-  | { name: 'FoodCost', alias?: string  } 
-  | { name: 'absences', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
+  | { name: 'foodCost', alias?: string  } 
+  | { name: 'presences', alias?: string  } 
+  | { name: 'batch', alias?: string  } 
   
 export interface SocialAssistantCreateOneInput {
   create?: SocialAssistantCreateInput | null
@@ -2948,29 +3501,51 @@ export type SocialAssistantCreateInputInputObject =
   | { name: 'phone', alias?: string  } 
   | { name: 'email', alias?: string  } 
   
-export interface AbsenceCreateManyInput {
-  create?: AbsenceCreateInput[]
-  connect?: AbsenceWhereUniqueInput[]
+export interface PresenceCreateManyInput {
+  create?: PresenceCreateInput[]
+  connect?: PresenceWhereUniqueInput[]
 }
-export type AbsenceCreateManyInputInputObject =
-  | Extract<keyof AbsenceCreateManyInput, string>
+export type PresenceCreateManyInputInputObject =
+  | Extract<keyof PresenceCreateManyInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface AbsenceCreateInput {
+export interface PresenceCreateInput {
   id?: string | null
   date?: string
   timeMissed?: string
-  goodExcuse?: boolean
+  goodExcuse?: boolean | null
   reason?: string | null
 }
-export type AbsenceCreateInputInputObject =
-  | Extract<keyof AbsenceCreateInput, string>
+export type PresenceCreateInputInputObject =
+  | Extract<keyof PresenceCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'date', alias?: string  } 
   | { name: 'timeMissed', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
+  
+export interface BatchCreateOneInput {
+  create?: BatchCreateInput | null
+  connect?: BatchWhereUniqueInput | null
+}
+export type BatchCreateOneInputInputObject =
+  | Extract<keyof BatchCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface BatchCreateInput {
+  id?: string | null
+  name?: string
+  startingTime?: string
+  endTime?: string
+}
+export type BatchCreateInputInputObject =
+  | Extract<keyof BatchCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'startingTime', alias?: string  } 
+  | { name: 'endTime', alias?: string  } 
   
 export interface StudentUpdateInput {
   firstName?: string | null
@@ -2983,17 +3558,16 @@ export interface StudentUpdateInput {
   nationality?: string | null
   addressStreet?: string | null
   addressCity?: string | null
-  addressNPA?: string | null
+  addressNPA?: number | null
   addressCanton?: string | null
   organisation?: string | null
   socialAssistant?: SocialAssistantUpdateOneInput | null
   financialParticipation?: prisma.FinancialParticipation | null
   financialParticipationComment?: string | null
   borrowLaptops?: boolean | null
-  FoodCost?: string | null
-  absences?: AbsenceUpdateManyInput | null
-  createDate?: string | null
-  updateDate?: string | null
+  foodCost?: string | null
+  presences?: PresenceUpdateManyInput | null
+  batch?: BatchUpdateOneRequiredInput | null
 }
 export type StudentUpdateInputInputObject =
   | Extract<keyof StudentUpdateInput, string>
@@ -3014,10 +3588,9 @@ export type StudentUpdateInputInputObject =
   | { name: 'financialParticipation', alias?: string  } 
   | { name: 'financialParticipationComment', alias?: string  } 
   | { name: 'borrowLaptops', alias?: string  } 
-  | { name: 'FoodCost', alias?: string  } 
-  | { name: 'absences', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
+  | { name: 'foodCost', alias?: string  } 
+  | { name: 'presences', alias?: string  } 
+  | { name: 'batch', alias?: string  } 
   
 export interface SocialAssistantUpdateOneInput {
   create?: SocialAssistantCreateInput | null
@@ -3058,19 +3631,19 @@ export type SocialAssistantUpsertNestedInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface AbsenceUpdateManyInput {
-  create?: AbsenceCreateInput[]
-  update?: AbsenceUpdateWithWhereUniqueNestedInput[]
-  upsert?: AbsenceUpsertWithWhereUniqueNestedInput[]
-  delete?: AbsenceWhereUniqueInput[]
-  connect?: AbsenceWhereUniqueInput[]
-  set?: AbsenceWhereUniqueInput[]
-  disconnect?: AbsenceWhereUniqueInput[]
-  deleteMany?: AbsenceScalarWhereInput[]
-  updateMany?: AbsenceUpdateManyWithWhereNestedInput[]
+export interface PresenceUpdateManyInput {
+  create?: PresenceCreateInput[]
+  update?: PresenceUpdateWithWhereUniqueNestedInput[]
+  upsert?: PresenceUpsertWithWhereUniqueNestedInput[]
+  delete?: PresenceWhereUniqueInput[]
+  connect?: PresenceWhereUniqueInput[]
+  set?: PresenceWhereUniqueInput[]
+  disconnect?: PresenceWhereUniqueInput[]
+  deleteMany?: PresenceScalarWhereInput[]
+  updateMany?: PresenceUpdateManyWithWhereNestedInput[]
 }
-export type AbsenceUpdateManyInputInputObject =
-  | Extract<keyof AbsenceUpdateManyInput, string>
+export type PresenceUpdateManyInputInputObject =
+  | Extract<keyof PresenceUpdateManyInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'upsert', alias?: string  } 
@@ -3081,40 +3654,40 @@ export type AbsenceUpdateManyInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface AbsenceUpdateWithWhereUniqueNestedInput {
-  where?: AbsenceWhereUniqueInput
-  data?: AbsenceUpdateDataInput
+export interface PresenceUpdateWithWhereUniqueNestedInput {
+  where?: PresenceWhereUniqueInput
+  data?: PresenceUpdateDataInput
 }
-export type AbsenceUpdateWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof AbsenceUpdateWithWhereUniqueNestedInput, string>
+export type PresenceUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof PresenceUpdateWithWhereUniqueNestedInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface AbsenceUpdateDataInput {
+export interface PresenceUpdateDataInput {
   date?: string | null
   timeMissed?: string | null
   goodExcuse?: boolean | null
   reason?: string | null
 }
-export type AbsenceUpdateDataInputInputObject =
-  | Extract<keyof AbsenceUpdateDataInput, string>
+export type PresenceUpdateDataInputInputObject =
+  | Extract<keyof PresenceUpdateDataInput, string>
   | { name: 'date', alias?: string  } 
   | { name: 'timeMissed', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
   
-export interface AbsenceUpsertWithWhereUniqueNestedInput {
-  where?: AbsenceWhereUniqueInput
-  update?: AbsenceUpdateDataInput
-  create?: AbsenceCreateInput
+export interface PresenceUpsertWithWhereUniqueNestedInput {
+  where?: PresenceWhereUniqueInput
+  update?: PresenceUpdateDataInput
+  create?: PresenceCreateInput
 }
-export type AbsenceUpsertWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof AbsenceUpsertWithWhereUniqueNestedInput, string>
+export type PresenceUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof PresenceUpsertWithWhereUniqueNestedInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface AbsenceScalarWhereInput {
+export interface PresenceScalarWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -3161,12 +3734,12 @@ export interface AbsenceScalarWhereInput {
   reason_not_starts_with?: string | null
   reason_ends_with?: string | null
   reason_not_ends_with?: string | null
-  AND?: AbsenceScalarWhereInput[]
-  OR?: AbsenceScalarWhereInput[]
-  NOT?: AbsenceScalarWhereInput[]
+  AND?: PresenceScalarWhereInput[]
+  OR?: PresenceScalarWhereInput[]
+  NOT?: PresenceScalarWhereInput[]
 }
-export type AbsenceScalarWhereInputInputObject =
-  | Extract<keyof AbsenceScalarWhereInput, string>
+export type PresenceScalarWhereInputInputObject =
+  | Extract<keyof PresenceScalarWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -3217,27 +3790,60 @@ export type AbsenceScalarWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface AbsenceUpdateManyWithWhereNestedInput {
-  where?: AbsenceScalarWhereInput
-  data?: AbsenceUpdateManyDataInput
+export interface PresenceUpdateManyWithWhereNestedInput {
+  where?: PresenceScalarWhereInput
+  data?: PresenceUpdateManyDataInput
 }
-export type AbsenceUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof AbsenceUpdateManyWithWhereNestedInput, string>
+export type PresenceUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof PresenceUpdateManyWithWhereNestedInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface AbsenceUpdateManyDataInput {
+export interface PresenceUpdateManyDataInput {
   date?: string | null
   timeMissed?: string | null
   goodExcuse?: boolean | null
   reason?: string | null
 }
-export type AbsenceUpdateManyDataInputInputObject =
-  | Extract<keyof AbsenceUpdateManyDataInput, string>
+export type PresenceUpdateManyDataInputInputObject =
+  | Extract<keyof PresenceUpdateManyDataInput, string>
   | { name: 'date', alias?: string  } 
   | { name: 'timeMissed', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
+  
+export interface BatchUpdateOneRequiredInput {
+  create?: BatchCreateInput | null
+  update?: BatchUpdateDataInput | null
+  upsert?: BatchUpsertNestedInput | null
+  connect?: BatchWhereUniqueInput | null
+}
+export type BatchUpdateOneRequiredInputInputObject =
+  | Extract<keyof BatchUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface BatchUpdateDataInput {
+  name?: string | null
+  startingTime?: string | null
+  endTime?: string | null
+}
+export type BatchUpdateDataInputInputObject =
+  | Extract<keyof BatchUpdateDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'startingTime', alias?: string  } 
+  | { name: 'endTime', alias?: string  } 
+  
+export interface BatchUpsertNestedInput {
+  update?: BatchUpdateDataInput
+  create?: BatchCreateInput
+}
+export type BatchUpsertNestedInputInputObject =
+  | Extract<keyof BatchUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
   
 export interface StudentUpdateManyMutationInput {
   firstName?: string | null
@@ -3250,15 +3856,13 @@ export interface StudentUpdateManyMutationInput {
   nationality?: string | null
   addressStreet?: string | null
   addressCity?: string | null
-  addressNPA?: string | null
+  addressNPA?: number | null
   addressCanton?: string | null
   organisation?: string | null
   financialParticipation?: prisma.FinancialParticipation | null
   financialParticipationComment?: string | null
   borrowLaptops?: boolean | null
-  FoodCost?: string | null
-  createDate?: string | null
-  updateDate?: string | null
+  foodCost?: string | null
 }
 export type StudentUpdateManyMutationInputInputObject =
   | Extract<keyof StudentUpdateManyMutationInput, string>
@@ -3278,9 +3882,7 @@ export type StudentUpdateManyMutationInputInputObject =
   | { name: 'financialParticipation', alias?: string  } 
   | { name: 'financialParticipationComment', alias?: string  } 
   | { name: 'borrowLaptops', alias?: string  } 
-  | { name: 'FoodCost', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
+  | { name: 'foodCost', alias?: string  } 
   
 export interface SocialAssistantUpdateInput {
   firstName?: string | null
@@ -3308,27 +3910,49 @@ export type SocialAssistantUpdateManyMutationInputInputObject =
   | { name: 'phone', alias?: string  } 
   | { name: 'email', alias?: string  } 
   
-export interface AbsenceUpdateInput {
+export interface BatchUpdateInput {
+  name?: string | null
+  startingTime?: string | null
+  endTime?: string | null
+}
+export type BatchUpdateInputInputObject =
+  | Extract<keyof BatchUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'startingTime', alias?: string  } 
+  | { name: 'endTime', alias?: string  } 
+  
+export interface BatchUpdateManyMutationInput {
+  name?: string | null
+  startingTime?: string | null
+  endTime?: string | null
+}
+export type BatchUpdateManyMutationInputInputObject =
+  | Extract<keyof BatchUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'startingTime', alias?: string  } 
+  | { name: 'endTime', alias?: string  } 
+  
+export interface PresenceUpdateInput {
   date?: string | null
   timeMissed?: string | null
   goodExcuse?: boolean | null
   reason?: string | null
 }
-export type AbsenceUpdateInputInputObject =
-  | Extract<keyof AbsenceUpdateInput, string>
+export type PresenceUpdateInputInputObject =
+  | Extract<keyof PresenceUpdateInput, string>
   | { name: 'date', alias?: string  } 
   | { name: 'timeMissed', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
   
-export interface AbsenceUpdateManyMutationInput {
+export interface PresenceUpdateManyMutationInput {
   date?: string | null
   timeMissed?: string | null
   goodExcuse?: boolean | null
   reason?: string | null
 }
-export type AbsenceUpdateManyMutationInputInputObject =
-  | Extract<keyof AbsenceUpdateManyMutationInput, string>
+export type PresenceUpdateManyMutationInputInputObject =
+  | Extract<keyof PresenceUpdateManyMutationInput, string>
   | { name: 'date', alias?: string  } 
   | { name: 'timeMissed', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
@@ -3376,18 +4000,39 @@ export type SocialAssistantSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface AbsenceSubscriptionWhereInput {
+export interface BatchSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
   updatedFields_contains_every?: string[]
   updatedFields_contains_some?: string[]
-  node?: AbsenceWhereInput | null
-  AND?: AbsenceSubscriptionWhereInput[]
-  OR?: AbsenceSubscriptionWhereInput[]
-  NOT?: AbsenceSubscriptionWhereInput[]
+  node?: BatchWhereInput | null
+  AND?: BatchSubscriptionWhereInput[]
+  OR?: BatchSubscriptionWhereInput[]
+  NOT?: BatchSubscriptionWhereInput[]
 }
-export type AbsenceSubscriptionWhereInputInputObject =
-  | Extract<keyof AbsenceSubscriptionWhereInput, string>
+export type BatchSubscriptionWhereInputInputObject =
+  | Extract<keyof BatchSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface PresenceSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: PresenceWhereInput | null
+  AND?: PresenceSubscriptionWhereInput[]
+  OR?: PresenceSubscriptionWhereInput[]
+  NOT?: PresenceSubscriptionWhereInput[]
+}
+export type PresenceSubscriptionWhereInputInputObject =
+  | Extract<keyof PresenceSubscriptionWhereInput, string>
   | { name: 'mutation_in', alias?: string  } 
   | { name: 'updatedFields_contains', alias?: string  } 
   | { name: 'updatedFields_contains_every', alias?: string  } 
@@ -3400,7 +4045,7 @@ export type AbsenceSubscriptionWhereInputInputObject =
 
 export type SexeValues =
   | 'MALE'
-  | 'FEMAIL'
+  | 'FEMALE'
   | 'OTHER'
   
 export type FinancialParticipationValues =
@@ -3409,7 +4054,7 @@ export type FinancialParticipationValues =
   | 'EXTERN'
   | 'OTHER'
   
-export type AbsenceOrderByInputValues =
+export type PresenceOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
   | 'date_ASC'
@@ -3460,12 +4105,8 @@ export type StudentOrderByInputValues =
   | 'financialParticipationComment_DESC'
   | 'borrowLaptops_ASC'
   | 'borrowLaptops_DESC'
-  | 'FoodCost_ASC'
-  | 'FoodCost_DESC'
-  | 'createDate_ASC'
-  | 'createDate_DESC'
-  | 'updateDate_ASC'
-  | 'updateDate_DESC'
+  | 'foodCost_ASC'
+  | 'foodCost_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
@@ -3482,6 +4123,20 @@ export type SocialAssistantOrderByInputValues =
   | 'phone_DESC'
   | 'email_ASC'
   | 'email_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type BatchOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'startingTime_ASC'
+  | 'startingTime_DESC'
+  | 'endTime_ASC'
+  | 'endTime_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

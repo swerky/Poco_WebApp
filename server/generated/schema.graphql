@@ -2,39 +2,234 @@
 ### Do not make changes to this file directly
 
 
-type Absence {
+type AggregateBatch {
+  count: Int!
+}
+
+type AggregatePresence {
+  count: Int!
+}
+
+type AggregateSocialAssistant {
+  count: Int!
+}
+
+type AggregateStudent {
+  count: Int!
+}
+
+type Batch {
+  endTime: DateTime!
+  id: ID!
+  name: String!
+  startingTime: DateTime!
+}
+
+type BatchConnection {
+  aggregate: AggregateBatch!
+  edges: [BatchEdge!]!
+  pageInfo: PageInfo!
+}
+
+input BatchCreateInput {
+  endTime: DateTime!
+  id: ID
+  name: String!
+  startingTime: DateTime!
+}
+
+input BatchCreateOneInput {
+  connect: BatchWhereUniqueInput
+  create: BatchCreateInput
+}
+
+type BatchEdge {
+  cursor: String!
+  node: Batch!
+}
+
+enum BatchOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  endTime_ASC
+  endTime_DESC
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  startingTime_ASC
+  startingTime_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+input BatchUpdateDataInput {
+  endTime: DateTime
+  name: String
+  startingTime: DateTime
+}
+
+input BatchUpdateInput {
+  endTime: DateTime
+  name: String
+  startingTime: DateTime
+}
+
+input BatchUpdateManyMutationInput {
+  endTime: DateTime
+  name: String
+  startingTime: DateTime
+}
+
+input BatchUpdateOneRequiredInput {
+  connect: BatchWhereUniqueInput
+  create: BatchCreateInput
+  update: BatchUpdateDataInput
+  upsert: BatchUpsertNestedInput
+}
+
+input BatchUpsertNestedInput {
+  create: BatchCreateInput!
+  update: BatchUpdateDataInput!
+}
+
+input BatchWhereInput {
+  AND: [BatchWhereInput!]
+  endTime: DateTime
+  endTime_gt: DateTime
+  endTime_gte: DateTime
+  endTime_in: [DateTime!]
+  endTime_lt: DateTime
+  endTime_lte: DateTime
+  endTime_not: DateTime
+  endTime_not_in: [DateTime!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  name: String
+  name_contains: String
+  name_ends_with: String
+  name_gt: String
+  name_gte: String
+  name_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_not: String
+  name_not_contains: String
+  name_not_ends_with: String
+  name_not_in: [String!]
+  name_not_starts_with: String
+  name_starts_with: String
+  NOT: [BatchWhereInput!]
+  OR: [BatchWhereInput!]
+  startingTime: DateTime
+  startingTime_gt: DateTime
+  startingTime_gte: DateTime
+  startingTime_in: [DateTime!]
+  startingTime_lt: DateTime
+  startingTime_lte: DateTime
+  startingTime_not: DateTime
+  startingTime_not_in: [DateTime!]
+}
+
+input BatchWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+scalar DateTime
+
+enum FinancialParticipation {
+  EXTERN
+  NO
+  OTHER
+  YES
+}
+
+scalar Long
+
+type Mutation {
+  createBatch(data: BatchCreateInput!): Batch!
+  createPresence(data: PresenceCreateInput!): Presence!
+  createSocialAssistant(data: SocialAssistantCreateInput!): SocialAssistant!
+  createStudent(data: StudentCreateInput!): Student!
+  deleteBatch(where: BatchWhereUniqueInput!): Batch
+  deleteManyBatches(where: BatchWhereInput): BatchPayload!
+  deleteManyPresences(where: PresenceWhereInput): BatchPayload!
+  deleteManySocialAssistants(where: SocialAssistantWhereInput): BatchPayload!
+  deleteManyStudents(where: StudentWhereInput): BatchPayload!
+  deletePresence(where: PresenceWhereUniqueInput!): Presence
+  deleteSocialAssistant(where: SocialAssistantWhereUniqueInput!): SocialAssistant
+  deleteStudent(where: StudentWhereUniqueInput!): Student
+  updateBatch(data: BatchUpdateInput!, where: BatchWhereUniqueInput!): Batch
+  updateManyBatches(data: BatchUpdateManyMutationInput!, where: BatchWhereInput): BatchPayload!
+  updateManyPresences(data: PresenceUpdateManyMutationInput!, where: PresenceWhereInput): BatchPayload!
+  updateManySocialAssistants(data: SocialAssistantUpdateManyMutationInput!, where: SocialAssistantWhereInput): BatchPayload!
+  updateManyStudents(data: StudentUpdateManyMutationInput!, where: StudentWhereInput): BatchPayload!
+  updatePresence(data: PresenceUpdateInput!, where: PresenceWhereUniqueInput!): Presence
+  updateSocialAssistant(data: SocialAssistantUpdateInput!, where: SocialAssistantWhereUniqueInput!): SocialAssistant
+  updateStudent(data: StudentUpdateInput!, where: StudentWhereUniqueInput!): Student
+  upsertBatch(create: BatchCreateInput!, update: BatchUpdateInput!, where: BatchWhereUniqueInput!): Batch!
+  upsertPresence(create: PresenceCreateInput!, update: PresenceUpdateInput!, where: PresenceWhereUniqueInput!): Presence!
+  upsertSocialAssistant(create: SocialAssistantCreateInput!, update: SocialAssistantUpdateInput!, where: SocialAssistantWhereUniqueInput!): SocialAssistant!
+  upsertStudent(create: StudentCreateInput!, update: StudentUpdateInput!, where: StudentWhereUniqueInput!): Student!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+type Presence {
   date: DateTime!
-  goodExcuse: Boolean!
+  goodExcuse: Boolean
   id: ID!
   reason: String
   timeMissed: DateTime!
 }
 
-type AbsenceConnection {
-  aggregate: AggregateAbsence!
-  edges: [AbsenceEdge!]!
+type PresenceConnection {
+  aggregate: AggregatePresence!
+  edges: [PresenceEdge!]!
   pageInfo: PageInfo!
 }
 
-input AbsenceCreateInput {
+input PresenceCreateInput {
   date: DateTime!
-  goodExcuse: Boolean!
+  goodExcuse: Boolean
   id: ID
   reason: String
   timeMissed: DateTime!
 }
 
-input AbsenceCreateManyInput {
-  connect: [AbsenceWhereUniqueInput!]
-  create: [AbsenceCreateInput!]
+input PresenceCreateManyInput {
+  connect: [PresenceWhereUniqueInput!]
+  create: [PresenceCreateInput!]
 }
 
-type AbsenceEdge {
+type PresenceEdge {
   cursor: String!
-  node: Absence!
+  node: Presence!
 }
 
-enum AbsenceOrderByInput {
+enum PresenceOrderByInput {
   createdAt_ASC
   createdAt_DESC
   date_ASC
@@ -51,8 +246,8 @@ enum AbsenceOrderByInput {
   updatedAt_DESC
 }
 
-input AbsenceScalarWhereInput {
-  AND: [AbsenceScalarWhereInput!]
+input PresenceScalarWhereInput {
+  AND: [PresenceScalarWhereInput!]
   date: DateTime
   date_gt: DateTime
   date_gte: DateTime
@@ -77,8 +272,8 @@ input AbsenceScalarWhereInput {
   id_not_in: [ID!]
   id_not_starts_with: ID
   id_starts_with: ID
-  NOT: [AbsenceScalarWhereInput!]
-  OR: [AbsenceScalarWhereInput!]
+  NOT: [PresenceScalarWhereInput!]
+  OR: [PresenceScalarWhereInput!]
   reason: String
   reason_contains: String
   reason_ends_with: String
@@ -103,64 +298,64 @@ input AbsenceScalarWhereInput {
   timeMissed_not_in: [DateTime!]
 }
 
-input AbsenceUpdateDataInput {
+input PresenceUpdateDataInput {
   date: DateTime
   goodExcuse: Boolean
   reason: String
   timeMissed: DateTime
 }
 
-input AbsenceUpdateInput {
+input PresenceUpdateInput {
   date: DateTime
   goodExcuse: Boolean
   reason: String
   timeMissed: DateTime
 }
 
-input AbsenceUpdateManyDataInput {
+input PresenceUpdateManyDataInput {
   date: DateTime
   goodExcuse: Boolean
   reason: String
   timeMissed: DateTime
 }
 
-input AbsenceUpdateManyInput {
-  connect: [AbsenceWhereUniqueInput!]
-  create: [AbsenceCreateInput!]
-  delete: [AbsenceWhereUniqueInput!]
-  deleteMany: [AbsenceScalarWhereInput!]
-  disconnect: [AbsenceWhereUniqueInput!]
-  set: [AbsenceWhereUniqueInput!]
-  update: [AbsenceUpdateWithWhereUniqueNestedInput!]
-  updateMany: [AbsenceUpdateManyWithWhereNestedInput!]
-  upsert: [AbsenceUpsertWithWhereUniqueNestedInput!]
+input PresenceUpdateManyInput {
+  connect: [PresenceWhereUniqueInput!]
+  create: [PresenceCreateInput!]
+  delete: [PresenceWhereUniqueInput!]
+  deleteMany: [PresenceScalarWhereInput!]
+  disconnect: [PresenceWhereUniqueInput!]
+  set: [PresenceWhereUniqueInput!]
+  update: [PresenceUpdateWithWhereUniqueNestedInput!]
+  updateMany: [PresenceUpdateManyWithWhereNestedInput!]
+  upsert: [PresenceUpsertWithWhereUniqueNestedInput!]
 }
 
-input AbsenceUpdateManyMutationInput {
+input PresenceUpdateManyMutationInput {
   date: DateTime
   goodExcuse: Boolean
   reason: String
   timeMissed: DateTime
 }
 
-input AbsenceUpdateManyWithWhereNestedInput {
-  data: AbsenceUpdateManyDataInput!
-  where: AbsenceScalarWhereInput!
+input PresenceUpdateManyWithWhereNestedInput {
+  data: PresenceUpdateManyDataInput!
+  where: PresenceScalarWhereInput!
 }
 
-input AbsenceUpdateWithWhereUniqueNestedInput {
-  data: AbsenceUpdateDataInput!
-  where: AbsenceWhereUniqueInput!
+input PresenceUpdateWithWhereUniqueNestedInput {
+  data: PresenceUpdateDataInput!
+  where: PresenceWhereUniqueInput!
 }
 
-input AbsenceUpsertWithWhereUniqueNestedInput {
-  create: AbsenceCreateInput!
-  update: AbsenceUpdateDataInput!
-  where: AbsenceWhereUniqueInput!
+input PresenceUpsertWithWhereUniqueNestedInput {
+  create: PresenceCreateInput!
+  update: PresenceUpdateDataInput!
+  where: PresenceWhereUniqueInput!
 }
 
-input AbsenceWhereInput {
-  AND: [AbsenceWhereInput!]
+input PresenceWhereInput {
+  AND: [PresenceWhereInput!]
   date: DateTime
   date_gt: DateTime
   date_gte: DateTime
@@ -185,8 +380,8 @@ input AbsenceWhereInput {
   id_not_in: [ID!]
   id_not_starts_with: ID
   id_starts_with: ID
-  NOT: [AbsenceWhereInput!]
-  OR: [AbsenceWhereInput!]
+  NOT: [PresenceWhereInput!]
+  OR: [PresenceWhereInput!]
   reason: String
   reason_contains: String
   reason_ends_with: String
@@ -211,69 +406,17 @@ input AbsenceWhereInput {
   timeMissed_not_in: [DateTime!]
 }
 
-input AbsenceWhereUniqueInput {
+input PresenceWhereUniqueInput {
   id: ID
-}
-
-type AggregateAbsence {
-  count: Int!
-}
-
-type AggregateSocialAssistant {
-  count: Int!
-}
-
-type AggregateStudent {
-  count: Int!
-}
-
-type BatchPayload {
-  count: Long!
-}
-
-scalar DateTime
-
-enum FinancialParticipation {
-  EXTERN
-  NO
-  OTHER
-  YES
-}
-
-scalar Long
-
-type Mutation {
-  createAbsence(data: AbsenceCreateInput!): Absence!
-  createSocialAssistant(data: SocialAssistantCreateInput!): SocialAssistant!
-  createStudent(data: StudentCreateInput!): Student!
-  deleteAbsence(where: AbsenceWhereUniqueInput!): Absence
-  deleteManyAbsences(where: AbsenceWhereInput): BatchPayload!
-  deleteManySocialAssistants(where: SocialAssistantWhereInput): BatchPayload!
-  deleteManyStudents(where: StudentWhereInput): BatchPayload!
-  deleteSocialAssistant(where: SocialAssistantWhereUniqueInput!): SocialAssistant
-  deleteStudent(where: StudentWhereUniqueInput!): Student
-  updateAbsence(data: AbsenceUpdateInput!, where: AbsenceWhereUniqueInput!): Absence
-  updateManyAbsences(data: AbsenceUpdateManyMutationInput!, where: AbsenceWhereInput): BatchPayload!
-  updateManySocialAssistants(data: SocialAssistantUpdateManyMutationInput!, where: SocialAssistantWhereInput): BatchPayload!
-  updateManyStudents(data: StudentUpdateManyMutationInput!, where: StudentWhereInput): BatchPayload!
-  updateSocialAssistant(data: SocialAssistantUpdateInput!, where: SocialAssistantWhereUniqueInput!): SocialAssistant
-  updateStudent(data: StudentUpdateInput!, where: StudentWhereUniqueInput!): Student
-  upsertAbsence(create: AbsenceCreateInput!, update: AbsenceUpdateInput!, where: AbsenceWhereUniqueInput!): Absence!
-  upsertSocialAssistant(create: SocialAssistantCreateInput!, update: SocialAssistantUpdateInput!, where: SocialAssistantWhereUniqueInput!): SocialAssistant!
-  upsertStudent(create: StudentCreateInput!, update: StudentUpdateInput!, where: StudentWhereUniqueInput!): Student!
-}
-
-type PageInfo {
-  endCursor: String
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
 }
 
 type Query {
-  absence(where: AbsenceWhereUniqueInput!): Absence
-  absences(after: String, before: String, first: Int, last: Int, orderBy: AbsenceOrderByInput, skip: Int, where: AbsenceWhereInput): [Absence!]!
-  absencesConnection(after: String, before: String, first: Int, last: Int, orderBy: AbsenceOrderByInput, skip: Int, where: AbsenceWhereInput): AbsenceConnection!
+  batch(where: BatchWhereUniqueInput!): Batch
+  batches(after: String, before: String, first: Int, last: Int, orderBy: BatchOrderByInput, skip: Int, where: BatchWhereInput): [Batch!]!
+  batchesConnection(after: String, before: String, first: Int, last: Int, orderBy: BatchOrderByInput, skip: Int, where: BatchWhereInput): BatchConnection!
+  presence(where: PresenceWhereUniqueInput!): Presence
+  presences(after: String, before: String, first: Int, last: Int, orderBy: PresenceOrderByInput, skip: Int, where: PresenceWhereInput): [Presence!]!
+  presencesConnection(after: String, before: String, first: Int, last: Int, orderBy: PresenceOrderByInput, skip: Int, where: PresenceWhereInput): PresenceConnection!
   socialAssistant(where: SocialAssistantWhereUniqueInput!): SocialAssistant
   socialAssistants(after: String, before: String, first: Int, last: Int, orderBy: SocialAssistantOrderByInput, skip: Int, where: SocialAssistantWhereInput): [SocialAssistant!]!
   socialAssistantsConnection(after: String, before: String, first: Int, last: Int, orderBy: SocialAssistantOrderByInput, skip: Int, where: SocialAssistantWhereInput): SocialAssistantConnection!
@@ -283,7 +426,7 @@ type Query {
 }
 
 enum Sexe {
-  FEMAIL
+  FEMALE
   MALE
   OTHER
 }
@@ -453,28 +596,27 @@ input SocialAssistantWhereUniqueInput {
 }
 
 type Student {
-  absences(after: String, before: String, first: Int, last: Int, orderBy: AbsenceOrderByInput, skip: Int, where: AbsenceWhereInput): [Absence!]
   addressCanton: String!
   addressCity: String!
-  addressNPA: String!
+  addressNPA: Int!
   addressStreet: String!
+  batch: Batch!
   birthday: DateTime!
   borrowLaptops: Boolean!
-  createDate: DateTime!
   financialParticipation: FinancialParticipation!
   financialParticipationComment: String
   firstName: String!
-  FoodCost: String
+  foodCost: String
   id: ID!
   lastName: String!
   nationality: String!
   organisation: String
   pocoEmail: String
+  presences(after: String, before: String, first: Int, last: Int, orderBy: PresenceOrderByInput, skip: Int, where: PresenceWhereInput): [Presence!]
   privateEmail: String
   residencePermit: String!
   sexe: Sexe!
   socialAssistant: SocialAssistant
-  updateDate: DateTime!
 }
 
 type StudentConnection {
@@ -484,28 +626,27 @@ type StudentConnection {
 }
 
 input StudentCreateInput {
-  absences: AbsenceCreateManyInput
   addressCanton: String!
   addressCity: String!
-  addressNPA: String!
+  addressNPA: Int!
   addressStreet: String!
+  batch: BatchCreateOneInput!
   birthday: DateTime!
   borrowLaptops: Boolean!
-  createDate: DateTime!
   financialParticipation: FinancialParticipation!
   financialParticipationComment: String
   firstName: String!
-  FoodCost: String
+  foodCost: String
   id: ID
   lastName: String!
   nationality: String!
   organisation: String
   pocoEmail: String
+  presences: PresenceCreateManyInput
   privateEmail: String
   residencePermit: String!
   sexe: Sexe!
   socialAssistant: SocialAssistantCreateOneInput
-  updateDate: DateTime!
 }
 
 type StudentEdge {
@@ -528,16 +669,14 @@ enum StudentOrderByInput {
   borrowLaptops_DESC
   createdAt_ASC
   createdAt_DESC
-  createDate_ASC
-  createDate_DESC
   financialParticipation_ASC
   financialParticipation_DESC
   financialParticipationComment_ASC
   financialParticipationComment_DESC
   firstName_ASC
   firstName_DESC
-  FoodCost_ASC
-  FoodCost_DESC
+  foodCost_ASC
+  foodCost_DESC
   id_ASC
   id_DESC
   lastName_ASC
@@ -556,46 +695,42 @@ enum StudentOrderByInput {
   sexe_DESC
   updatedAt_ASC
   updatedAt_DESC
-  updateDate_ASC
-  updateDate_DESC
 }
 
 input StudentUpdateInput {
-  absences: AbsenceUpdateManyInput
   addressCanton: String
   addressCity: String
-  addressNPA: String
+  addressNPA: Int
   addressStreet: String
+  batch: BatchUpdateOneRequiredInput
   birthday: DateTime
   borrowLaptops: Boolean
-  createDate: DateTime
   financialParticipation: FinancialParticipation
   financialParticipationComment: String
   firstName: String
-  FoodCost: String
+  foodCost: String
   lastName: String
   nationality: String
   organisation: String
   pocoEmail: String
+  presences: PresenceUpdateManyInput
   privateEmail: String
   residencePermit: String
   sexe: Sexe
   socialAssistant: SocialAssistantUpdateOneInput
-  updateDate: DateTime
 }
 
 input StudentUpdateManyMutationInput {
   addressCanton: String
   addressCity: String
-  addressNPA: String
+  addressNPA: Int
   addressStreet: String
   birthday: DateTime
   borrowLaptops: Boolean
-  createDate: DateTime
   financialParticipation: FinancialParticipation
   financialParticipationComment: String
   firstName: String
-  FoodCost: String
+  foodCost: String
   lastName: String
   nationality: String
   organisation: String
@@ -603,13 +738,9 @@ input StudentUpdateManyMutationInput {
   privateEmail: String
   residencePermit: String
   sexe: Sexe
-  updateDate: DateTime
 }
 
 input StudentWhereInput {
-  absences_every: AbsenceWhereInput
-  absences_none: AbsenceWhereInput
-  absences_some: AbsenceWhereInput
   addressCanton: String
   addressCanton_contains: String
   addressCanton_ends_with: String
@@ -638,20 +769,14 @@ input StudentWhereInput {
   addressCity_not_in: [String!]
   addressCity_not_starts_with: String
   addressCity_starts_with: String
-  addressNPA: String
-  addressNPA_contains: String
-  addressNPA_ends_with: String
-  addressNPA_gt: String
-  addressNPA_gte: String
-  addressNPA_in: [String!]
-  addressNPA_lt: String
-  addressNPA_lte: String
-  addressNPA_not: String
-  addressNPA_not_contains: String
-  addressNPA_not_ends_with: String
-  addressNPA_not_in: [String!]
-  addressNPA_not_starts_with: String
-  addressNPA_starts_with: String
+  addressNPA: Int
+  addressNPA_gt: Int
+  addressNPA_gte: Int
+  addressNPA_in: [Int!]
+  addressNPA_lt: Int
+  addressNPA_lte: Int
+  addressNPA_not: Int
+  addressNPA_not_in: [Int!]
   addressStreet: String
   addressStreet_contains: String
   addressStreet_ends_with: String
@@ -667,6 +792,7 @@ input StudentWhereInput {
   addressStreet_not_starts_with: String
   addressStreet_starts_with: String
   AND: [StudentWhereInput!]
+  batch: BatchWhereInput
   birthday: DateTime
   birthday_gt: DateTime
   birthday_gte: DateTime
@@ -677,14 +803,6 @@ input StudentWhereInput {
   birthday_not_in: [DateTime!]
   borrowLaptops: Boolean
   borrowLaptops_not: Boolean
-  createDate: DateTime
-  createDate_gt: DateTime
-  createDate_gte: DateTime
-  createDate_in: [DateTime!]
-  createDate_lt: DateTime
-  createDate_lte: DateTime
-  createDate_not: DateTime
-  createDate_not_in: [DateTime!]
   financialParticipation: FinancialParticipation
   financialParticipation_in: [FinancialParticipation!]
   financialParticipation_not: FinancialParticipation
@@ -717,20 +835,20 @@ input StudentWhereInput {
   firstName_not_in: [String!]
   firstName_not_starts_with: String
   firstName_starts_with: String
-  FoodCost: String
-  FoodCost_contains: String
-  FoodCost_ends_with: String
-  FoodCost_gt: String
-  FoodCost_gte: String
-  FoodCost_in: [String!]
-  FoodCost_lt: String
-  FoodCost_lte: String
-  FoodCost_not: String
-  FoodCost_not_contains: String
-  FoodCost_not_ends_with: String
-  FoodCost_not_in: [String!]
-  FoodCost_not_starts_with: String
-  FoodCost_starts_with: String
+  foodCost: String
+  foodCost_contains: String
+  foodCost_ends_with: String
+  foodCost_gt: String
+  foodCost_gte: String
+  foodCost_in: [String!]
+  foodCost_lt: String
+  foodCost_lte: String
+  foodCost_not: String
+  foodCost_not_contains: String
+  foodCost_not_ends_with: String
+  foodCost_not_in: [String!]
+  foodCost_not_starts_with: String
+  foodCost_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -803,6 +921,9 @@ input StudentWhereInput {
   pocoEmail_not_in: [String!]
   pocoEmail_not_starts_with: String
   pocoEmail_starts_with: String
+  presences_every: PresenceWhereInput
+  presences_none: PresenceWhereInput
+  presences_some: PresenceWhereInput
   privateEmail: String
   privateEmail_contains: String
   privateEmail_ends_with: String
@@ -836,14 +957,6 @@ input StudentWhereInput {
   sexe_not: Sexe
   sexe_not_in: [Sexe!]
   socialAssistant: SocialAssistantWhereInput
-  updateDate: DateTime
-  updateDate_gt: DateTime
-  updateDate_gte: DateTime
-  updateDate_in: [DateTime!]
-  updateDate_lt: DateTime
-  updateDate_lte: DateTime
-  updateDate_not: DateTime
-  updateDate_not_in: [DateTime!]
 }
 
 input StudentWhereUniqueInput {

@@ -1,7 +1,7 @@
 endpoint: http://localhost:4466/poco
 datamodel: 
   - ./models/student.prisma
-  - ./models/absence.prisma
+  - ./models/presence.prisma
 generate:
   - generator: typescript-client
     output: ./generated/prisma-client/

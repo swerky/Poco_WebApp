@@ -1,7 +1,0 @@
-type Absence {
-  id: ID! @id
-  date: DateTime!
-  timeMissed: DateTime!
-  goodExcuse: Boolean!
-  reason: String
-}

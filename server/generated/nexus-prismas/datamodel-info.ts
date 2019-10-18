@@ -7,9 +7,10 @@ export default {
   uniqueFieldsByModel: {
     Student: ['id'],
     SocialAssistant: ['id'],
+    Batch: ['id', 'name'],
     FinancialParticipation: [],
     Sexe: [],
-    Absence: ['id']
+    Presence: ['id']
   },
   embeddedTypes: [],
   clientPath: 'generated/prisma-client',
@@ -441,7 +442,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "absence",
+            "name": "batch",
             "description": null,
             "args": [
               {
@@ -452,7 +453,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceWhereUniqueInput",
+                    "name": "BatchWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -461,14 +462,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Absence",
+              "name": "Batch",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "absences",
+            "name": "batches",
             "description": null,
             "args": [
               {
@@ -476,7 +477,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereInput",
+                  "name": "BatchWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -486,7 +487,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "AbsenceOrderByInput",
+                  "name": "BatchOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -550,7 +551,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Absence",
+                  "name": "Batch",
                   "ofType": null
                 }
               }
@@ -559,7 +560,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "absencesConnection",
+            "name": "batchesConnection",
             "description": null,
             "args": [
               {
@@ -567,7 +568,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereInput",
+                  "name": "BatchWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -577,7 +578,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "AbsenceOrderByInput",
+                  "name": "BatchOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -638,7 +639,212 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "AbsenceConnection",
+                "name": "BatchConnection",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "presence",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Presence",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "presences",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PresenceWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "PresenceOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "skip",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Presence",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "presencesConnection",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PresenceWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "PresenceOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "skip",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PresenceConnection",
                 "ofType": null
               }
             },
@@ -891,7 +1097,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               }
             },
@@ -983,7 +1189,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "FoodCost",
+            "name": "foodCost",
             "description": null,
             "args": [],
             "type": {
@@ -995,7 +1201,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "absences",
+            "name": "presences",
             "description": null,
             "args": [
               {
@@ -1003,7 +1209,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereInput",
+                  "name": "PresenceWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -1013,7 +1219,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "ENUM",
-                  "name": "AbsenceOrderByInput",
+                  "name": "PresenceOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -1077,7 +1283,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Absence",
+                  "name": "Presence",
                   "ofType": null
                 }
               }
@@ -1086,31 +1292,15 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "createDate",
+            "name": "batch",
             "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "updateDate",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "DateTime",
+                "kind": "OBJECT",
+                "name": "Batch",
                 "ofType": null
               }
             },
@@ -1148,7 +1338,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "FEMAIL",
+            "name": "FEMALE",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -1166,6 +1356,16 @@ export default {
         "kind": "SCALAR",
         "name": "DateTime",
         "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Int",
+        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -1302,7 +1502,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceWhereInput",
+        "name": "PresenceWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -1841,7 +2041,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereInput",
+                  "name": "PresenceWhereInput",
                   "ofType": null
                 }
               }
@@ -1859,7 +2059,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereInput",
+                  "name": "PresenceWhereInput",
                   "ofType": null
                 }
               }
@@ -1877,7 +2077,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereInput",
+                  "name": "PresenceWhereInput",
                   "ofType": null
                 }
               }
@@ -1891,7 +2091,7 @@ export default {
       },
       {
         "kind": "ENUM",
-        "name": "AbsenceOrderByInput",
+        "name": "PresenceOrderByInput",
         "description": null,
         "fields": null,
         "inputFields": null,
@@ -1985,18 +2185,8 @@ export default {
         "possibleTypes": null
       },
       {
-        "kind": "SCALAR",
-        "name": "Int",
-        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "OBJECT",
-        "name": "Absence",
+        "name": "Presence",
         "description": null,
         "fields": [
           {
@@ -2052,13 +2242,9 @@ export default {
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2071,6 +2257,81 @@ export default {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Batch",
+        "description": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "startingTime",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "endTime",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -3648,7 +3909,7 @@ export default {
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -3658,7 +3919,7 @@ export default {
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -3674,7 +3935,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Int",
                   "ofType": null
                 }
               }
@@ -3692,7 +3953,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Int",
                   "ofType": null
                 }
               }
@@ -3704,7 +3965,7 @@ export default {
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -3714,7 +3975,7 @@ export default {
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -3724,7 +3985,7 @@ export default {
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -3734,67 +3995,7 @@ export default {
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "addressNPA_contains",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "addressNPA_not_contains",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "addressNPA_starts_with",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "addressNPA_not_starts_with",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "addressNPA_ends_with",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "addressNPA_not_ends_with",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -4354,7 +4555,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost",
+            "name": "foodCost",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4364,7 +4565,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_not",
+            "name": "foodCost_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4374,7 +4575,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_in",
+            "name": "foodCost_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -4392,7 +4593,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_not_in",
+            "name": "foodCost_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -4410,7 +4611,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_lt",
+            "name": "foodCost_lt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4420,7 +4621,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_lte",
+            "name": "foodCost_lte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4430,7 +4631,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_gt",
+            "name": "foodCost_gt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4440,7 +4641,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_gte",
+            "name": "foodCost_gte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4450,7 +4651,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_contains",
+            "name": "foodCost_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4460,7 +4661,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_not_contains",
+            "name": "foodCost_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4470,7 +4671,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_starts_with",
+            "name": "foodCost_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4480,7 +4681,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_not_starts_with",
+            "name": "foodCost_not_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4490,7 +4691,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_ends_with",
+            "name": "foodCost_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4500,7 +4701,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost_not_ends_with",
+            "name": "foodCost_not_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4510,223 +4711,41 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "absences_every",
+            "name": "presences_every",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "AbsenceWhereInput",
+              "name": "PresenceWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "absences_some",
+            "name": "presences_some",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "AbsenceWhereInput",
+              "name": "PresenceWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "absences_none",
+            "name": "presences_none",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "AbsenceWhereInput",
+              "name": "PresenceWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "createDate",
+            "name": "batch",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "createDate_not",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "createDate_in",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "DateTime",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "createDate_not_in",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "DateTime",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "createDate_lt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "createDate_lte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "createDate_gt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "createDate_gte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate_not",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate_in",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "DateTime",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate_not_in",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "DateTime",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate_lt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate_lte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate_gt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate_gte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
+              "kind": "INPUT_OBJECT",
+              "name": "BatchWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -5636,6 +5655,575 @@ export default {
         "possibleTypes": null
       },
       {
+        "kind": "INPUT_OBJECT",
+        "name": "BatchWhereInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "id_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "BatchWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "BatchWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "NOT",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "BatchWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "ENUM",
         "name": "StudentOrderByInput",
         "description": null,
@@ -5848,37 +6436,13 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "FoodCost_ASC",
+            "name": "foodCost_ASC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "FoodCost_DESC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "createDate_ASC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "createDate_DESC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "updateDate_ASC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "updateDate_DESC",
+            "name": "foodCost_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -6361,7 +6925,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceWhereUniqueInput",
+        "name": "BatchWhereUniqueInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -6374,6 +6938,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -6381,8 +6955,91 @@ export default {
         "possibleTypes": null
       },
       {
+        "kind": "ENUM",
+        "name": "BatchOrderByInput",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "id_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "startingTime_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "startingTime_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "endTime_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "endTime_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "OBJECT",
-        "name": "AbsenceConnection",
+        "name": "BatchConnection",
         "description": null,
         "fields": [
           {
@@ -6413,7 +7070,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "AbsenceEdge",
+                  "name": "BatchEdge",
                   "ofType": null
                 }
               }
@@ -6430,7 +7087,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "AggregateAbsence",
+                "name": "AggregateBatch",
                 "ofType": null
               }
             },
@@ -6445,7 +7102,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "AbsenceEdge",
+        "name": "BatchEdge",
         "description": null,
         "fields": [
           {
@@ -6457,7 +7114,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Absence",
+                "name": "Batch",
                 "ofType": null
               }
             },
@@ -6488,7 +7145,161 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "AggregateAbsence",
+        "name": "AggregateBatch",
+        "description": null,
+        "fields": [
+          {
+            "name": "count",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "PresenceWhereUniqueInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PresenceConnection",
+        "description": null,
+        "fields": [
+          {
+            "name": "pageInfo",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "edges",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PresenceEdge",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "aggregate",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AggregatePresence",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PresenceEdge",
+        "description": null,
+        "fields": [
+          {
+            "name": "node",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Presence",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "cursor",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AggregatePresence",
         "description": null,
         "fields": [
           {
@@ -6998,7 +7809,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "createAbsence",
+            "name": "createBatch",
             "description": null,
             "args": [
               {
@@ -7009,7 +7820,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceCreateInput",
+                    "name": "BatchCreateInput",
                     "ofType": null
                   }
                 },
@@ -7021,7 +7832,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Absence",
+                "name": "Batch",
                 "ofType": null
               }
             },
@@ -7029,7 +7840,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "updateAbsence",
+            "name": "updateBatch",
             "description": null,
             "args": [
               {
@@ -7040,7 +7851,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceUpdateInput",
+                    "name": "BatchUpdateInput",
                     "ofType": null
                   }
                 },
@@ -7054,7 +7865,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceWhereUniqueInput",
+                    "name": "BatchWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -7063,14 +7874,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Absence",
+              "name": "Batch",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "updateManyAbsences",
+            "name": "updateManyBatches",
             "description": null,
             "args": [
               {
@@ -7081,7 +7892,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceUpdateManyMutationInput",
+                    "name": "BatchUpdateManyMutationInput",
                     "ofType": null
                   }
                 },
@@ -7092,7 +7903,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereInput",
+                  "name": "BatchWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -7111,7 +7922,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "upsertAbsence",
+            "name": "upsertBatch",
             "description": null,
             "args": [
               {
@@ -7122,7 +7933,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceWhereUniqueInput",
+                    "name": "BatchWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -7136,7 +7947,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceCreateInput",
+                    "name": "BatchCreateInput",
                     "ofType": null
                   }
                 },
@@ -7150,7 +7961,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceUpdateInput",
+                    "name": "BatchUpdateInput",
                     "ofType": null
                   }
                 },
@@ -7162,7 +7973,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Absence",
+                "name": "Batch",
                 "ofType": null
               }
             },
@@ -7170,7 +7981,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "deleteAbsence",
+            "name": "deleteBatch",
             "description": null,
             "args": [
               {
@@ -7181,7 +7992,7 @@ export default {
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "AbsenceWhereUniqueInput",
+                    "name": "BatchWhereUniqueInput",
                     "ofType": null
                   }
                 },
@@ -7190,14 +8001,14 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Absence",
+              "name": "Batch",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "deleteManyAbsences",
+            "name": "deleteManyBatches",
             "description": null,
             "args": [
               {
@@ -7205,7 +8016,233 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereInput",
+                  "name": "BatchWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createPresence",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Presence",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatePresence",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Presence",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateManyPresences",
+            "description": null,
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceUpdateManyMutationInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PresenceWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BatchPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "upsertPresence",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "create",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "update",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Presence",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deletePresence",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "PresenceWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Presence",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deleteManyPresences",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PresenceWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -7385,7 +8422,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               }
             },
@@ -7464,7 +8501,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost",
+            "name": "foodCost",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7474,38 +8511,24 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "absences",
+            "name": "presences",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "AbsenceCreateManyInput",
+              "name": "PresenceCreateManyInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "createDate",
+            "name": "batch",
             "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "DateTime",
+                "kind": "INPUT_OBJECT",
+                "name": "BatchCreateOneInput",
                 "ofType": null
               }
             },
@@ -7618,7 +8641,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceCreateManyInput",
+        "name": "PresenceCreateManyInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -7633,7 +8656,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceCreateInput",
+                  "name": "PresenceCreateInput",
                   "ofType": null
                 }
               }
@@ -7651,7 +8674,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereUniqueInput",
+                  "name": "PresenceWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -7665,7 +8688,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceCreateInput",
+        "name": "PresenceCreateInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -7711,13 +8734,9 @@ export default {
             "name": "goodExcuse",
             "description": null,
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -7728,6 +8747,100 @@ export default {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "BatchCreateOneInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BatchCreateInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BatchWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "BatchCreateInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
             },
             "defaultValue": null
           }
@@ -7847,7 +8960,7 @@ export default {
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -7913,7 +9026,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost",
+            "name": "foodCost",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7923,31 +9036,21 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "absences",
+            "name": "presences",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "AbsenceUpdateManyInput",
+              "name": "PresenceUpdateManyInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "createDate",
+            "name": "batch",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
+              "kind": "INPUT_OBJECT",
+              "name": "BatchUpdateOneRequiredInput",
               "ofType": null
             },
             "defaultValue": null
@@ -8120,7 +9223,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceUpdateManyInput",
+        "name": "PresenceUpdateManyInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8135,7 +9238,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceCreateInput",
+                  "name": "PresenceCreateInput",
                   "ofType": null
                 }
               }
@@ -8153,7 +9256,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceUpdateWithWhereUniqueNestedInput",
+                  "name": "PresenceUpdateWithWhereUniqueNestedInput",
                   "ofType": null
                 }
               }
@@ -8171,7 +9274,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceUpsertWithWhereUniqueNestedInput",
+                  "name": "PresenceUpsertWithWhereUniqueNestedInput",
                   "ofType": null
                 }
               }
@@ -8189,7 +9292,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereUniqueInput",
+                  "name": "PresenceWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -8207,7 +9310,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereUniqueInput",
+                  "name": "PresenceWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -8225,7 +9328,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereUniqueInput",
+                  "name": "PresenceWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -8243,7 +9346,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceWhereUniqueInput",
+                  "name": "PresenceWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -8261,7 +9364,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceScalarWhereInput",
+                  "name": "PresenceScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -8279,7 +9382,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceUpdateManyWithWhereNestedInput",
+                  "name": "PresenceUpdateManyWithWhereNestedInput",
                   "ofType": null
                 }
               }
@@ -8293,7 +9396,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceUpdateWithWhereUniqueNestedInput",
+        "name": "PresenceUpdateWithWhereUniqueNestedInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8305,7 +9408,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "AbsenceWhereUniqueInput",
+                "name": "PresenceWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -8319,7 +9422,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "AbsenceUpdateDataInput",
+                "name": "PresenceUpdateDataInput",
                 "ofType": null
               }
             },
@@ -8332,7 +9435,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceUpdateDataInput",
+        "name": "PresenceUpdateDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8383,7 +9486,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceUpsertWithWhereUniqueNestedInput",
+        "name": "PresenceUpsertWithWhereUniqueNestedInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8395,7 +9498,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "AbsenceWhereUniqueInput",
+                "name": "PresenceWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -8409,7 +9512,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "AbsenceUpdateDataInput",
+                "name": "PresenceUpdateDataInput",
                 "ofType": null
               }
             },
@@ -8423,7 +9526,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "AbsenceCreateInput",
+                "name": "PresenceCreateInput",
                 "ofType": null
               }
             },
@@ -8436,7 +9539,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceScalarWhereInput",
+        "name": "PresenceScalarWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8975,7 +10078,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceScalarWhereInput",
+                  "name": "PresenceScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -8993,7 +10096,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceScalarWhereInput",
+                  "name": "PresenceScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -9011,7 +10114,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceScalarWhereInput",
+                  "name": "PresenceScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -9025,7 +10128,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceUpdateManyWithWhereNestedInput",
+        "name": "PresenceUpdateManyWithWhereNestedInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -9037,7 +10140,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "AbsenceScalarWhereInput",
+                "name": "PresenceScalarWhereInput",
                 "ofType": null
               }
             },
@@ -9051,7 +10154,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "AbsenceUpdateManyDataInput",
+                "name": "PresenceUpdateManyDataInput",
                 "ofType": null
               }
             },
@@ -9064,7 +10167,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceUpdateManyDataInput",
+        "name": "PresenceUpdateManyDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -9105,6 +10208,137 @@ export default {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "BatchUpdateOneRequiredInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BatchCreateInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BatchUpdateDataInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upsert",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BatchUpsertNestedInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "connect",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BatchWhereUniqueInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "BatchUpdateDataInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "BatchUpsertNestedInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "update",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "BatchUpdateDataInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "create",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "BatchCreateInput",
+                "ofType": null
+              }
             },
             "defaultValue": null
           }
@@ -9224,7 +10458,7 @@ export default {
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -9280,31 +10514,11 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "FoodCost",
+            "name": "foodCost",
             "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "createDate",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "updateDate",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null
@@ -9455,7 +10669,89 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceUpdateInput",
+        "name": "BatchUpdateInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "BatchUpdateManyMutationInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "startingTime",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "endTime",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "PresenceUpdateInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -9506,7 +10802,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceUpdateManyMutationInput",
+        "name": "PresenceUpdateManyMutationInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -9607,7 +10903,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "absence",
+            "name": "batch",
             "description": null,
             "args": [
               {
@@ -9615,7 +10911,7 @@ export default {
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceSubscriptionWhereInput",
+                  "name": "BatchSubscriptionWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -9623,7 +10919,30 @@ export default {
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "AbsenceSubscriptionPayload",
+              "name": "BatchSubscriptionPayload",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "presence",
+            "description": null,
+            "args": [
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PresenceSubscriptionWhereInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "PresenceSubscriptionPayload",
               "ofType": null
             },
             "isDeprecated": false,
@@ -10056,7 +11375,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               }
             },
@@ -10136,45 +11455,13 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "FoodCost",
+            "name": "foodCost",
             "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "createDate",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "updateDate",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -10480,7 +11767,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "AbsenceSubscriptionWhereInput",
+        "name": "BatchSubscriptionWhereInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -10553,7 +11840,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "AbsenceWhereInput",
+              "name": "BatchWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10569,7 +11856,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceSubscriptionWhereInput",
+                  "name": "BatchSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -10587,7 +11874,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceSubscriptionWhereInput",
+                  "name": "BatchSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -10605,7 +11892,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "AbsenceSubscriptionWhereInput",
+                  "name": "BatchSubscriptionWhereInput",
                   "ofType": null
                 }
               }
@@ -10619,7 +11906,7 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "AbsenceSubscriptionPayload",
+        "name": "BatchSubscriptionPayload",
         "description": null,
         "fields": [
           {
@@ -10644,7 +11931,7 @@ export default {
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Absence",
+              "name": "Batch",
               "ofType": null
             },
             "isDeprecated": false,
@@ -10676,7 +11963,7 @@ export default {
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "AbsencePreviousValues",
+              "name": "BatchPreviousValues",
               "ofType": null
             },
             "isDeprecated": false,
@@ -10690,7 +11977,292 @@ export default {
       },
       {
         "kind": "OBJECT",
-        "name": "AbsencePreviousValues",
+        "name": "BatchPreviousValues",
+        "description": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "startingTime",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "endTime",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "PresenceSubscriptionWhereInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "mutation_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "MutationType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains_every",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "updatedFields_contains_some",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "node",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "PresenceWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PresenceSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PresenceSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "NOT",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "PresenceSubscriptionWhereInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PresenceSubscriptionPayload",
+        "description": null,
+        "fields": [
+          {
+            "name": "mutation",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "MutationType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "node",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Presence",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedFields",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "previousValues",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "PresencePreviousValues",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PresencePreviousValues",
         "description": null,
         "fields": [
           {
@@ -10746,13 +12318,9 @@ export default {
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null

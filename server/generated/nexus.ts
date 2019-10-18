@@ -11,19 +11,107 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  AbsenceCreateInput: { // input type
+  BatchCreateInput: { // input type
+    endTime: any; // DateTime!
+    id?: string | null; // ID
+    name: string; // String!
+    startingTime: any; // DateTime!
+  }
+  BatchCreateOneInput: { // input type
+    connect?: NexusGenInputs['BatchWhereUniqueInput'] | null; // BatchWhereUniqueInput
+    create?: NexusGenInputs['BatchCreateInput'] | null; // BatchCreateInput
+  }
+  BatchUpdateDataInput: { // input type
+    endTime?: any | null; // DateTime
+    name?: string | null; // String
+    startingTime?: any | null; // DateTime
+  }
+  BatchUpdateInput: { // input type
+    endTime?: any | null; // DateTime
+    name?: string | null; // String
+    startingTime?: any | null; // DateTime
+  }
+  BatchUpdateManyMutationInput: { // input type
+    endTime?: any | null; // DateTime
+    name?: string | null; // String
+    startingTime?: any | null; // DateTime
+  }
+  BatchUpdateOneRequiredInput: { // input type
+    connect?: NexusGenInputs['BatchWhereUniqueInput'] | null; // BatchWhereUniqueInput
+    create?: NexusGenInputs['BatchCreateInput'] | null; // BatchCreateInput
+    update?: NexusGenInputs['BatchUpdateDataInput'] | null; // BatchUpdateDataInput
+    upsert?: NexusGenInputs['BatchUpsertNestedInput'] | null; // BatchUpsertNestedInput
+  }
+  BatchUpsertNestedInput: { // input type
+    create: NexusGenInputs['BatchCreateInput']; // BatchCreateInput!
+    update: NexusGenInputs['BatchUpdateDataInput']; // BatchUpdateDataInput!
+  }
+  BatchWhereInput: { // input type
+    AND?: NexusGenInputs['BatchWhereInput'][] | null; // [BatchWhereInput!]
+    endTime?: any | null; // DateTime
+    endTime_gt?: any | null; // DateTime
+    endTime_gte?: any | null; // DateTime
+    endTime_in?: any[] | null; // [DateTime!]
+    endTime_lt?: any | null; // DateTime
+    endTime_lte?: any | null; // DateTime
+    endTime_not?: any | null; // DateTime
+    endTime_not_in?: any[] | null; // [DateTime!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    name?: string | null; // String
+    name_contains?: string | null; // String
+    name_ends_with?: string | null; // String
+    name_gt?: string | null; // String
+    name_gte?: string | null; // String
+    name_in?: string[] | null; // [String!]
+    name_lt?: string | null; // String
+    name_lte?: string | null; // String
+    name_not?: string | null; // String
+    name_not_contains?: string | null; // String
+    name_not_ends_with?: string | null; // String
+    name_not_in?: string[] | null; // [String!]
+    name_not_starts_with?: string | null; // String
+    name_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['BatchWhereInput'][] | null; // [BatchWhereInput!]
+    OR?: NexusGenInputs['BatchWhereInput'][] | null; // [BatchWhereInput!]
+    startingTime?: any | null; // DateTime
+    startingTime_gt?: any | null; // DateTime
+    startingTime_gte?: any | null; // DateTime
+    startingTime_in?: any[] | null; // [DateTime!]
+    startingTime_lt?: any | null; // DateTime
+    startingTime_lte?: any | null; // DateTime
+    startingTime_not?: any | null; // DateTime
+    startingTime_not_in?: any[] | null; // [DateTime!]
+  }
+  BatchWhereUniqueInput: { // input type
+    id?: string | null; // ID
+    name?: string | null; // String
+  }
+  PresenceCreateInput: { // input type
     date: any; // DateTime!
-    goodExcuse: boolean; // Boolean!
+    goodExcuse?: boolean | null; // Boolean
     id?: string | null; // ID
     reason?: string | null; // String
     timeMissed: any; // DateTime!
   }
-  AbsenceCreateManyInput: { // input type
-    connect?: NexusGenInputs['AbsenceWhereUniqueInput'][] | null; // [AbsenceWhereUniqueInput!]
-    create?: NexusGenInputs['AbsenceCreateInput'][] | null; // [AbsenceCreateInput!]
+  PresenceCreateManyInput: { // input type
+    connect?: NexusGenInputs['PresenceWhereUniqueInput'][] | null; // [PresenceWhereUniqueInput!]
+    create?: NexusGenInputs['PresenceCreateInput'][] | null; // [PresenceCreateInput!]
   }
-  AbsenceScalarWhereInput: { // input type
-    AND?: NexusGenInputs['AbsenceScalarWhereInput'][] | null; // [AbsenceScalarWhereInput!]
+  PresenceScalarWhereInput: { // input type
+    AND?: NexusGenInputs['PresenceScalarWhereInput'][] | null; // [PresenceScalarWhereInput!]
     date?: any | null; // DateTime
     date_gt?: any | null; // DateTime
     date_gte?: any | null; // DateTime
@@ -48,8 +136,8 @@ export interface NexusGenInputs {
     id_not_in?: string[] | null; // [ID!]
     id_not_starts_with?: string | null; // ID
     id_starts_with?: string | null; // ID
-    NOT?: NexusGenInputs['AbsenceScalarWhereInput'][] | null; // [AbsenceScalarWhereInput!]
-    OR?: NexusGenInputs['AbsenceScalarWhereInput'][] | null; // [AbsenceScalarWhereInput!]
+    NOT?: NexusGenInputs['PresenceScalarWhereInput'][] | null; // [PresenceScalarWhereInput!]
+    OR?: NexusGenInputs['PresenceScalarWhereInput'][] | null; // [PresenceScalarWhereInput!]
     reason?: string | null; // String
     reason_contains?: string | null; // String
     reason_ends_with?: string | null; // String
@@ -73,56 +161,56 @@ export interface NexusGenInputs {
     timeMissed_not?: any | null; // DateTime
     timeMissed_not_in?: any[] | null; // [DateTime!]
   }
-  AbsenceUpdateDataInput: { // input type
+  PresenceUpdateDataInput: { // input type
     date?: any | null; // DateTime
     goodExcuse?: boolean | null; // Boolean
     reason?: string | null; // String
     timeMissed?: any | null; // DateTime
   }
-  AbsenceUpdateInput: { // input type
+  PresenceUpdateInput: { // input type
     date?: any | null; // DateTime
     goodExcuse?: boolean | null; // Boolean
     reason?: string | null; // String
     timeMissed?: any | null; // DateTime
   }
-  AbsenceUpdateManyDataInput: { // input type
+  PresenceUpdateManyDataInput: { // input type
     date?: any | null; // DateTime
     goodExcuse?: boolean | null; // Boolean
     reason?: string | null; // String
     timeMissed?: any | null; // DateTime
   }
-  AbsenceUpdateManyInput: { // input type
-    connect?: NexusGenInputs['AbsenceWhereUniqueInput'][] | null; // [AbsenceWhereUniqueInput!]
-    create?: NexusGenInputs['AbsenceCreateInput'][] | null; // [AbsenceCreateInput!]
-    delete?: NexusGenInputs['AbsenceWhereUniqueInput'][] | null; // [AbsenceWhereUniqueInput!]
-    deleteMany?: NexusGenInputs['AbsenceScalarWhereInput'][] | null; // [AbsenceScalarWhereInput!]
-    disconnect?: NexusGenInputs['AbsenceWhereUniqueInput'][] | null; // [AbsenceWhereUniqueInput!]
-    set?: NexusGenInputs['AbsenceWhereUniqueInput'][] | null; // [AbsenceWhereUniqueInput!]
-    update?: NexusGenInputs['AbsenceUpdateWithWhereUniqueNestedInput'][] | null; // [AbsenceUpdateWithWhereUniqueNestedInput!]
-    updateMany?: NexusGenInputs['AbsenceUpdateManyWithWhereNestedInput'][] | null; // [AbsenceUpdateManyWithWhereNestedInput!]
-    upsert?: NexusGenInputs['AbsenceUpsertWithWhereUniqueNestedInput'][] | null; // [AbsenceUpsertWithWhereUniqueNestedInput!]
+  PresenceUpdateManyInput: { // input type
+    connect?: NexusGenInputs['PresenceWhereUniqueInput'][] | null; // [PresenceWhereUniqueInput!]
+    create?: NexusGenInputs['PresenceCreateInput'][] | null; // [PresenceCreateInput!]
+    delete?: NexusGenInputs['PresenceWhereUniqueInput'][] | null; // [PresenceWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['PresenceScalarWhereInput'][] | null; // [PresenceScalarWhereInput!]
+    disconnect?: NexusGenInputs['PresenceWhereUniqueInput'][] | null; // [PresenceWhereUniqueInput!]
+    set?: NexusGenInputs['PresenceWhereUniqueInput'][] | null; // [PresenceWhereUniqueInput!]
+    update?: NexusGenInputs['PresenceUpdateWithWhereUniqueNestedInput'][] | null; // [PresenceUpdateWithWhereUniqueNestedInput!]
+    updateMany?: NexusGenInputs['PresenceUpdateManyWithWhereNestedInput'][] | null; // [PresenceUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['PresenceUpsertWithWhereUniqueNestedInput'][] | null; // [PresenceUpsertWithWhereUniqueNestedInput!]
   }
-  AbsenceUpdateManyMutationInput: { // input type
+  PresenceUpdateManyMutationInput: { // input type
     date?: any | null; // DateTime
     goodExcuse?: boolean | null; // Boolean
     reason?: string | null; // String
     timeMissed?: any | null; // DateTime
   }
-  AbsenceUpdateManyWithWhereNestedInput: { // input type
-    data: NexusGenInputs['AbsenceUpdateManyDataInput']; // AbsenceUpdateManyDataInput!
-    where: NexusGenInputs['AbsenceScalarWhereInput']; // AbsenceScalarWhereInput!
+  PresenceUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['PresenceUpdateManyDataInput']; // PresenceUpdateManyDataInput!
+    where: NexusGenInputs['PresenceScalarWhereInput']; // PresenceScalarWhereInput!
   }
-  AbsenceUpdateWithWhereUniqueNestedInput: { // input type
-    data: NexusGenInputs['AbsenceUpdateDataInput']; // AbsenceUpdateDataInput!
-    where: NexusGenInputs['AbsenceWhereUniqueInput']; // AbsenceWhereUniqueInput!
+  PresenceUpdateWithWhereUniqueNestedInput: { // input type
+    data: NexusGenInputs['PresenceUpdateDataInput']; // PresenceUpdateDataInput!
+    where: NexusGenInputs['PresenceWhereUniqueInput']; // PresenceWhereUniqueInput!
   }
-  AbsenceUpsertWithWhereUniqueNestedInput: { // input type
-    create: NexusGenInputs['AbsenceCreateInput']; // AbsenceCreateInput!
-    update: NexusGenInputs['AbsenceUpdateDataInput']; // AbsenceUpdateDataInput!
-    where: NexusGenInputs['AbsenceWhereUniqueInput']; // AbsenceWhereUniqueInput!
+  PresenceUpsertWithWhereUniqueNestedInput: { // input type
+    create: NexusGenInputs['PresenceCreateInput']; // PresenceCreateInput!
+    update: NexusGenInputs['PresenceUpdateDataInput']; // PresenceUpdateDataInput!
+    where: NexusGenInputs['PresenceWhereUniqueInput']; // PresenceWhereUniqueInput!
   }
-  AbsenceWhereInput: { // input type
-    AND?: NexusGenInputs['AbsenceWhereInput'][] | null; // [AbsenceWhereInput!]
+  PresenceWhereInput: { // input type
+    AND?: NexusGenInputs['PresenceWhereInput'][] | null; // [PresenceWhereInput!]
     date?: any | null; // DateTime
     date_gt?: any | null; // DateTime
     date_gte?: any | null; // DateTime
@@ -147,8 +235,8 @@ export interface NexusGenInputs {
     id_not_in?: string[] | null; // [ID!]
     id_not_starts_with?: string | null; // ID
     id_starts_with?: string | null; // ID
-    NOT?: NexusGenInputs['AbsenceWhereInput'][] | null; // [AbsenceWhereInput!]
-    OR?: NexusGenInputs['AbsenceWhereInput'][] | null; // [AbsenceWhereInput!]
+    NOT?: NexusGenInputs['PresenceWhereInput'][] | null; // [PresenceWhereInput!]
+    OR?: NexusGenInputs['PresenceWhereInput'][] | null; // [PresenceWhereInput!]
     reason?: string | null; // String
     reason_contains?: string | null; // String
     reason_ends_with?: string | null; // String
@@ -172,7 +260,7 @@ export interface NexusGenInputs {
     timeMissed_not?: any | null; // DateTime
     timeMissed_not_in?: any[] | null; // [DateTime!]
   }
-  AbsenceWhereUniqueInput: { // input type
+  PresenceWhereUniqueInput: { // input type
     id?: string | null; // ID
   }
   SocialAssistantCreateInput: { // input type
@@ -295,64 +383,61 @@ export interface NexusGenInputs {
     id?: string | null; // ID
   }
   StudentCreateInput: { // input type
-    absences?: NexusGenInputs['AbsenceCreateManyInput'] | null; // AbsenceCreateManyInput
     addressCanton: string; // String!
     addressCity: string; // String!
-    addressNPA: string; // String!
+    addressNPA: number; // Int!
     addressStreet: string; // String!
+    batch: NexusGenInputs['BatchCreateOneInput']; // BatchCreateOneInput!
     birthday: any; // DateTime!
     borrowLaptops: boolean; // Boolean!
-    createDate: any; // DateTime!
     financialParticipation: NexusGenEnums['FinancialParticipation']; // FinancialParticipation!
     financialParticipationComment?: string | null; // String
     firstName: string; // String!
-    FoodCost?: string | null; // String
+    foodCost?: string | null; // String
     id?: string | null; // ID
     lastName: string; // String!
     nationality: string; // String!
     organisation?: string | null; // String
     pocoEmail?: string | null; // String
+    presences?: NexusGenInputs['PresenceCreateManyInput'] | null; // PresenceCreateManyInput
     privateEmail?: string | null; // String
     residencePermit: string; // String!
     sexe: NexusGenEnums['Sexe']; // Sexe!
     socialAssistant?: NexusGenInputs['SocialAssistantCreateOneInput'] | null; // SocialAssistantCreateOneInput
-    updateDate: any; // DateTime!
   }
   StudentUpdateInput: { // input type
-    absences?: NexusGenInputs['AbsenceUpdateManyInput'] | null; // AbsenceUpdateManyInput
     addressCanton?: string | null; // String
     addressCity?: string | null; // String
-    addressNPA?: string | null; // String
+    addressNPA?: number | null; // Int
     addressStreet?: string | null; // String
+    batch?: NexusGenInputs['BatchUpdateOneRequiredInput'] | null; // BatchUpdateOneRequiredInput
     birthday?: any | null; // DateTime
     borrowLaptops?: boolean | null; // Boolean
-    createDate?: any | null; // DateTime
     financialParticipation?: NexusGenEnums['FinancialParticipation'] | null; // FinancialParticipation
     financialParticipationComment?: string | null; // String
     firstName?: string | null; // String
-    FoodCost?: string | null; // String
+    foodCost?: string | null; // String
     lastName?: string | null; // String
     nationality?: string | null; // String
     organisation?: string | null; // String
     pocoEmail?: string | null; // String
+    presences?: NexusGenInputs['PresenceUpdateManyInput'] | null; // PresenceUpdateManyInput
     privateEmail?: string | null; // String
     residencePermit?: string | null; // String
     sexe?: NexusGenEnums['Sexe'] | null; // Sexe
     socialAssistant?: NexusGenInputs['SocialAssistantUpdateOneInput'] | null; // SocialAssistantUpdateOneInput
-    updateDate?: any | null; // DateTime
   }
   StudentUpdateManyMutationInput: { // input type
     addressCanton?: string | null; // String
     addressCity?: string | null; // String
-    addressNPA?: string | null; // String
+    addressNPA?: number | null; // Int
     addressStreet?: string | null; // String
     birthday?: any | null; // DateTime
     borrowLaptops?: boolean | null; // Boolean
-    createDate?: any | null; // DateTime
     financialParticipation?: NexusGenEnums['FinancialParticipation'] | null; // FinancialParticipation
     financialParticipationComment?: string | null; // String
     firstName?: string | null; // String
-    FoodCost?: string | null; // String
+    foodCost?: string | null; // String
     lastName?: string | null; // String
     nationality?: string | null; // String
     organisation?: string | null; // String
@@ -360,12 +445,8 @@ export interface NexusGenInputs {
     privateEmail?: string | null; // String
     residencePermit?: string | null; // String
     sexe?: NexusGenEnums['Sexe'] | null; // Sexe
-    updateDate?: any | null; // DateTime
   }
   StudentWhereInput: { // input type
-    absences_every?: NexusGenInputs['AbsenceWhereInput'] | null; // AbsenceWhereInput
-    absences_none?: NexusGenInputs['AbsenceWhereInput'] | null; // AbsenceWhereInput
-    absences_some?: NexusGenInputs['AbsenceWhereInput'] | null; // AbsenceWhereInput
     addressCanton?: string | null; // String
     addressCanton_contains?: string | null; // String
     addressCanton_ends_with?: string | null; // String
@@ -394,20 +475,14 @@ export interface NexusGenInputs {
     addressCity_not_in?: string[] | null; // [String!]
     addressCity_not_starts_with?: string | null; // String
     addressCity_starts_with?: string | null; // String
-    addressNPA?: string | null; // String
-    addressNPA_contains?: string | null; // String
-    addressNPA_ends_with?: string | null; // String
-    addressNPA_gt?: string | null; // String
-    addressNPA_gte?: string | null; // String
-    addressNPA_in?: string[] | null; // [String!]
-    addressNPA_lt?: string | null; // String
-    addressNPA_lte?: string | null; // String
-    addressNPA_not?: string | null; // String
-    addressNPA_not_contains?: string | null; // String
-    addressNPA_not_ends_with?: string | null; // String
-    addressNPA_not_in?: string[] | null; // [String!]
-    addressNPA_not_starts_with?: string | null; // String
-    addressNPA_starts_with?: string | null; // String
+    addressNPA?: number | null; // Int
+    addressNPA_gt?: number | null; // Int
+    addressNPA_gte?: number | null; // Int
+    addressNPA_in?: number[] | null; // [Int!]
+    addressNPA_lt?: number | null; // Int
+    addressNPA_lte?: number | null; // Int
+    addressNPA_not?: number | null; // Int
+    addressNPA_not_in?: number[] | null; // [Int!]
     addressStreet?: string | null; // String
     addressStreet_contains?: string | null; // String
     addressStreet_ends_with?: string | null; // String
@@ -423,6 +498,7 @@ export interface NexusGenInputs {
     addressStreet_not_starts_with?: string | null; // String
     addressStreet_starts_with?: string | null; // String
     AND?: NexusGenInputs['StudentWhereInput'][] | null; // [StudentWhereInput!]
+    batch?: NexusGenInputs['BatchWhereInput'] | null; // BatchWhereInput
     birthday?: any | null; // DateTime
     birthday_gt?: any | null; // DateTime
     birthday_gte?: any | null; // DateTime
@@ -433,14 +509,6 @@ export interface NexusGenInputs {
     birthday_not_in?: any[] | null; // [DateTime!]
     borrowLaptops?: boolean | null; // Boolean
     borrowLaptops_not?: boolean | null; // Boolean
-    createDate?: any | null; // DateTime
-    createDate_gt?: any | null; // DateTime
-    createDate_gte?: any | null; // DateTime
-    createDate_in?: any[] | null; // [DateTime!]
-    createDate_lt?: any | null; // DateTime
-    createDate_lte?: any | null; // DateTime
-    createDate_not?: any | null; // DateTime
-    createDate_not_in?: any[] | null; // [DateTime!]
     financialParticipation?: NexusGenEnums['FinancialParticipation'] | null; // FinancialParticipation
     financialParticipation_in?: NexusGenEnums['FinancialParticipation'][] | null; // [FinancialParticipation!]
     financialParticipation_not?: NexusGenEnums['FinancialParticipation'] | null; // FinancialParticipation
@@ -473,20 +541,20 @@ export interface NexusGenInputs {
     firstName_not_in?: string[] | null; // [String!]
     firstName_not_starts_with?: string | null; // String
     firstName_starts_with?: string | null; // String
-    FoodCost?: string | null; // String
-    FoodCost_contains?: string | null; // String
-    FoodCost_ends_with?: string | null; // String
-    FoodCost_gt?: string | null; // String
-    FoodCost_gte?: string | null; // String
-    FoodCost_in?: string[] | null; // [String!]
-    FoodCost_lt?: string | null; // String
-    FoodCost_lte?: string | null; // String
-    FoodCost_not?: string | null; // String
-    FoodCost_not_contains?: string | null; // String
-    FoodCost_not_ends_with?: string | null; // String
-    FoodCost_not_in?: string[] | null; // [String!]
-    FoodCost_not_starts_with?: string | null; // String
-    FoodCost_starts_with?: string | null; // String
+    foodCost?: string | null; // String
+    foodCost_contains?: string | null; // String
+    foodCost_ends_with?: string | null; // String
+    foodCost_gt?: string | null; // String
+    foodCost_gte?: string | null; // String
+    foodCost_in?: string[] | null; // [String!]
+    foodCost_lt?: string | null; // String
+    foodCost_lte?: string | null; // String
+    foodCost_not?: string | null; // String
+    foodCost_not_contains?: string | null; // String
+    foodCost_not_ends_with?: string | null; // String
+    foodCost_not_in?: string[] | null; // [String!]
+    foodCost_not_starts_with?: string | null; // String
+    foodCost_starts_with?: string | null; // String
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -559,6 +627,9 @@ export interface NexusGenInputs {
     pocoEmail_not_in?: string[] | null; // [String!]
     pocoEmail_not_starts_with?: string | null; // String
     pocoEmail_starts_with?: string | null; // String
+    presences_every?: NexusGenInputs['PresenceWhereInput'] | null; // PresenceWhereInput
+    presences_none?: NexusGenInputs['PresenceWhereInput'] | null; // PresenceWhereInput
+    presences_some?: NexusGenInputs['PresenceWhereInput'] | null; // PresenceWhereInput
     privateEmail?: string | null; // String
     privateEmail_contains?: string | null; // String
     privateEmail_ends_with?: string | null; // String
@@ -592,14 +663,6 @@ export interface NexusGenInputs {
     sexe_not?: NexusGenEnums['Sexe'] | null; // Sexe
     sexe_not_in?: NexusGenEnums['Sexe'][] | null; // [Sexe!]
     socialAssistant?: NexusGenInputs['SocialAssistantWhereInput'] | null; // SocialAssistantWhereInput
-    updateDate?: any | null; // DateTime
-    updateDate_gt?: any | null; // DateTime
-    updateDate_gte?: any | null; // DateTime
-    updateDate_in?: any[] | null; // [DateTime!]
-    updateDate_lt?: any | null; // DateTime
-    updateDate_lte?: any | null; // DateTime
-    updateDate_not?: any | null; // DateTime
-    updateDate_not_in?: any[] | null; // [DateTime!]
   }
   StudentWhereUniqueInput: { // input type
     id?: string | null; // ID
@@ -607,30 +670,19 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  AbsenceOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "date_ASC" | "date_DESC" | "goodExcuse_ASC" | "goodExcuse_DESC" | "id_ASC" | "id_DESC" | "reason_ASC" | "reason_DESC" | "timeMissed_ASC" | "timeMissed_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  BatchOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "endTime_ASC" | "endTime_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "startingTime_ASC" | "startingTime_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   FinancialParticipation: "EXTERN" | "NO" | "OTHER" | "YES"
-  Sexe: "FEMAIL" | "MALE" | "OTHER"
+  PresenceOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "date_ASC" | "date_DESC" | "goodExcuse_ASC" | "goodExcuse_DESC" | "id_ASC" | "id_DESC" | "reason_ASC" | "reason_DESC" | "timeMissed_ASC" | "timeMissed_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  Sexe: "FEMALE" | "MALE" | "OTHER"
   SocialAssistantOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "phone_ASC" | "phone_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  StudentOrderByInput: "addressCanton_ASC" | "addressCanton_DESC" | "addressCity_ASC" | "addressCity_DESC" | "addressNPA_ASC" | "addressNPA_DESC" | "addressStreet_ASC" | "addressStreet_DESC" | "birthday_ASC" | "birthday_DESC" | "borrowLaptops_ASC" | "borrowLaptops_DESC" | "createdAt_ASC" | "createdAt_DESC" | "createDate_ASC" | "createDate_DESC" | "financialParticipation_ASC" | "financialParticipation_DESC" | "financialParticipationComment_ASC" | "financialParticipationComment_DESC" | "firstName_ASC" | "firstName_DESC" | "FoodCost_ASC" | "FoodCost_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "nationality_ASC" | "nationality_DESC" | "organisation_ASC" | "organisation_DESC" | "pocoEmail_ASC" | "pocoEmail_DESC" | "privateEmail_ASC" | "privateEmail_DESC" | "residencePermit_ASC" | "residencePermit_DESC" | "sexe_ASC" | "sexe_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "updateDate_ASC" | "updateDate_DESC"
+  StudentOrderByInput: "addressCanton_ASC" | "addressCanton_DESC" | "addressCity_ASC" | "addressCity_DESC" | "addressNPA_ASC" | "addressNPA_DESC" | "addressStreet_ASC" | "addressStreet_DESC" | "birthday_ASC" | "birthday_DESC" | "borrowLaptops_ASC" | "borrowLaptops_DESC" | "createdAt_ASC" | "createdAt_DESC" | "financialParticipation_ASC" | "financialParticipation_DESC" | "financialParticipationComment_ASC" | "financialParticipationComment_DESC" | "firstName_ASC" | "firstName_DESC" | "foodCost_ASC" | "foodCost_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "nationality_ASC" | "nationality_DESC" | "organisation_ASC" | "organisation_DESC" | "pocoEmail_ASC" | "pocoEmail_DESC" | "privateEmail_ASC" | "privateEmail_DESC" | "residencePermit_ASC" | "residencePermit_DESC" | "sexe_ASC" | "sexe_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
-  Absence: { // root type
-    date: any; // DateTime!
-    goodExcuse: boolean; // Boolean!
-    id: string; // ID!
-    reason?: string | null; // String
-    timeMissed: any; // DateTime!
+  AggregateBatch: { // root type
+    count: number; // Int!
   }
-  AbsenceConnection: { // root type
-    edges: NexusGenRootTypes['AbsenceEdge'][]; // [AbsenceEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  AbsenceEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Absence']; // Absence!
-  }
-  AggregateAbsence: { // root type
+  AggregatePresence: { // root type
     count: number; // Int!
   }
   AggregateSocialAssistant: { // root type
@@ -638,6 +690,20 @@ export interface NexusGenRootTypes {
   }
   AggregateStudent: { // root type
     count: number; // Int!
+  }
+  Batch: { // root type
+    endTime: any; // DateTime!
+    id: string; // ID!
+    name: string; // String!
+    startingTime: any; // DateTime!
+  }
+  BatchConnection: { // root type
+    edges: NexusGenRootTypes['BatchEdge'][]; // [BatchEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  BatchEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Batch']; // Batch!
   }
   BatchPayload: { // root type
     count: any; // Long!
@@ -648,6 +714,21 @@ export interface NexusGenRootTypes {
     hasNextPage: boolean; // Boolean!
     hasPreviousPage: boolean; // Boolean!
     startCursor?: string | null; // String
+  }
+  Presence: { // root type
+    date: any; // DateTime!
+    goodExcuse?: boolean | null; // Boolean
+    id: string; // ID!
+    reason?: string | null; // String
+    timeMissed: any; // DateTime!
+  }
+  PresenceConnection: { // root type
+    edges: NexusGenRootTypes['PresenceEdge'][]; // [PresenceEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  PresenceEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Presence']; // Presence!
   }
   Query: {};
   SocialAssistant: { // root type
@@ -668,15 +749,14 @@ export interface NexusGenRootTypes {
   Student: { // root type
     addressCanton: string; // String!
     addressCity: string; // String!
-    addressNPA: string; // String!
+    addressNPA: number; // Int!
     addressStreet: string; // String!
     birthday: any; // DateTime!
     borrowLaptops: boolean; // Boolean!
-    createDate: any; // DateTime!
     financialParticipation: NexusGenEnums['FinancialParticipation']; // FinancialParticipation!
     financialParticipationComment?: string | null; // String
     firstName: string; // String!
-    FoodCost?: string | null; // String
+    foodCost?: string | null; // String
     id: string; // ID!
     lastName: string; // String!
     nationality: string; // String!
@@ -685,7 +765,6 @@ export interface NexusGenRootTypes {
     privateEmail?: string | null; // String
     residencePermit: string; // String!
     sexe: NexusGenEnums['Sexe']; // Sexe!
-    updateDate: any; // DateTime!
   }
   StudentConnection: { // root type
     edges: NexusGenRootTypes['StudentEdge'][]; // [StudentEdge!]!
@@ -705,19 +784,28 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  AbsenceCreateInput: NexusGenInputs['AbsenceCreateInput'];
-  AbsenceCreateManyInput: NexusGenInputs['AbsenceCreateManyInput'];
-  AbsenceScalarWhereInput: NexusGenInputs['AbsenceScalarWhereInput'];
-  AbsenceUpdateDataInput: NexusGenInputs['AbsenceUpdateDataInput'];
-  AbsenceUpdateInput: NexusGenInputs['AbsenceUpdateInput'];
-  AbsenceUpdateManyDataInput: NexusGenInputs['AbsenceUpdateManyDataInput'];
-  AbsenceUpdateManyInput: NexusGenInputs['AbsenceUpdateManyInput'];
-  AbsenceUpdateManyMutationInput: NexusGenInputs['AbsenceUpdateManyMutationInput'];
-  AbsenceUpdateManyWithWhereNestedInput: NexusGenInputs['AbsenceUpdateManyWithWhereNestedInput'];
-  AbsenceUpdateWithWhereUniqueNestedInput: NexusGenInputs['AbsenceUpdateWithWhereUniqueNestedInput'];
-  AbsenceUpsertWithWhereUniqueNestedInput: NexusGenInputs['AbsenceUpsertWithWhereUniqueNestedInput'];
-  AbsenceWhereInput: NexusGenInputs['AbsenceWhereInput'];
-  AbsenceWhereUniqueInput: NexusGenInputs['AbsenceWhereUniqueInput'];
+  BatchCreateInput: NexusGenInputs['BatchCreateInput'];
+  BatchCreateOneInput: NexusGenInputs['BatchCreateOneInput'];
+  BatchUpdateDataInput: NexusGenInputs['BatchUpdateDataInput'];
+  BatchUpdateInput: NexusGenInputs['BatchUpdateInput'];
+  BatchUpdateManyMutationInput: NexusGenInputs['BatchUpdateManyMutationInput'];
+  BatchUpdateOneRequiredInput: NexusGenInputs['BatchUpdateOneRequiredInput'];
+  BatchUpsertNestedInput: NexusGenInputs['BatchUpsertNestedInput'];
+  BatchWhereInput: NexusGenInputs['BatchWhereInput'];
+  BatchWhereUniqueInput: NexusGenInputs['BatchWhereUniqueInput'];
+  PresenceCreateInput: NexusGenInputs['PresenceCreateInput'];
+  PresenceCreateManyInput: NexusGenInputs['PresenceCreateManyInput'];
+  PresenceScalarWhereInput: NexusGenInputs['PresenceScalarWhereInput'];
+  PresenceUpdateDataInput: NexusGenInputs['PresenceUpdateDataInput'];
+  PresenceUpdateInput: NexusGenInputs['PresenceUpdateInput'];
+  PresenceUpdateManyDataInput: NexusGenInputs['PresenceUpdateManyDataInput'];
+  PresenceUpdateManyInput: NexusGenInputs['PresenceUpdateManyInput'];
+  PresenceUpdateManyMutationInput: NexusGenInputs['PresenceUpdateManyMutationInput'];
+  PresenceUpdateManyWithWhereNestedInput: NexusGenInputs['PresenceUpdateManyWithWhereNestedInput'];
+  PresenceUpdateWithWhereUniqueNestedInput: NexusGenInputs['PresenceUpdateWithWhereUniqueNestedInput'];
+  PresenceUpsertWithWhereUniqueNestedInput: NexusGenInputs['PresenceUpsertWithWhereUniqueNestedInput'];
+  PresenceWhereInput: NexusGenInputs['PresenceWhereInput'];
+  PresenceWhereUniqueInput: NexusGenInputs['PresenceWhereUniqueInput'];
   SocialAssistantCreateInput: NexusGenInputs['SocialAssistantCreateInput'];
   SocialAssistantCreateOneInput: NexusGenInputs['SocialAssistantCreateOneInput'];
   SocialAssistantUpdateDataInput: NexusGenInputs['SocialAssistantUpdateDataInput'];
@@ -732,31 +820,19 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   StudentUpdateManyMutationInput: NexusGenInputs['StudentUpdateManyMutationInput'];
   StudentWhereInput: NexusGenInputs['StudentWhereInput'];
   StudentWhereUniqueInput: NexusGenInputs['StudentWhereUniqueInput'];
-  AbsenceOrderByInput: NexusGenEnums['AbsenceOrderByInput'];
+  BatchOrderByInput: NexusGenEnums['BatchOrderByInput'];
   FinancialParticipation: NexusGenEnums['FinancialParticipation'];
+  PresenceOrderByInput: NexusGenEnums['PresenceOrderByInput'];
   Sexe: NexusGenEnums['Sexe'];
   SocialAssistantOrderByInput: NexusGenEnums['SocialAssistantOrderByInput'];
   StudentOrderByInput: NexusGenEnums['StudentOrderByInput'];
 }
 
 export interface NexusGenFieldTypes {
-  Absence: { // field return type
-    date: any; // DateTime!
-    goodExcuse: boolean; // Boolean!
-    id: string; // ID!
-    reason: string | null; // String
-    timeMissed: any; // DateTime!
+  AggregateBatch: { // field return type
+    count: number; // Int!
   }
-  AbsenceConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateAbsence']; // AggregateAbsence!
-    edges: NexusGenRootTypes['AbsenceEdge'][]; // [AbsenceEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  AbsenceEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Absence']; // Absence!
-  }
-  AggregateAbsence: { // field return type
+  AggregatePresence: { // field return type
     count: number; // Int!
   }
   AggregateSocialAssistant: { // field return type
@@ -765,26 +841,47 @@ export interface NexusGenFieldTypes {
   AggregateStudent: { // field return type
     count: number; // Int!
   }
+  Batch: { // field return type
+    endTime: any; // DateTime!
+    id: string; // ID!
+    name: string; // String!
+    startingTime: any; // DateTime!
+  }
+  BatchConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateBatch']; // AggregateBatch!
+    edges: NexusGenRootTypes['BatchEdge'][]; // [BatchEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  BatchEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Batch']; // Batch!
+  }
   BatchPayload: { // field return type
     count: any; // Long!
   }
   Mutation: { // field return type
-    createAbsence: NexusGenRootTypes['Absence']; // Absence!
+    createBatch: NexusGenRootTypes['Batch']; // Batch!
+    createPresence: NexusGenRootTypes['Presence']; // Presence!
     createSocialAssistant: NexusGenRootTypes['SocialAssistant']; // SocialAssistant!
     createStudent: NexusGenRootTypes['Student']; // Student!
-    deleteAbsence: NexusGenRootTypes['Absence'] | null; // Absence
-    deleteManyAbsences: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteBatch: NexusGenRootTypes['Batch'] | null; // Batch
+    deleteManyBatches: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyPresences: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManySocialAssistants: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyStudents: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deletePresence: NexusGenRootTypes['Presence'] | null; // Presence
     deleteSocialAssistant: NexusGenRootTypes['SocialAssistant'] | null; // SocialAssistant
     deleteStudent: NexusGenRootTypes['Student'] | null; // Student
-    updateAbsence: NexusGenRootTypes['Absence'] | null; // Absence
-    updateManyAbsences: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateBatch: NexusGenRootTypes['Batch'] | null; // Batch
+    updateManyBatches: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyPresences: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManySocialAssistants: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyStudents: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updatePresence: NexusGenRootTypes['Presence'] | null; // Presence
     updateSocialAssistant: NexusGenRootTypes['SocialAssistant'] | null; // SocialAssistant
     updateStudent: NexusGenRootTypes['Student'] | null; // Student
-    upsertAbsence: NexusGenRootTypes['Absence']; // Absence!
+    upsertBatch: NexusGenRootTypes['Batch']; // Batch!
+    upsertPresence: NexusGenRootTypes['Presence']; // Presence!
     upsertSocialAssistant: NexusGenRootTypes['SocialAssistant']; // SocialAssistant!
     upsertStudent: NexusGenRootTypes['Student']; // Student!
   }
@@ -794,10 +891,29 @@ export interface NexusGenFieldTypes {
     hasPreviousPage: boolean; // Boolean!
     startCursor: string | null; // String
   }
+  Presence: { // field return type
+    date: any; // DateTime!
+    goodExcuse: boolean | null; // Boolean
+    id: string; // ID!
+    reason: string | null; // String
+    timeMissed: any; // DateTime!
+  }
+  PresenceConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregatePresence']; // AggregatePresence!
+    edges: NexusGenRootTypes['PresenceEdge'][]; // [PresenceEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  PresenceEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Presence']; // Presence!
+  }
   Query: { // field return type
-    absence: NexusGenRootTypes['Absence'] | null; // Absence
-    absences: NexusGenRootTypes['Absence'][]; // [Absence!]!
-    absencesConnection: NexusGenRootTypes['AbsenceConnection']; // AbsenceConnection!
+    batch: NexusGenRootTypes['Batch'] | null; // Batch
+    batches: NexusGenRootTypes['Batch'][]; // [Batch!]!
+    batchesConnection: NexusGenRootTypes['BatchConnection']; // BatchConnection!
+    presence: NexusGenRootTypes['Presence'] | null; // Presence
+    presences: NexusGenRootTypes['Presence'][]; // [Presence!]!
+    presencesConnection: NexusGenRootTypes['PresenceConnection']; // PresenceConnection!
     socialAssistant: NexusGenRootTypes['SocialAssistant'] | null; // SocialAssistant
     socialAssistants: NexusGenRootTypes['SocialAssistant'][]; // [SocialAssistant!]!
     socialAssistantsConnection: NexusGenRootTypes['SocialAssistantConnection']; // SocialAssistantConnection!
@@ -822,28 +938,27 @@ export interface NexusGenFieldTypes {
     node: NexusGenRootTypes['SocialAssistant']; // SocialAssistant!
   }
   Student: { // field return type
-    absences: NexusGenRootTypes['Absence'][] | null; // [Absence!]
     addressCanton: string; // String!
     addressCity: string; // String!
-    addressNPA: string; // String!
+    addressNPA: number; // Int!
     addressStreet: string; // String!
+    batch: NexusGenRootTypes['Batch']; // Batch!
     birthday: any; // DateTime!
     borrowLaptops: boolean; // Boolean!
-    createDate: any; // DateTime!
     financialParticipation: NexusGenEnums['FinancialParticipation']; // FinancialParticipation!
     financialParticipationComment: string | null; // String
     firstName: string; // String!
-    FoodCost: string | null; // String
+    foodCost: string | null; // String
     id: string; // ID!
     lastName: string; // String!
     nationality: string; // String!
     organisation: string | null; // String
     pocoEmail: string | null; // String
+    presences: NexusGenRootTypes['Presence'][] | null; // [Presence!]
     privateEmail: string | null; // String
     residencePermit: string; // String!
     sexe: NexusGenEnums['Sexe']; // Sexe!
     socialAssistant: NexusGenRootTypes['SocialAssistant'] | null; // SocialAssistant
-    updateDate: any; // DateTime!
   }
   StudentConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregateStudent']; // AggregateStudent!
@@ -858,8 +973,11 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createAbsence: { // args
-      data: NexusGenInputs['AbsenceCreateInput']; // AbsenceCreateInput!
+    createBatch: { // args
+      data: NexusGenInputs['BatchCreateInput']; // BatchCreateInput!
+    }
+    createPresence: { // args
+      data: NexusGenInputs['PresenceCreateInput']; // PresenceCreateInput!
     }
     createSocialAssistant: { // args
       data: NexusGenInputs['SocialAssistantCreateInput']; // SocialAssistantCreateInput!
@@ -867,11 +985,14 @@ export interface NexusGenArgTypes {
     createStudent: { // args
       data: NexusGenInputs['StudentCreateInput']; // StudentCreateInput!
     }
-    deleteAbsence: { // args
-      where: NexusGenInputs['AbsenceWhereUniqueInput']; // AbsenceWhereUniqueInput!
+    deleteBatch: { // args
+      where: NexusGenInputs['BatchWhereUniqueInput']; // BatchWhereUniqueInput!
     }
-    deleteManyAbsences: { // args
-      where?: NexusGenInputs['AbsenceWhereInput'] | null; // AbsenceWhereInput
+    deleteManyBatches: { // args
+      where?: NexusGenInputs['BatchWhereInput'] | null; // BatchWhereInput
+    }
+    deleteManyPresences: { // args
+      where?: NexusGenInputs['PresenceWhereInput'] | null; // PresenceWhereInput
     }
     deleteManySocialAssistants: { // args
       where?: NexusGenInputs['SocialAssistantWhereInput'] | null; // SocialAssistantWhereInput
@@ -879,19 +1000,26 @@ export interface NexusGenArgTypes {
     deleteManyStudents: { // args
       where?: NexusGenInputs['StudentWhereInput'] | null; // StudentWhereInput
     }
+    deletePresence: { // args
+      where: NexusGenInputs['PresenceWhereUniqueInput']; // PresenceWhereUniqueInput!
+    }
     deleteSocialAssistant: { // args
       where: NexusGenInputs['SocialAssistantWhereUniqueInput']; // SocialAssistantWhereUniqueInput!
     }
     deleteStudent: { // args
       where: NexusGenInputs['StudentWhereUniqueInput']; // StudentWhereUniqueInput!
     }
-    updateAbsence: { // args
-      data: NexusGenInputs['AbsenceUpdateInput']; // AbsenceUpdateInput!
-      where: NexusGenInputs['AbsenceWhereUniqueInput']; // AbsenceWhereUniqueInput!
+    updateBatch: { // args
+      data: NexusGenInputs['BatchUpdateInput']; // BatchUpdateInput!
+      where: NexusGenInputs['BatchWhereUniqueInput']; // BatchWhereUniqueInput!
     }
-    updateManyAbsences: { // args
-      data: NexusGenInputs['AbsenceUpdateManyMutationInput']; // AbsenceUpdateManyMutationInput!
-      where?: NexusGenInputs['AbsenceWhereInput'] | null; // AbsenceWhereInput
+    updateManyBatches: { // args
+      data: NexusGenInputs['BatchUpdateManyMutationInput']; // BatchUpdateManyMutationInput!
+      where?: NexusGenInputs['BatchWhereInput'] | null; // BatchWhereInput
+    }
+    updateManyPresences: { // args
+      data: NexusGenInputs['PresenceUpdateManyMutationInput']; // PresenceUpdateManyMutationInput!
+      where?: NexusGenInputs['PresenceWhereInput'] | null; // PresenceWhereInput
     }
     updateManySocialAssistants: { // args
       data: NexusGenInputs['SocialAssistantUpdateManyMutationInput']; // SocialAssistantUpdateManyMutationInput!
@@ -901,6 +1029,10 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['StudentUpdateManyMutationInput']; // StudentUpdateManyMutationInput!
       where?: NexusGenInputs['StudentWhereInput'] | null; // StudentWhereInput
     }
+    updatePresence: { // args
+      data: NexusGenInputs['PresenceUpdateInput']; // PresenceUpdateInput!
+      where: NexusGenInputs['PresenceWhereUniqueInput']; // PresenceWhereUniqueInput!
+    }
     updateSocialAssistant: { // args
       data: NexusGenInputs['SocialAssistantUpdateInput']; // SocialAssistantUpdateInput!
       where: NexusGenInputs['SocialAssistantWhereUniqueInput']; // SocialAssistantWhereUniqueInput!
@@ -909,10 +1041,15 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['StudentUpdateInput']; // StudentUpdateInput!
       where: NexusGenInputs['StudentWhereUniqueInput']; // StudentWhereUniqueInput!
     }
-    upsertAbsence: { // args
-      create: NexusGenInputs['AbsenceCreateInput']; // AbsenceCreateInput!
-      update: NexusGenInputs['AbsenceUpdateInput']; // AbsenceUpdateInput!
-      where: NexusGenInputs['AbsenceWhereUniqueInput']; // AbsenceWhereUniqueInput!
+    upsertBatch: { // args
+      create: NexusGenInputs['BatchCreateInput']; // BatchCreateInput!
+      update: NexusGenInputs['BatchUpdateInput']; // BatchUpdateInput!
+      where: NexusGenInputs['BatchWhereUniqueInput']; // BatchWhereUniqueInput!
+    }
+    upsertPresence: { // args
+      create: NexusGenInputs['PresenceCreateInput']; // PresenceCreateInput!
+      update: NexusGenInputs['PresenceUpdateInput']; // PresenceUpdateInput!
+      where: NexusGenInputs['PresenceWhereUniqueInput']; // PresenceWhereUniqueInput!
     }
     upsertSocialAssistant: { // args
       create: NexusGenInputs['SocialAssistantCreateInput']; // SocialAssistantCreateInput!
@@ -926,26 +1063,47 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    absence: { // args
-      where: NexusGenInputs['AbsenceWhereUniqueInput']; // AbsenceWhereUniqueInput!
+    batch: { // args
+      where: NexusGenInputs['BatchWhereUniqueInput']; // BatchWhereUniqueInput!
     }
-    absences: { // args
+    batches: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['AbsenceOrderByInput'] | null; // AbsenceOrderByInput
+      orderBy?: NexusGenEnums['BatchOrderByInput'] | null; // BatchOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['AbsenceWhereInput'] | null; // AbsenceWhereInput
+      where?: NexusGenInputs['BatchWhereInput'] | null; // BatchWhereInput
     }
-    absencesConnection: { // args
+    batchesConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['AbsenceOrderByInput'] | null; // AbsenceOrderByInput
+      orderBy?: NexusGenEnums['BatchOrderByInput'] | null; // BatchOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['AbsenceWhereInput'] | null; // AbsenceWhereInput
+      where?: NexusGenInputs['BatchWhereInput'] | null; // BatchWhereInput
+    }
+    presence: { // args
+      where: NexusGenInputs['PresenceWhereUniqueInput']; // PresenceWhereUniqueInput!
+    }
+    presences: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['PresenceOrderByInput'] | null; // PresenceOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['PresenceWhereInput'] | null; // PresenceWhereInput
+    }
+    presencesConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['PresenceOrderByInput'] | null; // PresenceOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['PresenceWhereInput'] | null; // PresenceWhereInput
     }
     socialAssistant: { // args
       where: NexusGenInputs['SocialAssistantWhereUniqueInput']; // SocialAssistantWhereUniqueInput!
@@ -991,14 +1149,14 @@ export interface NexusGenArgTypes {
     }
   }
   Student: {
-    absences: { // args
+    presences: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['AbsenceOrderByInput'] | null; // AbsenceOrderByInput
+      orderBy?: NexusGenEnums['PresenceOrderByInput'] | null; // PresenceOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['AbsenceWhereInput'] | null; // AbsenceWhereInput
+      where?: NexusGenInputs['PresenceWhereInput'] | null; // PresenceWhereInput
     }
   }
 }
@@ -1008,11 +1166,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Absence" | "AbsenceConnection" | "AbsenceEdge" | "AggregateAbsence" | "AggregateSocialAssistant" | "AggregateStudent" | "BatchPayload" | "Mutation" | "PageInfo" | "Query" | "SocialAssistant" | "SocialAssistantConnection" | "SocialAssistantEdge" | "Student" | "StudentConnection" | "StudentEdge";
+export type NexusGenObjectNames = "AggregateBatch" | "AggregatePresence" | "AggregateSocialAssistant" | "AggregateStudent" | "Batch" | "BatchConnection" | "BatchEdge" | "BatchPayload" | "Mutation" | "PageInfo" | "Presence" | "PresenceConnection" | "PresenceEdge" | "Query" | "SocialAssistant" | "SocialAssistantConnection" | "SocialAssistantEdge" | "Student" | "StudentConnection" | "StudentEdge";
 
-export type NexusGenInputNames = "AbsenceCreateInput" | "AbsenceCreateManyInput" | "AbsenceScalarWhereInput" | "AbsenceUpdateDataInput" | "AbsenceUpdateInput" | "AbsenceUpdateManyDataInput" | "AbsenceUpdateManyInput" | "AbsenceUpdateManyMutationInput" | "AbsenceUpdateManyWithWhereNestedInput" | "AbsenceUpdateWithWhereUniqueNestedInput" | "AbsenceUpsertWithWhereUniqueNestedInput" | "AbsenceWhereInput" | "AbsenceWhereUniqueInput" | "SocialAssistantCreateInput" | "SocialAssistantCreateOneInput" | "SocialAssistantUpdateDataInput" | "SocialAssistantUpdateInput" | "SocialAssistantUpdateManyMutationInput" | "SocialAssistantUpdateOneInput" | "SocialAssistantUpsertNestedInput" | "SocialAssistantWhereInput" | "SocialAssistantWhereUniqueInput" | "StudentCreateInput" | "StudentUpdateInput" | "StudentUpdateManyMutationInput" | "StudentWhereInput" | "StudentWhereUniqueInput";
+export type NexusGenInputNames = "BatchCreateInput" | "BatchCreateOneInput" | "BatchUpdateDataInput" | "BatchUpdateInput" | "BatchUpdateManyMutationInput" | "BatchUpdateOneRequiredInput" | "BatchUpsertNestedInput" | "BatchWhereInput" | "BatchWhereUniqueInput" | "PresenceCreateInput" | "PresenceCreateManyInput" | "PresenceScalarWhereInput" | "PresenceUpdateDataInput" | "PresenceUpdateInput" | "PresenceUpdateManyDataInput" | "PresenceUpdateManyInput" | "PresenceUpdateManyMutationInput" | "PresenceUpdateManyWithWhereNestedInput" | "PresenceUpdateWithWhereUniqueNestedInput" | "PresenceUpsertWithWhereUniqueNestedInput" | "PresenceWhereInput" | "PresenceWhereUniqueInput" | "SocialAssistantCreateInput" | "SocialAssistantCreateOneInput" | "SocialAssistantUpdateDataInput" | "SocialAssistantUpdateInput" | "SocialAssistantUpdateManyMutationInput" | "SocialAssistantUpdateOneInput" | "SocialAssistantUpsertNestedInput" | "SocialAssistantWhereInput" | "SocialAssistantWhereUniqueInput" | "StudentCreateInput" | "StudentUpdateInput" | "StudentUpdateManyMutationInput" | "StudentWhereInput" | "StudentWhereUniqueInput";
 
-export type NexusGenEnumNames = "AbsenceOrderByInput" | "FinancialParticipation" | "Sexe" | "SocialAssistantOrderByInput" | "StudentOrderByInput";
+export type NexusGenEnumNames = "BatchOrderByInput" | "FinancialParticipation" | "PresenceOrderByInput" | "Sexe" | "SocialAssistantOrderByInput" | "StudentOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
