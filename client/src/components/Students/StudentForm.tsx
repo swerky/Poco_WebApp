@@ -34,6 +34,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ErrorIcon from '@material-ui/icons/Error';
 import IconButton from '@material-ui/core/IconButton';
+import { green } from '@material-ui/core/colors';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
@@ -65,7 +67,21 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     checkbox: {
       marginTop: theme.spacing(3),
-    }
+    },
+    successSnackBar: {
+      backgroundColor: green[600],
+    },
+    message: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    icon: {
+      fontSize: 20,
+    },
+    iconVariant: {
+      opacity: 0.9,
+      marginRight: theme.spacing(1),
+    },
   }),
 );
 
@@ -111,6 +127,7 @@ const StudentForm : FunctionComponent = () => {
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
   const [newSocialAssistant, setNewSocialAssistant] = useState(false)
   const [newBatch, setNewBatch] = useState(false);
+  const [open, setOpen] = React.useState(false);
 
   /* Mutation */
   const [addStudent, { loading: mutationLoading, error: mutationError}] = useMutation(ADD_STUDENT);
@@ -143,7 +160,10 @@ const StudentForm : FunctionComponent = () => {
   /* SEND FORM */
   const handleSubmit = () => {
     const query = makeDataQuery();
-    addStudent({variables: {data: query}}).then(x => console.log(x.data))
+    addStudent({variables: {data: query}})
+    .then(() => setOpen(true))
+    .catch(() => setOpen(false))
+    
   }
 
   // TODO a enlever après test
@@ -311,6 +331,11 @@ const StudentForm : FunctionComponent = () => {
       }
       
     }
+  }
+
+  /* SNACKBAR HANDLER */
+  const handleClose = () => {
+    setOpen(false);
   }
 
   /* STEPPER */
@@ -657,22 +682,19 @@ const StudentForm : FunctionComponent = () => {
         onClose={handleClose}
       >
         <SnackbarContent
-          className={clsx(classes[variant], className)}
+          className={classes.successSnackBar}
           aria-describedby="client-snackbar"
           message={
             <span id="client-snackbar" className={classes.message}>
-              <Icon className={clsx(classes.icon, classes.iconVariant)} />
-              {message}
+              <CheckCircleIcon className={classNames(classes.icon, classes.iconVariant)} />
+              Student created
             </span>
           }
           action={[
-            <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
+            <IconButton key="close" aria-label="close" color="inherit" onClick={handleClose}>
               <CloseIcon className={classes.icon} />
             </IconButton>,
           ]}
-          onClose={handleClose}
-          variant="success"
-          message="This is a success message!"
         />
       </Snackbar>
     </>
