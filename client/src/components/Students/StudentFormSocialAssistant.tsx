@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const SocialFormSocialAssistant : FunctionComponent<StudentFormSocialAssistantFormProps> = ({handleTextSocialAssistantChange, socialAssistant, newSocialAssistant, setNewSocialAssistant}: StudentFormSocialAssistantFormProps) => {
   const classes = useStyles();
 
-  /* GETING EXISTING SOCIAL ASSISTANT */
+  /* GETTING EXISTING SOCIAL ASSISTANT */
   const {loading, error, data} = useQuery(GET_SOCIAL_ASSISTANTS);
 
   /* LOADING */

@@ -9,10 +9,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import ServerError from '../../utils/Errors/ServerError';
 import StudentInterface from '../../interfaces/Student.interface';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import IconButton from '@material-ui/core/IconButton';
@@ -21,31 +17,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
 
-/* GRAPHQL REQUEST */
-const GET_STUDENTS = gql`
-  {
-    students{
-      id
-      firstName
-      lastName
-      privateEmail
-      birthday
-      financialParticipation
-      borrowLaptops
-      foodCost
-      presences {
-        id
-        date
-        timeMissed
-        goodExcuse
-        reason
-      }
-      batch {
-        name
-      }
-    }
-  }
-`;
+
 
 /* STYLES */
 const useStyles = makeStyles((theme: Theme) =>
@@ -57,9 +29,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     table: {
       minWidth: 650,
-    },
-    progress: {
-      margin: theme.spacing(2),
     },
     spacer: {
       flex: '1 1 100%',
@@ -76,17 +45,14 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const StudentsTable : FunctionComponent = () => {
+interface StudentTableProps {
+  students: StudentInterface[],
+  handleDeleteStudent: (id: string) => void
+}
+
+const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
   const classes = useStyles();
-  const { loading, error, data } = useQuery(GET_STUDENTS);
-
-  /* LOADING */
-  if(loading) return <CircularProgress className={classes.progress} />
-
-  /* ERROR */
-  if(error) return  <ServerError/>
-
-  console.log(data);
+  const {students, handleDeleteStudent} = props
 
   /* SHOW COMPONENT */
   return (
@@ -118,8 +84,8 @@ const StudentsTable : FunctionComponent = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.students.map((student : StudentInterface) => (
-            <TableRow key={student.firstName}>
+          {students.map((student : StudentInterface) => (
+            <TableRow key={student.id}>
               <TableCell component="th" scope="row" key={"name_" + student.firstName + "_" + student.id}>
                 {student.firstName}
               </TableCell>
@@ -148,7 +114,7 @@ const StudentsTable : FunctionComponent = () => {
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="Remove" aria-label="remove">
-                  <IconButton className={classes.button} aria-label="remove">
+                  <IconButton className={classes.button} aria-label="remove" onClick={() => handleDeleteStudent(student.id as string)}>
                     <DeleteIcon />
                   </IconButton>
                 </Tooltip>

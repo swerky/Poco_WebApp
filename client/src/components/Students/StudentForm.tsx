@@ -27,7 +27,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import StudentFromBatch from './StudentFormBatch'; 
-import ADD_STUDENT from '../../queries/StudentQuery';
+import {ADD_STUDENT, GET_STUDENTS} from '../../queries/StudentQuery';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import CloseIcon from '@material-ui/icons/Close';
@@ -35,6 +35,11 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ErrorIcon from '@material-ui/icons/Error';
 import IconButton from '@material-ui/core/IconButton';
 import { green } from '@material-ui/core/colors';
+import {Link} from 'react-router-dom';
+
+interface StudentData {
+  students: StudentInterface[]
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -130,7 +135,10 @@ const StudentForm : FunctionComponent = () => {
   const [open, setOpen] = React.useState(false);
 
   /* Mutation */
-  const [addStudent, { loading: mutationLoading, error: mutationError}] = useMutation(ADD_STUDENT);
+  const [addStudent, { loading: mutationLoading, error: mutationError}] = 
+    useMutation(
+      ADD_STUDENT
+    );
 
   /* STEPPER MANAGER */ 
   const getSteps = () => {
@@ -159,11 +167,30 @@ const StudentForm : FunctionComponent = () => {
 
   /* SEND FORM */
   const handleSubmit = () => {
+    handleComplete();
     const query = makeDataQuery();
-    addStudent({variables: {data: query}})
+    addStudent({
+      variables: {data: query},
+      update(cache, { data: { addedStudent } }) {
+        console.log(addedStudent);
+        const existingStudents = cache.readQuery<StudentData>({
+          query: GET_STUDENTS 
+        });
+
+        console.log(addedStudent)
+        
+        if(existingStudents){
+          cache.writeQuery<StudentData>({
+            query: GET_STUDENTS,
+            data: { 
+              students: [...existingStudents.students, addedStudent.createStudent]
+            },
+          });
+        }
+      }
+    })
     .then(() => setOpen(true))
     .catch(() => setOpen(false))
-    
   }
 
   // TODO a enlever après test
@@ -626,7 +653,9 @@ const StudentForm : FunctionComponent = () => {
                         <Typography className={classes.instructions}>
                           All steps completed - you&apos;re finished
                         </Typography>
-                        <Button onClick={handleReset}>Reset</Button>
+                        <Link to='/students'>
+                          <Button>Students</Button>
+                        </Link>
                       </div>
                     ) : (
                       <div>

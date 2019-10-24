@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const ADD_STUDENT = gql`
+export const ADD_STUDENT = gql`
   mutation addStudent($data: StudentCreateInput!) {
     createStudent(
       data: $data
@@ -38,7 +38,66 @@ const ADD_STUDENT = gql`
         goodExcuse
         reason
       }
+      batch {
+        id
+        name 
+        startingTime
+        endTime
+      }
     }
   }`;
 
-export default ADD_STUDENT;
+  /* GRAPHQL REQUEST */
+export const GET_STUDENTS = gql`
+{
+  students{
+    id
+    firstName
+    lastName
+    sexe
+    privateEmail
+    pocoEmail
+    residencePermit
+    birthday
+    nationality
+    addressStreet
+    addressCity
+    addressNPA
+    addressCanton
+    organisation
+    socialAssistant {
+      id
+      firstName
+      lastName
+      phone
+      email
+    }
+    financialParticipation
+    financialParticipationComment
+    borrowLaptops
+    foodCost
+    presences {
+      id
+      date
+      timeMissed
+      goodExcuse
+      reason
+    }
+    batch {
+      id
+      name 
+      startingTime
+      endTime
+    }
+  }
+}
+`;
+
+export const DELETE_STUDENT = gql`
+mutation deleteStudent($where: StudentWhereUniqueInput!){
+deleteStudent(where: $where){
+  id
+  firstName
+  lastName
+}
+}`
