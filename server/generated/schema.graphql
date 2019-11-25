@@ -198,11 +198,12 @@ type PageInfo {
 }
 
 type Presence {
-  date: DateTime!
+  dateEnd: DateTime!
+  dateStart: DateTime!
   goodExcuse: Boolean
   id: ID!
   reason: String
-  timeMissed: DateTime!
+  student: Student!
 }
 
 type PresenceConnection {
@@ -212,16 +213,25 @@ type PresenceConnection {
 }
 
 input PresenceCreateInput {
-  date: DateTime!
+  dateEnd: DateTime!
+  dateStart: DateTime!
   goodExcuse: Boolean
   id: ID
   reason: String
-  timeMissed: DateTime!
+  student: StudentCreateOneWithoutPresencesInput!
 }
 
-input PresenceCreateManyInput {
+input PresenceCreateManyWithoutStudentInput {
   connect: [PresenceWhereUniqueInput!]
-  create: [PresenceCreateInput!]
+  create: [PresenceCreateWithoutStudentInput!]
+}
+
+input PresenceCreateWithoutStudentInput {
+  dateEnd: DateTime!
+  dateStart: DateTime!
+  goodExcuse: Boolean
+  id: ID
+  reason: String
 }
 
 type PresenceEdge {
@@ -232,30 +242,38 @@ type PresenceEdge {
 enum PresenceOrderByInput {
   createdAt_ASC
   createdAt_DESC
-  date_ASC
-  date_DESC
+  dateEnd_ASC
+  dateEnd_DESC
+  dateStart_ASC
+  dateStart_DESC
   goodExcuse_ASC
   goodExcuse_DESC
   id_ASC
   id_DESC
   reason_ASC
   reason_DESC
-  timeMissed_ASC
-  timeMissed_DESC
   updatedAt_ASC
   updatedAt_DESC
 }
 
 input PresenceScalarWhereInput {
   AND: [PresenceScalarWhereInput!]
-  date: DateTime
-  date_gt: DateTime
-  date_gte: DateTime
-  date_in: [DateTime!]
-  date_lt: DateTime
-  date_lte: DateTime
-  date_not: DateTime
-  date_not_in: [DateTime!]
+  dateEnd: DateTime
+  dateEnd_gt: DateTime
+  dateEnd_gte: DateTime
+  dateEnd_in: [DateTime!]
+  dateEnd_lt: DateTime
+  dateEnd_lte: DateTime
+  dateEnd_not: DateTime
+  dateEnd_not_in: [DateTime!]
+  dateStart: DateTime
+  dateStart_gt: DateTime
+  dateStart_gte: DateTime
+  dateStart_in: [DateTime!]
+  dateStart_lt: DateTime
+  dateStart_lte: DateTime
+  dateStart_not: DateTime
+  dateStart_not_in: [DateTime!]
   goodExcuse: Boolean
   goodExcuse_not: Boolean
   id: ID
@@ -288,54 +306,40 @@ input PresenceScalarWhereInput {
   reason_not_in: [String!]
   reason_not_starts_with: String
   reason_starts_with: String
-  timeMissed: DateTime
-  timeMissed_gt: DateTime
-  timeMissed_gte: DateTime
-  timeMissed_in: [DateTime!]
-  timeMissed_lt: DateTime
-  timeMissed_lte: DateTime
-  timeMissed_not: DateTime
-  timeMissed_not_in: [DateTime!]
-}
-
-input PresenceUpdateDataInput {
-  date: DateTime
-  goodExcuse: Boolean
-  reason: String
-  timeMissed: DateTime
 }
 
 input PresenceUpdateInput {
-  date: DateTime
+  dateEnd: DateTime
+  dateStart: DateTime
   goodExcuse: Boolean
   reason: String
-  timeMissed: DateTime
+  student: StudentUpdateOneRequiredWithoutPresencesInput
 }
 
 input PresenceUpdateManyDataInput {
-  date: DateTime
+  dateEnd: DateTime
+  dateStart: DateTime
   goodExcuse: Boolean
   reason: String
-  timeMissed: DateTime
 }
 
-input PresenceUpdateManyInput {
+input PresenceUpdateManyMutationInput {
+  dateEnd: DateTime
+  dateStart: DateTime
+  goodExcuse: Boolean
+  reason: String
+}
+
+input PresenceUpdateManyWithoutStudentInput {
   connect: [PresenceWhereUniqueInput!]
-  create: [PresenceCreateInput!]
+  create: [PresenceCreateWithoutStudentInput!]
   delete: [PresenceWhereUniqueInput!]
   deleteMany: [PresenceScalarWhereInput!]
   disconnect: [PresenceWhereUniqueInput!]
   set: [PresenceWhereUniqueInput!]
-  update: [PresenceUpdateWithWhereUniqueNestedInput!]
+  update: [PresenceUpdateWithWhereUniqueWithoutStudentInput!]
   updateMany: [PresenceUpdateManyWithWhereNestedInput!]
-  upsert: [PresenceUpsertWithWhereUniqueNestedInput!]
-}
-
-input PresenceUpdateManyMutationInput {
-  date: DateTime
-  goodExcuse: Boolean
-  reason: String
-  timeMissed: DateTime
+  upsert: [PresenceUpsertWithWhereUniqueWithoutStudentInput!]
 }
 
 input PresenceUpdateManyWithWhereNestedInput {
@@ -343,27 +347,42 @@ input PresenceUpdateManyWithWhereNestedInput {
   where: PresenceScalarWhereInput!
 }
 
-input PresenceUpdateWithWhereUniqueNestedInput {
-  data: PresenceUpdateDataInput!
+input PresenceUpdateWithoutStudentDataInput {
+  dateEnd: DateTime
+  dateStart: DateTime
+  goodExcuse: Boolean
+  reason: String
+}
+
+input PresenceUpdateWithWhereUniqueWithoutStudentInput {
+  data: PresenceUpdateWithoutStudentDataInput!
   where: PresenceWhereUniqueInput!
 }
 
-input PresenceUpsertWithWhereUniqueNestedInput {
-  create: PresenceCreateInput!
-  update: PresenceUpdateDataInput!
+input PresenceUpsertWithWhereUniqueWithoutStudentInput {
+  create: PresenceCreateWithoutStudentInput!
+  update: PresenceUpdateWithoutStudentDataInput!
   where: PresenceWhereUniqueInput!
 }
 
 input PresenceWhereInput {
   AND: [PresenceWhereInput!]
-  date: DateTime
-  date_gt: DateTime
-  date_gte: DateTime
-  date_in: [DateTime!]
-  date_lt: DateTime
-  date_lte: DateTime
-  date_not: DateTime
-  date_not_in: [DateTime!]
+  dateEnd: DateTime
+  dateEnd_gt: DateTime
+  dateEnd_gte: DateTime
+  dateEnd_in: [DateTime!]
+  dateEnd_lt: DateTime
+  dateEnd_lte: DateTime
+  dateEnd_not: DateTime
+  dateEnd_not_in: [DateTime!]
+  dateStart: DateTime
+  dateStart_gt: DateTime
+  dateStart_gte: DateTime
+  dateStart_in: [DateTime!]
+  dateStart_lt: DateTime
+  dateStart_lte: DateTime
+  dateStart_not: DateTime
+  dateStart_not_in: [DateTime!]
   goodExcuse: Boolean
   goodExcuse_not: Boolean
   id: ID
@@ -396,14 +415,7 @@ input PresenceWhereInput {
   reason_not_in: [String!]
   reason_not_starts_with: String
   reason_starts_with: String
-  timeMissed: DateTime
-  timeMissed_gt: DateTime
-  timeMissed_gte: DateTime
-  timeMissed_in: [DateTime!]
-  timeMissed_lt: DateTime
-  timeMissed_lte: DateTime
-  timeMissed_not: DateTime
-  timeMissed_not_in: [DateTime!]
+  student: StudentWhereInput
 }
 
 input PresenceWhereUniqueInput {
@@ -642,7 +654,35 @@ input StudentCreateInput {
   nationality: String!
   organisation: String
   pocoEmail: String
-  presences: PresenceCreateManyInput
+  presences: PresenceCreateManyWithoutStudentInput
+  privateEmail: String
+  residencePermit: String!
+  sexe: Sexe!
+  socialAssistant: SocialAssistantCreateOneInput
+}
+
+input StudentCreateOneWithoutPresencesInput {
+  connect: StudentWhereUniqueInput
+  create: StudentCreateWithoutPresencesInput
+}
+
+input StudentCreateWithoutPresencesInput {
+  addressCanton: String!
+  addressCity: String!
+  addressNPA: Int!
+  addressStreet: String!
+  batch: BatchCreateOneInput!
+  birthday: DateTime!
+  borrowLaptops: Boolean!
+  financialParticipation: FinancialParticipation!
+  financialParticipationComment: String
+  firstName: String!
+  foodCost: String
+  id: ID
+  lastName: String!
+  nationality: String!
+  organisation: String
+  pocoEmail: String
   privateEmail: String
   residencePermit: String!
   sexe: Sexe!
@@ -713,7 +753,7 @@ input StudentUpdateInput {
   nationality: String
   organisation: String
   pocoEmail: String
-  presences: PresenceUpdateManyInput
+  presences: PresenceUpdateManyWithoutStudentInput
   privateEmail: String
   residencePermit: String
   sexe: Sexe
@@ -738,6 +778,40 @@ input StudentUpdateManyMutationInput {
   privateEmail: String
   residencePermit: String
   sexe: Sexe
+}
+
+input StudentUpdateOneRequiredWithoutPresencesInput {
+  connect: StudentWhereUniqueInput
+  create: StudentCreateWithoutPresencesInput
+  update: StudentUpdateWithoutPresencesDataInput
+  upsert: StudentUpsertWithoutPresencesInput
+}
+
+input StudentUpdateWithoutPresencesDataInput {
+  addressCanton: String
+  addressCity: String
+  addressNPA: Int
+  addressStreet: String
+  batch: BatchUpdateOneRequiredInput
+  birthday: DateTime
+  borrowLaptops: Boolean
+  financialParticipation: FinancialParticipation
+  financialParticipationComment: String
+  firstName: String
+  foodCost: String
+  lastName: String
+  nationality: String
+  organisation: String
+  pocoEmail: String
+  privateEmail: String
+  residencePermit: String
+  sexe: Sexe
+  socialAssistant: SocialAssistantUpdateOneInput
+}
+
+input StudentUpsertWithoutPresencesInput {
+  create: StudentCreateWithoutPresencesInput!
+  update: StudentUpdateWithoutPresencesDataInput!
 }
 
 input StudentWhereInput {

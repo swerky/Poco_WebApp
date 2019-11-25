@@ -80,23 +80,24 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
             <TableCell key="studentEmail">Email</TableCell>
             <TableCell key="studentBirthday">Birthday</TableCell>
             <TableCell key="studentBatch">Batch</TableCell>
+            <TableCell key="studentAbsence">Absence</TableCell>
             <TableCell key="studentActions">Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {students.map((student : StudentInterface) => (
             <TableRow key={student.id}>
-              <TableCell component="th" scope="row" key={"name_" + student.firstName + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"firstname_" + student.firstName + "_" + student.id}>
                 {student.firstName}
               </TableCell>
-              <TableCell component="th" scope="row" key={"name_" + student.lastName + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"lastname_" + student.lastName + "_" + student.id}>
                 {student.lastName}
               </TableCell>
-              <TableCell component="th" scope="row" key={"name_" + student.privateEmail + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"privateemail_" + student.privateEmail + "_" + student.id}>
                 {student.privateEmail}
               </TableCell>
               {student.birthday && 
-              <TableCell component="th" scope="row" key={"name_" + student.birthday + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"birthday_" + student.birthday + "_" + student.id}>
                 <Tooltip title="format: dd.mm.yyy" aria-label="date">
                   <span>
                     {moment(student.birthday).format('DD.MM.YYYY')}
@@ -104,9 +105,12 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
                 </Tooltip>
               </TableCell>}
               {student.batch && 
-              <TableCell component="th" scope="row" key={"name_" + student.batch + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"batch_" + student.batch + "_" + student.id}>
                 {student.batch.name}
               </TableCell>}
+              <TableCell component="th" scope="row" key={"presence_" + student.firstName + "_" + student.id}>
+                {student.presences ? student.presences.length : 0}
+              </TableCell>
               <TableCell component="th" scope="row" key={"name_actions_" + student.id}>
                 <Tooltip title="Edit" aria-label="edit">
                   <IconButton className={classes.button} aria-label="edit">

@@ -33,8 +33,8 @@ export const ADD_STUDENT = gql`
       foodCost
       presences {
         id
-        date
-        timeMissed
+        dateStart
+        dateEnd
         goodExcuse
         reason
       }
@@ -78,8 +78,8 @@ export const GET_STUDENTS = gql`
     foodCost
     presences {
       id
-      date
-      timeMissed
+      dateStart
+      dateEnd
       goodExcuse
       reason
     }

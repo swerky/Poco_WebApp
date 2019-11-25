@@ -1,9 +1,10 @@
 type Presence {
   id: ID! @id
-  date: DateTime!
-  timeMissed: DateTime!
+  dateStart: DateTime!
+  dateEnd: DateTime!
   goodExcuse: Boolean
   reason: String
+  student: Student! @relation(link: INLINE)
   #createAt: DateTime! @createAt
   #updateAt: DateTime! @updateAt
 }

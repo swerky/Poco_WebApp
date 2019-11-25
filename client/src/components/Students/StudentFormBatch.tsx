@@ -167,7 +167,7 @@ const StudentFormBatch: FunctionComponent<StudentFormBatchProps> = ({newBatch, s
                 required
                 disableToolbar
                 variant="inline"
-                format="DD/MM/YYYY"
+                format="dd.MM.yyyy"
                 margin="normal"
                 id="startingTime"
                 label="Start Date"
@@ -186,7 +186,7 @@ const StudentFormBatch: FunctionComponent<StudentFormBatchProps> = ({newBatch, s
                 required
                 disableToolbar
                 variant="inline"
-                format="DD/MM/YYYY"
+                format="dd.MM.yyyy"
                 margin="normal"
                 id="endTime"
                 label="End Date"

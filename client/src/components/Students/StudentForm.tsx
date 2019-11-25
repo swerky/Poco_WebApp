@@ -171,19 +171,15 @@ const StudentForm : FunctionComponent = () => {
     const query = makeDataQuery();
     addStudent({
       variables: {data: query},
-      update(cache, { data: { addedStudent } }) {
-        console.log(addedStudent);
+      update(cache, { data: {createStudent}}) {
         const existingStudents = cache.readQuery<StudentData>({
           query: GET_STUDENTS 
         });
-
-        console.log(addedStudent)
-        
         if(existingStudents){
           cache.writeQuery<StudentData>({
             query: GET_STUDENTS,
             data: { 
-              students: [...existingStudents.students, addedStudent.createStudent]
+              students: [...existingStudents.students, createStudent]
             },
           });
         }
@@ -314,7 +310,7 @@ const StudentForm : FunctionComponent = () => {
     if(date !== null){
       setValues((oldValues : StudentInterface) => ({
         ...oldValues,
-        ["birthday"]: date,
+        ["birthday"]: moment(date),
       }));
     }
   };
@@ -476,25 +472,25 @@ const StudentForm : FunctionComponent = () => {
         value={values.residencePermit}
         margin="normal" 
       />
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container justify="space-around">
-          <KeyboardDatePicker
-            required
-            disableToolbar
-            variant="inline"
-            format="DD.MM.YYYY"
-            margin="normal"
-            id="birthday"
-            label="Birthday"
-            value={values.birthday}
-            onChange={handleDateChange}
-            className={classes.input}
-            KeyboardButtonProps={{
-              'aria-label': 'change date',
-            }}
-          />
-        </Grid>
-      </MuiPickersUtilsProvider>
+      <Grid container justify="space-around">
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              required
+              disableToolbar
+              variant="inline"
+              format="dd.MM.yyyy"
+              margin="normal"
+              id="birthday"
+              label="Birthday"
+              value={values.birthday}
+              onChange={handleDateChange}
+              className={classes.input}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
+            />
+        </MuiPickersUtilsProvider>
+      </Grid>
       <TextField
         required
         id="nationality"

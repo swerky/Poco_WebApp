@@ -36,12 +36,10 @@ export interface SocialAssistantInterface {
 
 export interface PresenceInterface {
   id?: string
-  date: moment.Moment
-  timeMissed: moment.Moment
+  dateStart: moment.Moment
+  dateEnd: moment.Moment
   goodExcuse: boolean
   reason: string
-  createAt: moment.Moment
-  updateAt: moment.Moment
 }
 
 export interface BatchClass {
@@ -49,4 +47,20 @@ export interface BatchClass {
   name: string
   startingTime?: moment.Moment
   endTime?: moment.Moment
+}
+
+/* Special student interface */
+export interface StudentAbsence {
+  id?: string
+  firstName: string
+  lastName?: string
+  presences?: PresenceInterface[] | null
+  batch?: BatchClass
+  pourcentage: number
+  timeMissed: number
+  nbAbsence: number
+}
+
+export interface StudentData {
+  students: StudentInterface[]
 }

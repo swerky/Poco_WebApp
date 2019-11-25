@@ -18,7 +18,7 @@ type Student {
   financialParticipationComment: String
   borrowLaptops: Boolean!
   foodCost: String
-  presences: [Presence] @relation(link: TABLE, name: "StudentPresence")
+  presences: [Presence]
   batch: Batch! @relation(link: INLINE)
   #createDate: DateTime! @createAt
   #updateDate: DateTime! @updateAt

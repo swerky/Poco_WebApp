@@ -1,132 +1,86 @@
 import React, { useEffect, useState, FunctionComponent } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import AbsenceTable from './AbsenceTable';
+import StudentInterface, {StudentAbsence, StudentData, PresenceInterface} from '../../interfaces/Student.interface';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import {GET_STUDENTS, DELETE_STUDENT} from '../../queries/StudentQuery';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import ServerError from '../../utils/Errors/ServerError';
+import moment from 'moment';
+import round from 'lodash/round';
 
-interface absence {
-  day: number,
-  presence: number
-}
+/* CONST */
+const NB_HOURS_DAY = 7;
+const NB_DAY_WEEK = 5;
+const NB_WEEKS = 13;
+const TIME_BATCH = NB_HOURS_DAY * NB_DAY_WEEK * NB_WEEKS * 60;
 
-interface studentAbsences {
-  name: string,
-  absences: absence[]
-}
-
+/* STYLE */
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      width: '100%',
-      marginTop: theme.spacing(3),
-      overflowX: 'auto',
-    },
-    table: {
-      minWidth: 650,
+    progress: {
+      margin: theme.spacing(2),
     },
   }),
 );
 
 const Absence : FunctionComponent = () => {
   const classes = useStyles();
+  const { loading : queryLoading, error: queryError, data } = useQuery<StudentData>(GET_STUDENTS);
   
   useEffect(() => {
     // Met à jour le titre du document via l’API du navigateur
     document.title = `Absence`;
-  }); 
+  });
 
-  const [datas, setDatas] = useState<Array<studentAbsences>>(
-    [
-      {
-        name: "John",
-        absences: [{
-            day: 1,
-            presence: 1
-          },
-          {
-            day: 2,
-            presence: 1
-          },
-        ]
-      },
-      {
-        name: "Bob",
-        absences: [{
-            day: 1,
-            presence: 0.5
-          },
-          {
-            day: 2,
-            presence: 1
-          }
-        ]
-      }
-    ]
-  );
-
-  function handleChange(name: string, day: number, event: React.ChangeEvent<{value: unknown}>) {
-    let presence: number = event.target.value as number
-    let values : Array<studentAbsences> = datas;
-    for(let value of values) {
-      if(value.name === name) {
-         for(let absence of value.absences){
-           if(absence.day === day){
-             absence.presence = presence;
-           }
-         }
-      }
-    }
-    setDatas(() => [...values]);
+  /* METHODS */
+  const getPourcentageAbsence = (student: StudentInterface) => {
+    return round((TIME_BATCH - getTimeMissed(student)) / TIME_BATCH * 100,2);
   }
 
+  const getTimeMissed = (student: StudentInterface) => {
+    const reducer = (accumulator: number, presence: PresenceInterface) => accumulator + moment.duration(presence.dateEnd.diff(presence.dateStart)).asHours();
+    return student.presences ? student.presences.reduce((reducer), 0) : 0;
+  }
+
+  const formatDate = (presence: PresenceInterface) => {
+    return {
+      ...presence,
+      dateStart: moment(presence.dateStart),
+      dateEnd: moment(presence.dateEnd)
+    };
+  }
+
+  /* LOADING */
+  if(queryLoading) return <CircularProgress className={classes.progress} />
+
+  /* ERROR */
+  if(queryError) return  <ServerError/>
+
+  /* MODIFIED DATA */
+  /* A reflechir si faire une query différente*/
+  const studentsAbsence : StudentAbsence[] = data ? 
+    data.students.map((student) => {
+      student.presences = student.presences ? student.presences.map(formatDate): null;
+      return (
+        {
+          id: student.id,
+          firstName: student.firstName,
+          lastName: student.lastName,
+          presence: student.presences,
+          batch: student.batch,
+          pourcentage: getPourcentageAbsence(student),
+          timeMissed: getTimeMissed(student),
+          nbAbsence: student.presences ? student.presences.length : 0
+        }
+      );
+    }) : [];
+
+  /* SHOW COMPONENT */
   return (
     <>
       <h1>Absence</h1>
-      <Paper className={classes.root}>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow key="metadata">
-              <TableCell key="studentTitle">Student</TableCell>
-              <TableCell align="center" key="day1">Day 1</TableCell>
-              <TableCell align="center" key="day2">Day 2</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {datas.map(data => (
-              <TableRow key={data.name}>
-                <TableCell component="th" scope="row" key={data.name + "_name"}>
-                  {data.name}
-                </TableCell>
-                {data.absences.map(absence => (
-                  <TableCell align="center" key={data.name + "_abscence_" + absence.day}>
-                  <FormControl>
-                    <Select
-                      value={absence.presence}
-                      onChange={(event: React.ChangeEvent<{value: unknown}>) => handleChange(data.name, absence.day, event)}
-                      inputProps={{
-                        name: 'age',
-                        id: 'age-simple',
-                      }}
-                    >
-                      <MenuItem value={1.0}>1</MenuItem>
-                      <MenuItem value={0.8}>0.8</MenuItem>
-                      <MenuItem value={0.5}>0.5</MenuItem>
-                      <MenuItem value={0}>0</MenuItem>
-                    </Select>
-                    </FormControl>
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
+      <AbsenceTable students={studentsAbsence}/>
     </>
   );
 }

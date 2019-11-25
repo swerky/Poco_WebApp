@@ -89,18 +89,18 @@ export interface NexusPrismaTypes {
       StudentCreateInput: StudentCreateInputInputObject
       SocialAssistantCreateOneInput: SocialAssistantCreateOneInputInputObject
       SocialAssistantCreateInput: SocialAssistantCreateInputInputObject
-      PresenceCreateManyInput: PresenceCreateManyInputInputObject
-      PresenceCreateInput: PresenceCreateInputInputObject
+      PresenceCreateManyWithoutStudentInput: PresenceCreateManyWithoutStudentInputInputObject
+      PresenceCreateWithoutStudentInput: PresenceCreateWithoutStudentInputInputObject
       BatchCreateOneInput: BatchCreateOneInputInputObject
       BatchCreateInput: BatchCreateInputInputObject
       StudentUpdateInput: StudentUpdateInputInputObject
       SocialAssistantUpdateOneInput: SocialAssistantUpdateOneInputInputObject
       SocialAssistantUpdateDataInput: SocialAssistantUpdateDataInputInputObject
       SocialAssistantUpsertNestedInput: SocialAssistantUpsertNestedInputInputObject
-      PresenceUpdateManyInput: PresenceUpdateManyInputInputObject
-      PresenceUpdateWithWhereUniqueNestedInput: PresenceUpdateWithWhereUniqueNestedInputInputObject
-      PresenceUpdateDataInput: PresenceUpdateDataInputInputObject
-      PresenceUpsertWithWhereUniqueNestedInput: PresenceUpsertWithWhereUniqueNestedInputInputObject
+      PresenceUpdateManyWithoutStudentInput: PresenceUpdateManyWithoutStudentInputInputObject
+      PresenceUpdateWithWhereUniqueWithoutStudentInput: PresenceUpdateWithWhereUniqueWithoutStudentInputInputObject
+      PresenceUpdateWithoutStudentDataInput: PresenceUpdateWithoutStudentDataInputInputObject
+      PresenceUpsertWithWhereUniqueWithoutStudentInput: PresenceUpsertWithWhereUniqueWithoutStudentInputInputObject
       PresenceScalarWhereInput: PresenceScalarWhereInputInputObject
       PresenceUpdateManyWithWhereNestedInput: PresenceUpdateManyWithWhereNestedInputInputObject
       PresenceUpdateManyDataInput: PresenceUpdateManyDataInputInputObject
@@ -112,7 +112,13 @@ export interface NexusPrismaTypes {
       SocialAssistantUpdateManyMutationInput: SocialAssistantUpdateManyMutationInputInputObject
       BatchUpdateInput: BatchUpdateInputInputObject
       BatchUpdateManyMutationInput: BatchUpdateManyMutationInputInputObject
+      PresenceCreateInput: PresenceCreateInputInputObject
+      StudentCreateOneWithoutPresencesInput: StudentCreateOneWithoutPresencesInputInputObject
+      StudentCreateWithoutPresencesInput: StudentCreateWithoutPresencesInputInputObject
       PresenceUpdateInput: PresenceUpdateInputInputObject
+      StudentUpdateOneRequiredWithoutPresencesInput: StudentUpdateOneRequiredWithoutPresencesInputInputObject
+      StudentUpdateWithoutPresencesDataInput: StudentUpdateWithoutPresencesDataInputInputObject
+      StudentUpsertWithoutPresencesInput: StudentUpsertWithoutPresencesInputInputObject
       PresenceUpdateManyMutationInput: PresenceUpdateManyMutationInputInputObject
       StudentSubscriptionWhereInput: StudentSubscriptionWhereInputInputObject
       SocialAssistantSubscriptionWhereInput: SocialAssistantSubscriptionWhereInputInputObject
@@ -724,17 +730,19 @@ export interface SocialAssistantFieldDetails {
 type PresenceObject =
   | PresenceFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'date', args?: [] | false, alias?: string  } 
-  | { name: 'timeMissed', args?: [] | false, alias?: string  } 
+  | { name: 'dateStart', args?: [] | false, alias?: string  } 
+  | { name: 'dateEnd', args?: [] | false, alias?: string  } 
   | { name: 'goodExcuse', args?: [] | false, alias?: string  } 
   | { name: 'reason', args?: [] | false, alias?: string  } 
+  | { name: 'student', args?: [] | false, alias?: string  } 
 
 type PresenceFields =
   | 'id'
-  | 'date'
-  | 'timeMissed'
+  | 'dateStart'
+  | 'dateEnd'
   | 'goodExcuse'
   | 'reason'
+  | 'student'
 
 
 
@@ -749,7 +757,7 @@ export interface PresenceFieldDetails {
     nullable: false
     resolve: undefined
   }
-  date: {
+  dateStart: {
     type: 'DateTime'
     args: {}
     description: string
@@ -757,7 +765,7 @@ export interface PresenceFieldDetails {
     nullable: false
     resolve: undefined
   }
-  timeMissed: {
+  dateEnd: {
     type: 'DateTime'
     args: {}
     description: string
@@ -780,6 +788,19 @@ export interface PresenceFieldDetails {
     list: undefined
     nullable: true
     resolve: undefined
+  }
+  student: {
+    type: 'Student'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Presence">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Student> | prisma.Student
   }
 }
   
@@ -2549,15 +2570,15 @@ export interface PresenceSubscriptionPayloadFieldDetails {
 type PresencePreviousValuesObject =
   | PresencePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'date', args?: [] | false, alias?: string  } 
-  | { name: 'timeMissed', args?: [] | false, alias?: string  } 
+  | { name: 'dateStart', args?: [] | false, alias?: string  } 
+  | { name: 'dateEnd', args?: [] | false, alias?: string  } 
   | { name: 'goodExcuse', args?: [] | false, alias?: string  } 
   | { name: 'reason', args?: [] | false, alias?: string  } 
 
 type PresencePreviousValuesFields =
   | 'id'
-  | 'date'
-  | 'timeMissed'
+  | 'dateStart'
+  | 'dateEnd'
   | 'goodExcuse'
   | 'reason'
 
@@ -2574,7 +2595,7 @@ export interface PresencePreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  date: {
+  dateStart: {
     type: 'DateTime'
     args: {}
     description: string
@@ -2582,7 +2603,7 @@ export interface PresencePreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  timeMissed: {
+  dateEnd: {
     type: 'DateTime'
     args: {}
     description: string
@@ -2632,22 +2653,22 @@ export interface PresenceWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  date?: string | null
-  date_not?: string | null
-  date_in?: string[]
-  date_not_in?: string[]
-  date_lt?: string | null
-  date_lte?: string | null
-  date_gt?: string | null
-  date_gte?: string | null
-  timeMissed?: string | null
-  timeMissed_not?: string | null
-  timeMissed_in?: string[]
-  timeMissed_not_in?: string[]
-  timeMissed_lt?: string | null
-  timeMissed_lte?: string | null
-  timeMissed_gt?: string | null
-  timeMissed_gte?: string | null
+  dateStart?: string | null
+  dateStart_not?: string | null
+  dateStart_in?: string[]
+  dateStart_not_in?: string[]
+  dateStart_lt?: string | null
+  dateStart_lte?: string | null
+  dateStart_gt?: string | null
+  dateStart_gte?: string | null
+  dateEnd?: string | null
+  dateEnd_not?: string | null
+  dateEnd_in?: string[]
+  dateEnd_not_in?: string[]
+  dateEnd_lt?: string | null
+  dateEnd_lte?: string | null
+  dateEnd_gt?: string | null
+  dateEnd_gte?: string | null
   goodExcuse?: boolean | null
   goodExcuse_not?: boolean | null
   reason?: string | null
@@ -2664,6 +2685,7 @@ export interface PresenceWhereInput {
   reason_not_starts_with?: string | null
   reason_ends_with?: string | null
   reason_not_ends_with?: string | null
+  student?: StudentWhereInput | null
   AND?: PresenceWhereInput[]
   OR?: PresenceWhereInput[]
   NOT?: PresenceWhereInput[]
@@ -2684,22 +2706,22 @@ export type PresenceWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'date', alias?: string  } 
-  | { name: 'date_not', alias?: string  } 
-  | { name: 'date_in', alias?: string  } 
-  | { name: 'date_not_in', alias?: string  } 
-  | { name: 'date_lt', alias?: string  } 
-  | { name: 'date_lte', alias?: string  } 
-  | { name: 'date_gt', alias?: string  } 
-  | { name: 'date_gte', alias?: string  } 
-  | { name: 'timeMissed', alias?: string  } 
-  | { name: 'timeMissed_not', alias?: string  } 
-  | { name: 'timeMissed_in', alias?: string  } 
-  | { name: 'timeMissed_not_in', alias?: string  } 
-  | { name: 'timeMissed_lt', alias?: string  } 
-  | { name: 'timeMissed_lte', alias?: string  } 
-  | { name: 'timeMissed_gt', alias?: string  } 
-  | { name: 'timeMissed_gte', alias?: string  } 
+  | { name: 'dateStart', alias?: string  } 
+  | { name: 'dateStart_not', alias?: string  } 
+  | { name: 'dateStart_in', alias?: string  } 
+  | { name: 'dateStart_not_in', alias?: string  } 
+  | { name: 'dateStart_lt', alias?: string  } 
+  | { name: 'dateStart_lte', alias?: string  } 
+  | { name: 'dateStart_gt', alias?: string  } 
+  | { name: 'dateStart_gte', alias?: string  } 
+  | { name: 'dateEnd', alias?: string  } 
+  | { name: 'dateEnd_not', alias?: string  } 
+  | { name: 'dateEnd_in', alias?: string  } 
+  | { name: 'dateEnd_not_in', alias?: string  } 
+  | { name: 'dateEnd_lt', alias?: string  } 
+  | { name: 'dateEnd_lte', alias?: string  } 
+  | { name: 'dateEnd_gt', alias?: string  } 
+  | { name: 'dateEnd_gte', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'goodExcuse_not', alias?: string  } 
   | { name: 'reason', alias?: string  } 
@@ -2716,6 +2738,7 @@ export type PresenceWhereInputInputObject =
   | { name: 'reason_not_starts_with', alias?: string  } 
   | { name: 'reason_ends_with', alias?: string  } 
   | { name: 'reason_not_ends_with', alias?: string  } 
+  | { name: 'student', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -3450,7 +3473,7 @@ export interface StudentCreateInput {
   financialParticipationComment?: string | null
   borrowLaptops?: boolean
   foodCost?: string | null
-  presences?: PresenceCreateManyInput | null
+  presences?: PresenceCreateManyWithoutStudentInput | null
   batch?: BatchCreateOneInput
 }
 export type StudentCreateInputInputObject =
@@ -3501,27 +3524,27 @@ export type SocialAssistantCreateInputInputObject =
   | { name: 'phone', alias?: string  } 
   | { name: 'email', alias?: string  } 
   
-export interface PresenceCreateManyInput {
-  create?: PresenceCreateInput[]
+export interface PresenceCreateManyWithoutStudentInput {
+  create?: PresenceCreateWithoutStudentInput[]
   connect?: PresenceWhereUniqueInput[]
 }
-export type PresenceCreateManyInputInputObject =
-  | Extract<keyof PresenceCreateManyInput, string>
+export type PresenceCreateManyWithoutStudentInputInputObject =
+  | Extract<keyof PresenceCreateManyWithoutStudentInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface PresenceCreateInput {
+export interface PresenceCreateWithoutStudentInput {
   id?: string | null
-  date?: string
-  timeMissed?: string
+  dateStart?: string
+  dateEnd?: string
   goodExcuse?: boolean | null
   reason?: string | null
 }
-export type PresenceCreateInputInputObject =
-  | Extract<keyof PresenceCreateInput, string>
+export type PresenceCreateWithoutStudentInputInputObject =
+  | Extract<keyof PresenceCreateWithoutStudentInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'date', alias?: string  } 
-  | { name: 'timeMissed', alias?: string  } 
+  | { name: 'dateStart', alias?: string  } 
+  | { name: 'dateEnd', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
   
@@ -3566,7 +3589,7 @@ export interface StudentUpdateInput {
   financialParticipationComment?: string | null
   borrowLaptops?: boolean | null
   foodCost?: string | null
-  presences?: PresenceUpdateManyInput | null
+  presences?: PresenceUpdateManyWithoutStudentInput | null
   batch?: BatchUpdateOneRequiredInput | null
 }
 export type StudentUpdateInputInputObject =
@@ -3631,58 +3654,58 @@ export type SocialAssistantUpsertNestedInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface PresenceUpdateManyInput {
-  create?: PresenceCreateInput[]
-  update?: PresenceUpdateWithWhereUniqueNestedInput[]
-  upsert?: PresenceUpsertWithWhereUniqueNestedInput[]
+export interface PresenceUpdateManyWithoutStudentInput {
+  create?: PresenceCreateWithoutStudentInput[]
   delete?: PresenceWhereUniqueInput[]
   connect?: PresenceWhereUniqueInput[]
   set?: PresenceWhereUniqueInput[]
   disconnect?: PresenceWhereUniqueInput[]
+  update?: PresenceUpdateWithWhereUniqueWithoutStudentInput[]
+  upsert?: PresenceUpsertWithWhereUniqueWithoutStudentInput[]
   deleteMany?: PresenceScalarWhereInput[]
   updateMany?: PresenceUpdateManyWithWhereNestedInput[]
 }
-export type PresenceUpdateManyInputInputObject =
-  | Extract<keyof PresenceUpdateManyInput, string>
+export type PresenceUpdateManyWithoutStudentInputInputObject =
+  | Extract<keyof PresenceUpdateManyWithoutStudentInput, string>
   | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   | { name: 'set', alias?: string  } 
   | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface PresenceUpdateWithWhereUniqueNestedInput {
+export interface PresenceUpdateWithWhereUniqueWithoutStudentInput {
   where?: PresenceWhereUniqueInput
-  data?: PresenceUpdateDataInput
+  data?: PresenceUpdateWithoutStudentDataInput
 }
-export type PresenceUpdateWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof PresenceUpdateWithWhereUniqueNestedInput, string>
+export type PresenceUpdateWithWhereUniqueWithoutStudentInputInputObject =
+  | Extract<keyof PresenceUpdateWithWhereUniqueWithoutStudentInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface PresenceUpdateDataInput {
-  date?: string | null
-  timeMissed?: string | null
+export interface PresenceUpdateWithoutStudentDataInput {
+  dateStart?: string | null
+  dateEnd?: string | null
   goodExcuse?: boolean | null
   reason?: string | null
 }
-export type PresenceUpdateDataInputInputObject =
-  | Extract<keyof PresenceUpdateDataInput, string>
-  | { name: 'date', alias?: string  } 
-  | { name: 'timeMissed', alias?: string  } 
+export type PresenceUpdateWithoutStudentDataInputInputObject =
+  | Extract<keyof PresenceUpdateWithoutStudentDataInput, string>
+  | { name: 'dateStart', alias?: string  } 
+  | { name: 'dateEnd', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
   
-export interface PresenceUpsertWithWhereUniqueNestedInput {
+export interface PresenceUpsertWithWhereUniqueWithoutStudentInput {
   where?: PresenceWhereUniqueInput
-  update?: PresenceUpdateDataInput
-  create?: PresenceCreateInput
+  update?: PresenceUpdateWithoutStudentDataInput
+  create?: PresenceCreateWithoutStudentInput
 }
-export type PresenceUpsertWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof PresenceUpsertWithWhereUniqueNestedInput, string>
+export type PresenceUpsertWithWhereUniqueWithoutStudentInputInputObject =
+  | Extract<keyof PresenceUpsertWithWhereUniqueWithoutStudentInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
@@ -3702,22 +3725,22 @@ export interface PresenceScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  date?: string | null
-  date_not?: string | null
-  date_in?: string[]
-  date_not_in?: string[]
-  date_lt?: string | null
-  date_lte?: string | null
-  date_gt?: string | null
-  date_gte?: string | null
-  timeMissed?: string | null
-  timeMissed_not?: string | null
-  timeMissed_in?: string[]
-  timeMissed_not_in?: string[]
-  timeMissed_lt?: string | null
-  timeMissed_lte?: string | null
-  timeMissed_gt?: string | null
-  timeMissed_gte?: string | null
+  dateStart?: string | null
+  dateStart_not?: string | null
+  dateStart_in?: string[]
+  dateStart_not_in?: string[]
+  dateStart_lt?: string | null
+  dateStart_lte?: string | null
+  dateStart_gt?: string | null
+  dateStart_gte?: string | null
+  dateEnd?: string | null
+  dateEnd_not?: string | null
+  dateEnd_in?: string[]
+  dateEnd_not_in?: string[]
+  dateEnd_lt?: string | null
+  dateEnd_lte?: string | null
+  dateEnd_gt?: string | null
+  dateEnd_gte?: string | null
   goodExcuse?: boolean | null
   goodExcuse_not?: boolean | null
   reason?: string | null
@@ -3754,22 +3777,22 @@ export type PresenceScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'date', alias?: string  } 
-  | { name: 'date_not', alias?: string  } 
-  | { name: 'date_in', alias?: string  } 
-  | { name: 'date_not_in', alias?: string  } 
-  | { name: 'date_lt', alias?: string  } 
-  | { name: 'date_lte', alias?: string  } 
-  | { name: 'date_gt', alias?: string  } 
-  | { name: 'date_gte', alias?: string  } 
-  | { name: 'timeMissed', alias?: string  } 
-  | { name: 'timeMissed_not', alias?: string  } 
-  | { name: 'timeMissed_in', alias?: string  } 
-  | { name: 'timeMissed_not_in', alias?: string  } 
-  | { name: 'timeMissed_lt', alias?: string  } 
-  | { name: 'timeMissed_lte', alias?: string  } 
-  | { name: 'timeMissed_gt', alias?: string  } 
-  | { name: 'timeMissed_gte', alias?: string  } 
+  | { name: 'dateStart', alias?: string  } 
+  | { name: 'dateStart_not', alias?: string  } 
+  | { name: 'dateStart_in', alias?: string  } 
+  | { name: 'dateStart_not_in', alias?: string  } 
+  | { name: 'dateStart_lt', alias?: string  } 
+  | { name: 'dateStart_lte', alias?: string  } 
+  | { name: 'dateStart_gt', alias?: string  } 
+  | { name: 'dateStart_gte', alias?: string  } 
+  | { name: 'dateEnd', alias?: string  } 
+  | { name: 'dateEnd_not', alias?: string  } 
+  | { name: 'dateEnd_in', alias?: string  } 
+  | { name: 'dateEnd_not_in', alias?: string  } 
+  | { name: 'dateEnd_lt', alias?: string  } 
+  | { name: 'dateEnd_lte', alias?: string  } 
+  | { name: 'dateEnd_gt', alias?: string  } 
+  | { name: 'dateEnd_gte', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'goodExcuse_not', alias?: string  } 
   | { name: 'reason', alias?: string  } 
@@ -3800,15 +3823,15 @@ export type PresenceUpdateManyWithWhereNestedInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface PresenceUpdateManyDataInput {
-  date?: string | null
-  timeMissed?: string | null
+  dateStart?: string | null
+  dateEnd?: string | null
   goodExcuse?: boolean | null
   reason?: string | null
 }
 export type PresenceUpdateManyDataInputInputObject =
   | Extract<keyof PresenceUpdateManyDataInput, string>
-  | { name: 'date', alias?: string  } 
-  | { name: 'timeMissed', alias?: string  } 
+  | { name: 'dateStart', alias?: string  } 
+  | { name: 'dateEnd', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
   
@@ -3932,29 +3955,167 @@ export type BatchUpdateManyMutationInputInputObject =
   | { name: 'startingTime', alias?: string  } 
   | { name: 'endTime', alias?: string  } 
   
-export interface PresenceUpdateInput {
-  date?: string | null
-  timeMissed?: string | null
+export interface PresenceCreateInput {
+  id?: string | null
+  dateStart?: string
+  dateEnd?: string
   goodExcuse?: boolean | null
   reason?: string | null
+  student?: StudentCreateOneWithoutPresencesInput
+}
+export type PresenceCreateInputInputObject =
+  | Extract<keyof PresenceCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'dateStart', alias?: string  } 
+  | { name: 'dateEnd', alias?: string  } 
+  | { name: 'goodExcuse', alias?: string  } 
+  | { name: 'reason', alias?: string  } 
+  | { name: 'student', alias?: string  } 
+  
+export interface StudentCreateOneWithoutPresencesInput {
+  create?: StudentCreateWithoutPresencesInput | null
+  connect?: StudentWhereUniqueInput | null
+}
+export type StudentCreateOneWithoutPresencesInputInputObject =
+  | Extract<keyof StudentCreateOneWithoutPresencesInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface StudentCreateWithoutPresencesInput {
+  id?: string | null
+  firstName?: string
+  lastName?: string
+  sexe?: prisma.Sexe
+  privateEmail?: string | null
+  pocoEmail?: string | null
+  residencePermit?: string
+  birthday?: string
+  nationality?: string
+  addressStreet?: string
+  addressCity?: string
+  addressNPA?: number
+  addressCanton?: string
+  organisation?: string | null
+  socialAssistant?: SocialAssistantCreateOneInput | null
+  financialParticipation?: prisma.FinancialParticipation
+  financialParticipationComment?: string | null
+  borrowLaptops?: boolean
+  foodCost?: string | null
+  batch?: BatchCreateOneInput
+}
+export type StudentCreateWithoutPresencesInputInputObject =
+  | Extract<keyof StudentCreateWithoutPresencesInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'firstName', alias?: string  } 
+  | { name: 'lastName', alias?: string  } 
+  | { name: 'sexe', alias?: string  } 
+  | { name: 'privateEmail', alias?: string  } 
+  | { name: 'pocoEmail', alias?: string  } 
+  | { name: 'residencePermit', alias?: string  } 
+  | { name: 'birthday', alias?: string  } 
+  | { name: 'nationality', alias?: string  } 
+  | { name: 'addressStreet', alias?: string  } 
+  | { name: 'addressCity', alias?: string  } 
+  | { name: 'addressNPA', alias?: string  } 
+  | { name: 'addressCanton', alias?: string  } 
+  | { name: 'organisation', alias?: string  } 
+  | { name: 'socialAssistant', alias?: string  } 
+  | { name: 'financialParticipation', alias?: string  } 
+  | { name: 'financialParticipationComment', alias?: string  } 
+  | { name: 'borrowLaptops', alias?: string  } 
+  | { name: 'foodCost', alias?: string  } 
+  | { name: 'batch', alias?: string  } 
+  
+export interface PresenceUpdateInput {
+  dateStart?: string | null
+  dateEnd?: string | null
+  goodExcuse?: boolean | null
+  reason?: string | null
+  student?: StudentUpdateOneRequiredWithoutPresencesInput | null
 }
 export type PresenceUpdateInputInputObject =
   | Extract<keyof PresenceUpdateInput, string>
-  | { name: 'date', alias?: string  } 
-  | { name: 'timeMissed', alias?: string  } 
+  | { name: 'dateStart', alias?: string  } 
+  | { name: 'dateEnd', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
+  | { name: 'student', alias?: string  } 
+  
+export interface StudentUpdateOneRequiredWithoutPresencesInput {
+  create?: StudentCreateWithoutPresencesInput | null
+  update?: StudentUpdateWithoutPresencesDataInput | null
+  upsert?: StudentUpsertWithoutPresencesInput | null
+  connect?: StudentWhereUniqueInput | null
+}
+export type StudentUpdateOneRequiredWithoutPresencesInputInputObject =
+  | Extract<keyof StudentUpdateOneRequiredWithoutPresencesInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface StudentUpdateWithoutPresencesDataInput {
+  firstName?: string | null
+  lastName?: string | null
+  sexe?: prisma.Sexe | null
+  privateEmail?: string | null
+  pocoEmail?: string | null
+  residencePermit?: string | null
+  birthday?: string | null
+  nationality?: string | null
+  addressStreet?: string | null
+  addressCity?: string | null
+  addressNPA?: number | null
+  addressCanton?: string | null
+  organisation?: string | null
+  socialAssistant?: SocialAssistantUpdateOneInput | null
+  financialParticipation?: prisma.FinancialParticipation | null
+  financialParticipationComment?: string | null
+  borrowLaptops?: boolean | null
+  foodCost?: string | null
+  batch?: BatchUpdateOneRequiredInput | null
+}
+export type StudentUpdateWithoutPresencesDataInputInputObject =
+  | Extract<keyof StudentUpdateWithoutPresencesDataInput, string>
+  | { name: 'firstName', alias?: string  } 
+  | { name: 'lastName', alias?: string  } 
+  | { name: 'sexe', alias?: string  } 
+  | { name: 'privateEmail', alias?: string  } 
+  | { name: 'pocoEmail', alias?: string  } 
+  | { name: 'residencePermit', alias?: string  } 
+  | { name: 'birthday', alias?: string  } 
+  | { name: 'nationality', alias?: string  } 
+  | { name: 'addressStreet', alias?: string  } 
+  | { name: 'addressCity', alias?: string  } 
+  | { name: 'addressNPA', alias?: string  } 
+  | { name: 'addressCanton', alias?: string  } 
+  | { name: 'organisation', alias?: string  } 
+  | { name: 'socialAssistant', alias?: string  } 
+  | { name: 'financialParticipation', alias?: string  } 
+  | { name: 'financialParticipationComment', alias?: string  } 
+  | { name: 'borrowLaptops', alias?: string  } 
+  | { name: 'foodCost', alias?: string  } 
+  | { name: 'batch', alias?: string  } 
+  
+export interface StudentUpsertWithoutPresencesInput {
+  update?: StudentUpdateWithoutPresencesDataInput
+  create?: StudentCreateWithoutPresencesInput
+}
+export type StudentUpsertWithoutPresencesInputInputObject =
+  | Extract<keyof StudentUpsertWithoutPresencesInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
   
 export interface PresenceUpdateManyMutationInput {
-  date?: string | null
-  timeMissed?: string | null
+  dateStart?: string | null
+  dateEnd?: string | null
   goodExcuse?: boolean | null
   reason?: string | null
 }
 export type PresenceUpdateManyMutationInputInputObject =
   | Extract<keyof PresenceUpdateManyMutationInput, string>
-  | { name: 'date', alias?: string  } 
-  | { name: 'timeMissed', alias?: string  } 
+  | { name: 'dateStart', alias?: string  } 
+  | { name: 'dateEnd', alias?: string  } 
   | { name: 'goodExcuse', alias?: string  } 
   | { name: 'reason', alias?: string  } 
   
@@ -4057,10 +4218,10 @@ export type FinancialParticipationValues =
 export type PresenceOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'date_ASC'
-  | 'date_DESC'
-  | 'timeMissed_ASC'
-  | 'timeMissed_DESC'
+  | 'dateStart_ASC'
+  | 'dateStart_DESC'
+  | 'dateEnd_ASC'
+  | 'dateEnd_DESC'
   | 'goodExcuse_ASC'
   | 'goodExcuse_DESC'
   | 'reason_ASC'

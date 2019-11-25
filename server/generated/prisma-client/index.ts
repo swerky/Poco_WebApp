@@ -236,13 +236,17 @@ export type BatchOrderByInput =
   | "endTime_ASC"
   | "endTime_DESC";
 
+export type Sexe = "MALE" | "FEMALE" | "OTHER";
+
+export type FinancialParticipation = "YES" | "NO" | "EXTERN" | "OTHER";
+
 export type PresenceOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "date_ASC"
-  | "date_DESC"
-  | "timeMissed_ASC"
-  | "timeMissed_DESC"
+  | "dateStart_ASC"
+  | "dateStart_DESC"
+  | "dateEnd_ASC"
+  | "dateEnd_DESC"
   | "goodExcuse_ASC"
   | "goodExcuse_DESC"
   | "reason_ASC"
@@ -259,10 +263,6 @@ export type SocialAssistantOrderByInput =
   | "phone_DESC"
   | "email_ASC"
   | "email_DESC";
-
-export type Sexe = "MALE" | "FEMALE" | "OTHER";
-
-export type FinancialParticipation = "YES" | "NO" | "EXTERN" | "OTHER";
 
 export type StudentOrderByInput =
   | "id_ASC"
@@ -378,22 +378,22 @@ export interface PresenceWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  date?: Maybe<DateTimeInput>;
-  date_not?: Maybe<DateTimeInput>;
-  date_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  date_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  date_lt?: Maybe<DateTimeInput>;
-  date_lte?: Maybe<DateTimeInput>;
-  date_gt?: Maybe<DateTimeInput>;
-  date_gte?: Maybe<DateTimeInput>;
-  timeMissed?: Maybe<DateTimeInput>;
-  timeMissed_not?: Maybe<DateTimeInput>;
-  timeMissed_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  timeMissed_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  timeMissed_lt?: Maybe<DateTimeInput>;
-  timeMissed_lte?: Maybe<DateTimeInput>;
-  timeMissed_gt?: Maybe<DateTimeInput>;
-  timeMissed_gte?: Maybe<DateTimeInput>;
+  dateStart?: Maybe<DateTimeInput>;
+  dateStart_not?: Maybe<DateTimeInput>;
+  dateStart_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  dateStart_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  dateStart_lt?: Maybe<DateTimeInput>;
+  dateStart_lte?: Maybe<DateTimeInput>;
+  dateStart_gt?: Maybe<DateTimeInput>;
+  dateStart_gte?: Maybe<DateTimeInput>;
+  dateEnd?: Maybe<DateTimeInput>;
+  dateEnd_not?: Maybe<DateTimeInput>;
+  dateEnd_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  dateEnd_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  dateEnd_lt?: Maybe<DateTimeInput>;
+  dateEnd_lte?: Maybe<DateTimeInput>;
+  dateEnd_gt?: Maybe<DateTimeInput>;
+  dateEnd_gte?: Maybe<DateTimeInput>;
   goodExcuse?: Maybe<Boolean>;
   goodExcuse_not?: Maybe<Boolean>;
   reason?: Maybe<String>;
@@ -410,94 +410,11 @@ export interface PresenceWhereInput {
   reason_not_starts_with?: Maybe<String>;
   reason_ends_with?: Maybe<String>;
   reason_not_ends_with?: Maybe<String>;
+  student?: Maybe<StudentWhereInput>;
   AND?: Maybe<PresenceWhereInput[] | PresenceWhereInput>;
   OR?: Maybe<PresenceWhereInput[] | PresenceWhereInput>;
   NOT?: Maybe<PresenceWhereInput[] | PresenceWhereInput>;
 }
-
-export type SocialAssistantWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface SocialAssistantWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  firstName?: Maybe<String>;
-  firstName_not?: Maybe<String>;
-  firstName_in?: Maybe<String[] | String>;
-  firstName_not_in?: Maybe<String[] | String>;
-  firstName_lt?: Maybe<String>;
-  firstName_lte?: Maybe<String>;
-  firstName_gt?: Maybe<String>;
-  firstName_gte?: Maybe<String>;
-  firstName_contains?: Maybe<String>;
-  firstName_not_contains?: Maybe<String>;
-  firstName_starts_with?: Maybe<String>;
-  firstName_not_starts_with?: Maybe<String>;
-  firstName_ends_with?: Maybe<String>;
-  firstName_not_ends_with?: Maybe<String>;
-  lastName?: Maybe<String>;
-  lastName_not?: Maybe<String>;
-  lastName_in?: Maybe<String[] | String>;
-  lastName_not_in?: Maybe<String[] | String>;
-  lastName_lt?: Maybe<String>;
-  lastName_lte?: Maybe<String>;
-  lastName_gt?: Maybe<String>;
-  lastName_gte?: Maybe<String>;
-  lastName_contains?: Maybe<String>;
-  lastName_not_contains?: Maybe<String>;
-  lastName_starts_with?: Maybe<String>;
-  lastName_not_starts_with?: Maybe<String>;
-  lastName_ends_with?: Maybe<String>;
-  lastName_not_ends_with?: Maybe<String>;
-  phone?: Maybe<String>;
-  phone_not?: Maybe<String>;
-  phone_in?: Maybe<String[] | String>;
-  phone_not_in?: Maybe<String[] | String>;
-  phone_lt?: Maybe<String>;
-  phone_lte?: Maybe<String>;
-  phone_gt?: Maybe<String>;
-  phone_gte?: Maybe<String>;
-  phone_contains?: Maybe<String>;
-  phone_not_contains?: Maybe<String>;
-  phone_starts_with?: Maybe<String>;
-  phone_not_starts_with?: Maybe<String>;
-  phone_ends_with?: Maybe<String>;
-  phone_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  AND?: Maybe<SocialAssistantWhereInput[] | SocialAssistantWhereInput>;
-  OR?: Maybe<SocialAssistantWhereInput[] | SocialAssistantWhereInput>;
-  NOT?: Maybe<SocialAssistantWhereInput[] | SocialAssistantWhereInput>;
-}
-
-export type StudentWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
 
 export interface StudentWhereInput {
   id?: Maybe<ID_Input>;
@@ -722,6 +639,90 @@ export interface StudentWhereInput {
   NOT?: Maybe<StudentWhereInput[] | StudentWhereInput>;
 }
 
+export interface SocialAssistantWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  phone?: Maybe<String>;
+  phone_not?: Maybe<String>;
+  phone_in?: Maybe<String[] | String>;
+  phone_not_in?: Maybe<String[] | String>;
+  phone_lt?: Maybe<String>;
+  phone_lte?: Maybe<String>;
+  phone_gt?: Maybe<String>;
+  phone_gte?: Maybe<String>;
+  phone_contains?: Maybe<String>;
+  phone_not_contains?: Maybe<String>;
+  phone_starts_with?: Maybe<String>;
+  phone_not_starts_with?: Maybe<String>;
+  phone_ends_with?: Maybe<String>;
+  phone_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  AND?: Maybe<SocialAssistantWhereInput[] | SocialAssistantWhereInput>;
+  OR?: Maybe<SocialAssistantWhereInput[] | SocialAssistantWhereInput>;
+  NOT?: Maybe<SocialAssistantWhereInput[] | SocialAssistantWhereInput>;
+}
+
+export type SocialAssistantWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type StudentWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
 export interface BatchCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
@@ -743,24 +744,44 @@ export interface BatchUpdateManyMutationInput {
 
 export interface PresenceCreateInput {
   id?: Maybe<ID_Input>;
-  date: DateTimeInput;
-  timeMissed: DateTimeInput;
+  dateStart: DateTimeInput;
+  dateEnd: DateTimeInput;
   goodExcuse?: Maybe<Boolean>;
   reason?: Maybe<String>;
+  student: StudentCreateOneWithoutPresencesInput;
 }
 
-export interface PresenceUpdateInput {
-  date?: Maybe<DateTimeInput>;
-  timeMissed?: Maybe<DateTimeInput>;
-  goodExcuse?: Maybe<Boolean>;
-  reason?: Maybe<String>;
+export interface StudentCreateOneWithoutPresencesInput {
+  create?: Maybe<StudentCreateWithoutPresencesInput>;
+  connect?: Maybe<StudentWhereUniqueInput>;
 }
 
-export interface PresenceUpdateManyMutationInput {
-  date?: Maybe<DateTimeInput>;
-  timeMissed?: Maybe<DateTimeInput>;
-  goodExcuse?: Maybe<Boolean>;
-  reason?: Maybe<String>;
+export interface StudentCreateWithoutPresencesInput {
+  id?: Maybe<ID_Input>;
+  firstName: String;
+  lastName: String;
+  sexe: Sexe;
+  privateEmail?: Maybe<String>;
+  pocoEmail?: Maybe<String>;
+  residencePermit: String;
+  birthday: DateTimeInput;
+  nationality: String;
+  addressStreet: String;
+  addressCity: String;
+  addressNPA: Int;
+  addressCanton: String;
+  organisation?: Maybe<String>;
+  socialAssistant?: Maybe<SocialAssistantCreateOneInput>;
+  financialParticipation: FinancialParticipation;
+  financialParticipationComment?: Maybe<String>;
+  borrowLaptops: Boolean;
+  foodCost?: Maybe<String>;
+  batch: BatchCreateOneInput;
+}
+
+export interface SocialAssistantCreateOneInput {
+  create?: Maybe<SocialAssistantCreateInput>;
+  connect?: Maybe<SocialAssistantWhereUniqueInput>;
 }
 
 export interface SocialAssistantCreateInput {
@@ -769,6 +790,99 @@ export interface SocialAssistantCreateInput {
   lastName: String;
   phone?: Maybe<String>;
   email?: Maybe<String>;
+}
+
+export interface BatchCreateOneInput {
+  create?: Maybe<BatchCreateInput>;
+  connect?: Maybe<BatchWhereUniqueInput>;
+}
+
+export interface PresenceUpdateInput {
+  dateStart?: Maybe<DateTimeInput>;
+  dateEnd?: Maybe<DateTimeInput>;
+  goodExcuse?: Maybe<Boolean>;
+  reason?: Maybe<String>;
+  student?: Maybe<StudentUpdateOneRequiredWithoutPresencesInput>;
+}
+
+export interface StudentUpdateOneRequiredWithoutPresencesInput {
+  create?: Maybe<StudentCreateWithoutPresencesInput>;
+  update?: Maybe<StudentUpdateWithoutPresencesDataInput>;
+  upsert?: Maybe<StudentUpsertWithoutPresencesInput>;
+  connect?: Maybe<StudentWhereUniqueInput>;
+}
+
+export interface StudentUpdateWithoutPresencesDataInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  sexe?: Maybe<Sexe>;
+  privateEmail?: Maybe<String>;
+  pocoEmail?: Maybe<String>;
+  residencePermit?: Maybe<String>;
+  birthday?: Maybe<DateTimeInput>;
+  nationality?: Maybe<String>;
+  addressStreet?: Maybe<String>;
+  addressCity?: Maybe<String>;
+  addressNPA?: Maybe<Int>;
+  addressCanton?: Maybe<String>;
+  organisation?: Maybe<String>;
+  socialAssistant?: Maybe<SocialAssistantUpdateOneInput>;
+  financialParticipation?: Maybe<FinancialParticipation>;
+  financialParticipationComment?: Maybe<String>;
+  borrowLaptops?: Maybe<Boolean>;
+  foodCost?: Maybe<String>;
+  batch?: Maybe<BatchUpdateOneRequiredInput>;
+}
+
+export interface SocialAssistantUpdateOneInput {
+  create?: Maybe<SocialAssistantCreateInput>;
+  update?: Maybe<SocialAssistantUpdateDataInput>;
+  upsert?: Maybe<SocialAssistantUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<SocialAssistantWhereUniqueInput>;
+}
+
+export interface SocialAssistantUpdateDataInput {
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  phone?: Maybe<String>;
+  email?: Maybe<String>;
+}
+
+export interface SocialAssistantUpsertNestedInput {
+  update: SocialAssistantUpdateDataInput;
+  create: SocialAssistantCreateInput;
+}
+
+export interface BatchUpdateOneRequiredInput {
+  create?: Maybe<BatchCreateInput>;
+  update?: Maybe<BatchUpdateDataInput>;
+  upsert?: Maybe<BatchUpsertNestedInput>;
+  connect?: Maybe<BatchWhereUniqueInput>;
+}
+
+export interface BatchUpdateDataInput {
+  name?: Maybe<String>;
+  startingTime?: Maybe<DateTimeInput>;
+  endTime?: Maybe<DateTimeInput>;
+}
+
+export interface BatchUpsertNestedInput {
+  update: BatchUpdateDataInput;
+  create: BatchCreateInput;
+}
+
+export interface StudentUpsertWithoutPresencesInput {
+  update: StudentUpdateWithoutPresencesDataInput;
+  create: StudentCreateWithoutPresencesInput;
+}
+
+export interface PresenceUpdateManyMutationInput {
+  dateStart?: Maybe<DateTimeInput>;
+  dateEnd?: Maybe<DateTimeInput>;
+  goodExcuse?: Maybe<Boolean>;
+  reason?: Maybe<String>;
 }
 
 export interface SocialAssistantUpdateInput {
@@ -805,23 +919,23 @@ export interface StudentCreateInput {
   financialParticipationComment?: Maybe<String>;
   borrowLaptops: Boolean;
   foodCost?: Maybe<String>;
-  presences?: Maybe<PresenceCreateManyInput>;
+  presences?: Maybe<PresenceCreateManyWithoutStudentInput>;
   batch: BatchCreateOneInput;
 }
 
-export interface SocialAssistantCreateOneInput {
-  create?: Maybe<SocialAssistantCreateInput>;
-  connect?: Maybe<SocialAssistantWhereUniqueInput>;
-}
-
-export interface PresenceCreateManyInput {
-  create?: Maybe<PresenceCreateInput[] | PresenceCreateInput>;
+export interface PresenceCreateManyWithoutStudentInput {
+  create?: Maybe<
+    PresenceCreateWithoutStudentInput[] | PresenceCreateWithoutStudentInput
+  >;
   connect?: Maybe<PresenceWhereUniqueInput[] | PresenceWhereUniqueInput>;
 }
 
-export interface BatchCreateOneInput {
-  create?: Maybe<BatchCreateInput>;
-  connect?: Maybe<BatchWhereUniqueInput>;
+export interface PresenceCreateWithoutStudentInput {
+  id?: Maybe<ID_Input>;
+  dateStart: DateTimeInput;
+  dateEnd: DateTimeInput;
+  goodExcuse?: Maybe<Boolean>;
+  reason?: Maybe<String>;
 }
 
 export interface StudentUpdateInput {
@@ -843,45 +957,26 @@ export interface StudentUpdateInput {
   financialParticipationComment?: Maybe<String>;
   borrowLaptops?: Maybe<Boolean>;
   foodCost?: Maybe<String>;
-  presences?: Maybe<PresenceUpdateManyInput>;
+  presences?: Maybe<PresenceUpdateManyWithoutStudentInput>;
   batch?: Maybe<BatchUpdateOneRequiredInput>;
 }
 
-export interface SocialAssistantUpdateOneInput {
-  create?: Maybe<SocialAssistantCreateInput>;
-  update?: Maybe<SocialAssistantUpdateDataInput>;
-  upsert?: Maybe<SocialAssistantUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<SocialAssistantWhereUniqueInput>;
-}
-
-export interface SocialAssistantUpdateDataInput {
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  phone?: Maybe<String>;
-  email?: Maybe<String>;
-}
-
-export interface SocialAssistantUpsertNestedInput {
-  update: SocialAssistantUpdateDataInput;
-  create: SocialAssistantCreateInput;
-}
-
-export interface PresenceUpdateManyInput {
-  create?: Maybe<PresenceCreateInput[] | PresenceCreateInput>;
-  update?: Maybe<
-    | PresenceUpdateWithWhereUniqueNestedInput[]
-    | PresenceUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | PresenceUpsertWithWhereUniqueNestedInput[]
-    | PresenceUpsertWithWhereUniqueNestedInput
+export interface PresenceUpdateManyWithoutStudentInput {
+  create?: Maybe<
+    PresenceCreateWithoutStudentInput[] | PresenceCreateWithoutStudentInput
   >;
   delete?: Maybe<PresenceWhereUniqueInput[] | PresenceWhereUniqueInput>;
   connect?: Maybe<PresenceWhereUniqueInput[] | PresenceWhereUniqueInput>;
   set?: Maybe<PresenceWhereUniqueInput[] | PresenceWhereUniqueInput>;
   disconnect?: Maybe<PresenceWhereUniqueInput[] | PresenceWhereUniqueInput>;
+  update?: Maybe<
+    | PresenceUpdateWithWhereUniqueWithoutStudentInput[]
+    | PresenceUpdateWithWhereUniqueWithoutStudentInput
+  >;
+  upsert?: Maybe<
+    | PresenceUpsertWithWhereUniqueWithoutStudentInput[]
+    | PresenceUpsertWithWhereUniqueWithoutStudentInput
+  >;
   deleteMany?: Maybe<PresenceScalarWhereInput[] | PresenceScalarWhereInput>;
   updateMany?: Maybe<
     | PresenceUpdateManyWithWhereNestedInput[]
@@ -889,22 +984,22 @@ export interface PresenceUpdateManyInput {
   >;
 }
 
-export interface PresenceUpdateWithWhereUniqueNestedInput {
+export interface PresenceUpdateWithWhereUniqueWithoutStudentInput {
   where: PresenceWhereUniqueInput;
-  data: PresenceUpdateDataInput;
+  data: PresenceUpdateWithoutStudentDataInput;
 }
 
-export interface PresenceUpdateDataInput {
-  date?: Maybe<DateTimeInput>;
-  timeMissed?: Maybe<DateTimeInput>;
+export interface PresenceUpdateWithoutStudentDataInput {
+  dateStart?: Maybe<DateTimeInput>;
+  dateEnd?: Maybe<DateTimeInput>;
   goodExcuse?: Maybe<Boolean>;
   reason?: Maybe<String>;
 }
 
-export interface PresenceUpsertWithWhereUniqueNestedInput {
+export interface PresenceUpsertWithWhereUniqueWithoutStudentInput {
   where: PresenceWhereUniqueInput;
-  update: PresenceUpdateDataInput;
-  create: PresenceCreateInput;
+  update: PresenceUpdateWithoutStudentDataInput;
+  create: PresenceCreateWithoutStudentInput;
 }
 
 export interface PresenceScalarWhereInput {
@@ -922,22 +1017,22 @@ export interface PresenceScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  date?: Maybe<DateTimeInput>;
-  date_not?: Maybe<DateTimeInput>;
-  date_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  date_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  date_lt?: Maybe<DateTimeInput>;
-  date_lte?: Maybe<DateTimeInput>;
-  date_gt?: Maybe<DateTimeInput>;
-  date_gte?: Maybe<DateTimeInput>;
-  timeMissed?: Maybe<DateTimeInput>;
-  timeMissed_not?: Maybe<DateTimeInput>;
-  timeMissed_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  timeMissed_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  timeMissed_lt?: Maybe<DateTimeInput>;
-  timeMissed_lte?: Maybe<DateTimeInput>;
-  timeMissed_gt?: Maybe<DateTimeInput>;
-  timeMissed_gte?: Maybe<DateTimeInput>;
+  dateStart?: Maybe<DateTimeInput>;
+  dateStart_not?: Maybe<DateTimeInput>;
+  dateStart_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  dateStart_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  dateStart_lt?: Maybe<DateTimeInput>;
+  dateStart_lte?: Maybe<DateTimeInput>;
+  dateStart_gt?: Maybe<DateTimeInput>;
+  dateStart_gte?: Maybe<DateTimeInput>;
+  dateEnd?: Maybe<DateTimeInput>;
+  dateEnd_not?: Maybe<DateTimeInput>;
+  dateEnd_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  dateEnd_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  dateEnd_lt?: Maybe<DateTimeInput>;
+  dateEnd_lte?: Maybe<DateTimeInput>;
+  dateEnd_gt?: Maybe<DateTimeInput>;
+  dateEnd_gte?: Maybe<DateTimeInput>;
   goodExcuse?: Maybe<Boolean>;
   goodExcuse_not?: Maybe<Boolean>;
   reason?: Maybe<String>;
@@ -965,28 +1060,10 @@ export interface PresenceUpdateManyWithWhereNestedInput {
 }
 
 export interface PresenceUpdateManyDataInput {
-  date?: Maybe<DateTimeInput>;
-  timeMissed?: Maybe<DateTimeInput>;
+  dateStart?: Maybe<DateTimeInput>;
+  dateEnd?: Maybe<DateTimeInput>;
   goodExcuse?: Maybe<Boolean>;
   reason?: Maybe<String>;
-}
-
-export interface BatchUpdateOneRequiredInput {
-  create?: Maybe<BatchCreateInput>;
-  update?: Maybe<BatchUpdateDataInput>;
-  upsert?: Maybe<BatchUpsertNestedInput>;
-  connect?: Maybe<BatchWhereUniqueInput>;
-}
-
-export interface BatchUpdateDataInput {
-  name?: Maybe<String>;
-  startingTime?: Maybe<DateTimeInput>;
-  endTime?: Maybe<DateTimeInput>;
-}
-
-export interface BatchUpsertNestedInput {
-  update: BatchUpdateDataInput;
-  create: BatchCreateInput;
 }
 
 export interface StudentUpdateManyMutationInput {
@@ -1181,188 +1258,41 @@ export interface AggregateBatchSubscription
 
 export interface Presence {
   id: ID_Output;
-  date: DateTimeOutput;
-  timeMissed: DateTimeOutput;
+  dateStart: DateTimeOutput;
+  dateEnd: DateTimeOutput;
   goodExcuse?: Boolean;
   reason?: String;
 }
 
 export interface PresencePromise extends Promise<Presence>, Fragmentable {
   id: () => Promise<ID_Output>;
-  date: () => Promise<DateTimeOutput>;
-  timeMissed: () => Promise<DateTimeOutput>;
+  dateStart: () => Promise<DateTimeOutput>;
+  dateEnd: () => Promise<DateTimeOutput>;
   goodExcuse: () => Promise<Boolean>;
   reason: () => Promise<String>;
+  student: <T = StudentPromise>() => T;
 }
 
 export interface PresenceSubscription
   extends Promise<AsyncIterator<Presence>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  date: () => Promise<AsyncIterator<DateTimeOutput>>;
-  timeMissed: () => Promise<AsyncIterator<DateTimeOutput>>;
+  dateStart: () => Promise<AsyncIterator<DateTimeOutput>>;
+  dateEnd: () => Promise<AsyncIterator<DateTimeOutput>>;
   goodExcuse: () => Promise<AsyncIterator<Boolean>>;
   reason: () => Promise<AsyncIterator<String>>;
+  student: <T = StudentSubscription>() => T;
 }
 
 export interface PresenceNullablePromise
   extends Promise<Presence | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  date: () => Promise<DateTimeOutput>;
-  timeMissed: () => Promise<DateTimeOutput>;
+  dateStart: () => Promise<DateTimeOutput>;
+  dateEnd: () => Promise<DateTimeOutput>;
   goodExcuse: () => Promise<Boolean>;
   reason: () => Promise<String>;
-}
-
-export interface PresenceConnection {
-  pageInfo: PageInfo;
-  edges: PresenceEdge[];
-}
-
-export interface PresenceConnectionPromise
-  extends Promise<PresenceConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PresenceEdge>>() => T;
-  aggregate: <T = AggregatePresencePromise>() => T;
-}
-
-export interface PresenceConnectionSubscription
-  extends Promise<AsyncIterator<PresenceConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PresenceEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePresenceSubscription>() => T;
-}
-
-export interface PresenceEdge {
-  node: Presence;
-  cursor: String;
-}
-
-export interface PresenceEdgePromise
-  extends Promise<PresenceEdge>,
-    Fragmentable {
-  node: <T = PresencePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PresenceEdgeSubscription
-  extends Promise<AsyncIterator<PresenceEdge>>,
-    Fragmentable {
-  node: <T = PresenceSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregatePresence {
-  count: Int;
-}
-
-export interface AggregatePresencePromise
-  extends Promise<AggregatePresence>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePresenceSubscription
-  extends Promise<AsyncIterator<AggregatePresence>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface SocialAssistant {
-  id: ID_Output;
-  firstName: String;
-  lastName: String;
-  phone?: String;
-  email?: String;
-}
-
-export interface SocialAssistantPromise
-  extends Promise<SocialAssistant>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  phone: () => Promise<String>;
-  email: () => Promise<String>;
-}
-
-export interface SocialAssistantSubscription
-  extends Promise<AsyncIterator<SocialAssistant>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  firstName: () => Promise<AsyncIterator<String>>;
-  lastName: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-}
-
-export interface SocialAssistantNullablePromise
-  extends Promise<SocialAssistant | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  phone: () => Promise<String>;
-  email: () => Promise<String>;
-}
-
-export interface SocialAssistantConnection {
-  pageInfo: PageInfo;
-  edges: SocialAssistantEdge[];
-}
-
-export interface SocialAssistantConnectionPromise
-  extends Promise<SocialAssistantConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<SocialAssistantEdge>>() => T;
-  aggregate: <T = AggregateSocialAssistantPromise>() => T;
-}
-
-export interface SocialAssistantConnectionSubscription
-  extends Promise<AsyncIterator<SocialAssistantConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<SocialAssistantEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateSocialAssistantSubscription>() => T;
-}
-
-export interface SocialAssistantEdge {
-  node: SocialAssistant;
-  cursor: String;
-}
-
-export interface SocialAssistantEdgePromise
-  extends Promise<SocialAssistantEdge>,
-    Fragmentable {
-  node: <T = SocialAssistantPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface SocialAssistantEdgeSubscription
-  extends Promise<AsyncIterator<SocialAssistantEdge>>,
-    Fragmentable {
-  node: <T = SocialAssistantSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateSocialAssistant {
-  count: Int;
-}
-
-export interface AggregateSocialAssistantPromise
-  extends Promise<AggregateSocialAssistant>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateSocialAssistantSubscription
-  extends Promise<AsyncIterator<AggregateSocialAssistant>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  student: <T = StudentPromise>() => T;
 }
 
 export interface Student {
@@ -1484,6 +1414,156 @@ export interface StudentNullablePromise
     last?: Int;
   }) => T;
   batch: <T = BatchPromise>() => T;
+}
+
+export interface SocialAssistant {
+  id: ID_Output;
+  firstName: String;
+  lastName: String;
+  phone?: String;
+  email?: String;
+}
+
+export interface SocialAssistantPromise
+  extends Promise<SocialAssistant>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  phone: () => Promise<String>;
+  email: () => Promise<String>;
+}
+
+export interface SocialAssistantSubscription
+  extends Promise<AsyncIterator<SocialAssistant>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+}
+
+export interface SocialAssistantNullablePromise
+  extends Promise<SocialAssistant | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  phone: () => Promise<String>;
+  email: () => Promise<String>;
+}
+
+export interface PresenceConnection {
+  pageInfo: PageInfo;
+  edges: PresenceEdge[];
+}
+
+export interface PresenceConnectionPromise
+  extends Promise<PresenceConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PresenceEdge>>() => T;
+  aggregate: <T = AggregatePresencePromise>() => T;
+}
+
+export interface PresenceConnectionSubscription
+  extends Promise<AsyncIterator<PresenceConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PresenceEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePresenceSubscription>() => T;
+}
+
+export interface PresenceEdge {
+  node: Presence;
+  cursor: String;
+}
+
+export interface PresenceEdgePromise
+  extends Promise<PresenceEdge>,
+    Fragmentable {
+  node: <T = PresencePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PresenceEdgeSubscription
+  extends Promise<AsyncIterator<PresenceEdge>>,
+    Fragmentable {
+  node: <T = PresenceSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePresence {
+  count: Int;
+}
+
+export interface AggregatePresencePromise
+  extends Promise<AggregatePresence>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePresenceSubscription
+  extends Promise<AsyncIterator<AggregatePresence>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface SocialAssistantConnection {
+  pageInfo: PageInfo;
+  edges: SocialAssistantEdge[];
+}
+
+export interface SocialAssistantConnectionPromise
+  extends Promise<SocialAssistantConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<SocialAssistantEdge>>() => T;
+  aggregate: <T = AggregateSocialAssistantPromise>() => T;
+}
+
+export interface SocialAssistantConnectionSubscription
+  extends Promise<AsyncIterator<SocialAssistantConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SocialAssistantEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSocialAssistantSubscription>() => T;
+}
+
+export interface SocialAssistantEdge {
+  node: SocialAssistant;
+  cursor: String;
+}
+
+export interface SocialAssistantEdgePromise
+  extends Promise<SocialAssistantEdge>,
+    Fragmentable {
+  node: <T = SocialAssistantPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SocialAssistantEdgeSubscription
+  extends Promise<AsyncIterator<SocialAssistantEdge>>,
+    Fragmentable {
+  node: <T = SocialAssistantSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateSocialAssistant {
+  count: Int;
+}
+
+export interface AggregateSocialAssistantPromise
+  extends Promise<AggregateSocialAssistant>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateSocialAssistantSubscription
+  extends Promise<AsyncIterator<AggregateSocialAssistant>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface StudentConnection {
@@ -1633,8 +1713,8 @@ export interface PresenceSubscriptionPayloadSubscription
 
 export interface PresencePreviousValues {
   id: ID_Output;
-  date: DateTimeOutput;
-  timeMissed: DateTimeOutput;
+  dateStart: DateTimeOutput;
+  dateEnd: DateTimeOutput;
   goodExcuse?: Boolean;
   reason?: String;
 }
@@ -1643,8 +1723,8 @@ export interface PresencePreviousValuesPromise
   extends Promise<PresencePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  date: () => Promise<DateTimeOutput>;
-  timeMissed: () => Promise<DateTimeOutput>;
+  dateStart: () => Promise<DateTimeOutput>;
+  dateEnd: () => Promise<DateTimeOutput>;
   goodExcuse: () => Promise<Boolean>;
   reason: () => Promise<String>;
 }
@@ -1653,8 +1733,8 @@ export interface PresencePreviousValuesSubscription
   extends Promise<AsyncIterator<PresencePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  date: () => Promise<AsyncIterator<DateTimeOutput>>;
-  timeMissed: () => Promise<AsyncIterator<DateTimeOutput>>;
+  dateStart: () => Promise<AsyncIterator<DateTimeOutput>>;
+  dateEnd: () => Promise<AsyncIterator<DateTimeOutput>>;
   goodExcuse: () => Promise<AsyncIterator<Boolean>>;
   reason: () => Promise<AsyncIterator<String>>;
 }

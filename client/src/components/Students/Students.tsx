@@ -1,16 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import StudentsTable from './StudentsTable';
-import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ServerError from '../../utils/Errors/ServerError';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import StudentInterface from '../../interfaces/Student.interface';
+import StudentInterface, {StudentData} from '../../interfaces/Student.interface';
 import {GET_STUDENTS, DELETE_STUDENT} from '../../queries/StudentQuery';
-
-interface StudentData {
-  students: StudentInterface[]
-}
 
 /* STYLES */
 const useStyles = makeStyles((theme: Theme) =>
@@ -28,14 +23,21 @@ const Students : FunctionComponent = () => {
   const [deleteStudent, { loading: mutationLoading, error: mutationError}] = 
     useMutation(DELETE_STUDENT);
 
+  // Change title
+  useEffect(() => {
+    // Met à jour le titre du document via l’API du navigateur
+    document.title = `Students`;
+  }); 
   /* LOADING */
   if(queryLoading) return <CircularProgress className={classes.progress} />
 
   /* ERROR */
   if(queryError) return  <ServerError/>
   
+  /* MODIFIED DATA */
   const students = data ? data.students: [];
 
+  /* FUNCTIONS */
   const handleDeleteStudent = (id: string) => {
     deleteStudent({
       variables: {where: {id: id}},
