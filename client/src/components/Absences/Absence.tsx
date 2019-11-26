@@ -67,7 +67,7 @@ const Absence : FunctionComponent = () => {
           id: student.id,
           firstName: student.firstName,
           lastName: student.lastName,
-          presence: student.presences,
+          presences: student.presences,
           batch: student.batch,
           pourcentage: getPourcentageAbsence(student),
           timeMissed: getTimeMissed(student),
