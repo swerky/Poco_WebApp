@@ -95,9 +95,14 @@ export const GET_STUDENTS = gql`
 
 export const DELETE_STUDENT = gql`
 mutation deleteStudent($where: StudentWhereUniqueInput!){
-deleteStudent(where: $where){
-  id
-  firstName
-  lastName
-}
+  deleteStudent(where: $where){
+    id
+    firstName
+    lastName
+    students {
+      id
+      firstName
+      lastName
+    }
+  }
 }`

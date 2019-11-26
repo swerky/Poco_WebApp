@@ -87,17 +87,17 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
         <TableBody>
           {students.map((student : StudentInterface) => (
             <TableRow key={student.id}>
-              <TableCell component="th" scope="row" key={"firstname_" + student.firstName + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"firstname_" + student.id}>
                 {student.firstName}
               </TableCell>
-              <TableCell component="th" scope="row" key={"lastname_" + student.lastName + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"lastname_" + student.id}>
                 {student.lastName}
               </TableCell>
-              <TableCell component="th" scope="row" key={"privateemail_" + student.privateEmail + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"privateemail_" + student.id}>
                 {student.privateEmail}
               </TableCell>
               {student.birthday && 
-              <TableCell component="th" scope="row" key={"birthday_" + student.birthday + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"birthday_" + student.id}>
                 <Tooltip title="format: dd.mm.yyy" aria-label="date">
                   <span>
                     {moment(student.birthday).format('DD.MM.YYYY')}
@@ -105,19 +105,19 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
                 </Tooltip>
               </TableCell>}
               {student.batch && 
-              <TableCell component="th" scope="row" key={"batch_" + student.batch + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"batch_" + student.id}>
                 {student.batch.name}
               </TableCell>}
-              <TableCell component="th" scope="row" key={"presence_" + student.firstName + "_" + student.id}>
+              <TableCell component="th" scope="row" key={"presence_" + student.id}>
                 {student.presences ? student.presences.length : 0}
               </TableCell>
               <TableCell component="th" scope="row" key={"name_actions_" + student.id}>
-                <Tooltip title="Edit" aria-label="edit">
+                <Tooltip key={"ToolTip_Edit_" + student.id} title="Edit" aria-label="edit">
                   <IconButton className={classes.button} aria-label="edit">
                     <EditIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Remove" aria-label="remove">
+                <Tooltip key={"ToolTip_Remove_" + student.id} title="Remove" aria-label="remove">
                   <IconButton className={classes.button} aria-label="remove" onClick={() => handleDeleteStudent(student.id as string)}>
                     <DeleteIcon />
                   </IconButton>

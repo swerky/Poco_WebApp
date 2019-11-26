@@ -67,7 +67,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface AbscenceTableProps {
-  students: StudentAbsence[]
+  students: StudentAbsence[],
+  handleDeleteAbsence: (id: string) => void
 }
 
 interface EditButtonProps {
@@ -101,9 +102,8 @@ const EditButton: FunctionComponent<EditButtonProps> = ({ id, firstName, lastNam
   );
 }
 
-const StudentsTable: FunctionComponent<AbscenceTableProps> = (props) => {
+const StudentsTable: FunctionComponent<AbscenceTableProps> = ({students, handleDeleteAbsence}) => {
   const classes = useStyles();
-  const { students } = props;
 
   /* SHOW COMPONENT */
   return (
@@ -124,7 +124,7 @@ const StudentsTable: FunctionComponent<AbscenceTableProps> = (props) => {
         <Grid item xs={2}><span className={classes.titleTable}>Actions</span></Grid>
       </Grid>
       {students.map((student: StudentAbsence) => (
-        <ExpansionPanel square>
+        <ExpansionPanel square key={"expansion_" + student.id}>
           <ExpansionPanelSummary className={classes.expandRow}>
             <Grid key={"container_"+student.id} container className={classes.tableRow} alignItems="center">
               <Grid item xs={2}>{student.firstName}</Grid>
@@ -155,9 +155,9 @@ const StudentsTable: FunctionComponent<AbscenceTableProps> = (props) => {
                     <Grid item xs={2} key={"absenceFromTime_" + presence.id}>{presence.dateStart.format('hh:mm')}</Grid>
                     <Grid item xs={2} key={"absenceToTime_" + presence.id}>{presence.dateEnd.format('hh:mm')}</Grid>
                     <Grid item xs={2} key={"absenceReason_" + presence.id}>{presence.reason ? presence.reason: "-"}</Grid>
-                    <Grid item xs={2} key={"absenceReason_" + presence.id}>{presence.goodExcuse ? <ThumbUpIcon/>: <ThumbDownIcon/>}</Grid>
+                    <Grid item xs={2} key={"absenceGoodExcuse_" + presence.id}>{presence.goodExcuse ? <ThumbUpIcon/>: <ThumbDownIcon/>}</Grid>
                     <Grid item xs={2} key={"absenceActions_" + presence.id}>
-                      <IconButton className={classes.button} aria-label="remove" >
+                      <IconButton className={classes.button} aria-label="remove" onClick={() => handleDeleteAbsence(presence.id!)}>
                         <DeleteIcon />
                       </IconButton>
                     </Grid>

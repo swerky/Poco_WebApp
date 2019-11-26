@@ -20,8 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const Students : FunctionComponent = () => {
   const classes = useStyles();
   const { loading : queryLoading, error: queryError, data } = useQuery<StudentData>(GET_STUDENTS);
-  const [deleteStudent, { loading: mutationLoading, error: mutationError}] = 
-    useMutation(DELETE_STUDENT);
+  const [deleteStudent, { loading: mutationLoading, error: mutationError}] = useMutation(DELETE_STUDENT);
 
   // Change title
   useEffect(() => {
