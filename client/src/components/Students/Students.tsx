@@ -44,10 +44,10 @@ const Students : FunctionComponent = () => {
         const existingStudents = cache.readQuery<StudentData>({ query: GET_STUDENTS });
         if(existingStudents){
         const newStudents = existingStudents.students.filter(existingStudent => (existingStudent.id !== deleteStudent.id))
-          cache.writeQuery({
-            query: GET_STUDENTS,
-            data: { students:  newStudents},
-          });
+        cache.writeQuery({
+          query: GET_STUDENTS,
+          data: { students:  newStudents},
+        });
         }
       } 
     });

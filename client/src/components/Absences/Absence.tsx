@@ -11,8 +11,8 @@ import SnackbarContent from '@material-ui/core/SnackbarContent';
 import IconButton from '@material-ui/core/IconButton';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CloseIcon from '@material-ui/icons/Close';
-import ServerError from '../../utils/Errors/ServerError';
 import { green } from '@material-ui/core/colors';
+import ServerError from '../../utils/Errors/ServerError';
 import moment from 'moment';
 import round from 'lodash/round';
 import classNames from 'classnames';
@@ -108,7 +108,7 @@ const Absence : FunctionComponent = () => {
   const handleCloseSnackBarValidate = () => {
     setOpenSnackBarValidate(false);
   }
-  /* SNACKBAR FUNCTION*/
+
   const handleCloseSnackBarError = () => {
     setOpenSnackBarError(false);
   }
@@ -142,7 +142,6 @@ const Absence : FunctionComponent = () => {
   /* SHOW COMPONENT */
   return (
     <>
-      <h1>Absence</h1>
       <AbsenceTable students={studentsAbsence} handleDeleteAbsence={handleDeleteAbsence}/>
       {/* SNACKBAR */}
       <Snackbar

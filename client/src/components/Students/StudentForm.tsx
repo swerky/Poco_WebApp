@@ -3,7 +3,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
 import { Select, Paper } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import {
@@ -25,20 +24,18 @@ import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import classNames from 'classnames';
 import StudentFromBatch from './StudentFormBatch'; 
-import {ADD_STUDENT, GET_STUDENTS} from '../../queries/StudentQuery';
-import Snackbar from '@material-ui/core/Snackbar';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import CloseIcon from '@material-ui/icons/Close';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import ErrorIcon from '@material-ui/icons/Error';
-import IconButton from '@material-ui/core/IconButton';
-import { green } from '@material-ui/core/colors';
 import {Link} from 'react-router-dom';
+import classNames from 'classnames';
 
-interface StudentData {
-  students: StudentInterface[]
+interface StudentFormProps {
+  action: () => void,
+  values: StudentInterface,
+  setValues: any,
+  newSocialAssistant: boolean, 
+  setNewSocialAssistant: (newSocialAssistant: boolean) => void,
+  newBatch: boolean,
+  setNewBatch: (newBatch: boolean) => void
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -73,72 +70,16 @@ const useStyles = makeStyles((theme: Theme) =>
     checkbox: {
       marginTop: theme.spacing(3),
     },
-    successSnackBar: {
-      backgroundColor: green[600],
-    },
-    message: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    icon: {
-      fontSize: 20,
-    },
-    iconVariant: {
-      opacity: 0.9,
-      marginRight: theme.spacing(1),
-    },
   }),
 );
 
-const StudentForm : FunctionComponent = () => {
+const StudentForm : FunctionComponent<StudentFormProps> = ({action,values,setValues,newSocialAssistant, setNewSocialAssistant, newBatch, setNewBatch}) => {
   const classes = useStyles();
 
-  /* Hooks */
-  const [values, setValues] = useState<StudentInterface>(
-    {
-      firstName: "",
-      lastName: "",
-      sexe: "MALE",
-      privateEmail: "",
-      pocoEmail: "",
-      residencePermit: "",
-      birthday: moment(),
-      nationality: "",
-      addressStreet: "",
-      addressCity: "",
-      addressNPA: null,
-      addressCanton: "",
-      organisation: "",
-      socialAssistant: {
-        id: null,
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-      },
-      financialParticipation: "YES",
-      financialParticipationComment: "",
-      borrowLaptops: false,
-      foodCost: "",
-      batch: {
-        id: null,
-        name: "",
-        startingTime: moment(),
-        endTime: moment()
-      }
-    }
-  );
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
-  const [newSocialAssistant, setNewSocialAssistant] = useState(false)
-  const [newBatch, setNewBatch] = useState(false);
-  const [open, setOpen] = React.useState(false);
 
-  /* Mutation */
-  const [addStudent, { loading: mutationLoading, error: mutationError}] = 
-    useMutation(
-      ADD_STUDENT
-    );
+  
 
   /* STEPPER MANAGER */ 
   const getSteps = () => {
@@ -164,30 +105,6 @@ const StudentForm : FunctionComponent = () => {
 
   /* VARIABLES */
   const steps = getSteps();
-
-  /* SEND FORM */
-  const handleSubmit = () => {
-    handleComplete();
-    const query = makeDataQuery();
-    addStudent({
-      variables: {data: query},
-      update(cache, { data: {createStudent}}) {
-        const existingStudents = cache.readQuery<StudentData>({
-          query: GET_STUDENTS 
-        });
-        if(existingStudents){
-          cache.writeQuery<StudentData>({
-            query: GET_STUDENTS,
-            data: { 
-              students: [...existingStudents.students, createStudent]
-            },
-          });
-        }
-      }
-    })
-    .then(() => setOpen(true))
-    .catch(() => setOpen(false))
-  }
 
   // TODO a enlever après test
   const setDataTest = () => {
@@ -231,71 +148,6 @@ const StudentForm : FunctionComponent = () => {
     }
     
     setCompleted(newCompleted);
-  }
-
-  const makeDataQuery = () => {
-    return {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      sexe: values.sexe,
-      privateEmail: values.privateEmail,
-      pocoEmail: values.pocoEmail,
-      residencePermit: values.residencePermit,
-      birthday: values.birthday,
-      nationality: values.nationality,
-      addressStreet: values.addressStreet,
-      addressCity: values.addressCity,
-      addressNPA: values.addressNPA,
-      addressCanton: values.addressCanton,
-      organisation: values.organisation === "" ? null : values.organisation,
-      financialParticipation: values.financialParticipation,
-      financialParticipationComment: values.financialParticipation === "" ? null : values.financialParticipation,
-      socialAssistant: makeDataQuerySocialAssistant(),
-      borrowLaptops: values.borrowLaptops,
-      foodCost: values.foodCost === "" ? null: values.foodCost,
-      batch: makeDataQueryBatch()
-    }
-  }
-
-  const makeDataQuerySocialAssistant = () => {
-    return values.socialAssistant ? (values.socialAssistant.id !== null ? 
-      // Have a social assistant
-      (newSocialAssistant ? 
-        // Add new social assistant
-        {
-          create:{ 
-            firstName: values.socialAssistant.firstName,
-            lastName: values.socialAssistant.lastName,
-            phone: values.socialAssistant.phone,
-            email: values.socialAssistant.email
-          }
-        }
-      :
-        {
-          connect:{ 
-            id: values.socialAssistant.id,
-          }
-        }) : null) : null;
-  }
-
-  const makeDataQueryBatch = () => {
-    return values.batch ? (values.batch.id !== null ?
-        (newBatch ? 
-          {
-            create:{ 
-              name: values.batch.name,
-              startingTime: values.batch.startingTime,
-              endTime: values.batch.endTime,
-            }
-          }
-        :
-          {
-            connect:{ 
-              id: values.batch.id,
-            }
-          }
-        ) : null
-      ) : null;
   }
 
   /* HandleChange */
@@ -356,10 +208,7 @@ const StudentForm : FunctionComponent = () => {
     }
   }
 
-  /* SNACKBAR HANDLER */
-  const handleClose = () => {
-    setOpen(false);
-  }
+ 
 
   /* STEPPER */
   const totalSteps = () => {
@@ -478,7 +327,7 @@ const StudentForm : FunctionComponent = () => {
               required
               disableToolbar
               variant="inline"
-              format="dd.MM.yyyy"
+              format="DD.MM.YYYY"
               margin="normal"
               id="birthday"
               label="Birthday"
@@ -660,26 +509,8 @@ const StudentForm : FunctionComponent = () => {
                           <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                             Back
                           </Button>
-                          {/*<Button
-                            variant="contained"
-                            color="primary"
-                            onClick={handleNext}
-                            className={classes.button}
-                          >
-                            Next
-                          </Button>*/}
-                          {/*{activeStep !== steps.length &&
-                            (completed[activeStep] ? (
-                              <Typography variant="caption" className={classes.completed}>
-                                Step {activeStep + 1} already completed
-                              </Typography>
-                            ) : (
-                              <Button variant="contained" color="primary" onClick={handleComplete}>
-                                {completedSteps() === totalSteps() - 1 ? 'Finish' : 'Complete Step'}
-                              </Button>
-                            ))}*/}
                             {isLastStep() ?
-                            <Button variant="contained" color="primary" onClick={handleSubmit}>
+                            <Button variant="contained" color="primary" onClick={action}>
                                  Finish
                             </Button>
                             : 
@@ -696,32 +527,6 @@ const StudentForm : FunctionComponent = () => {
           </Grid>
         </form>
       </Paper>
-      {/* SNACKBAR */}
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <SnackbarContent
-          className={classes.successSnackBar}
-          aria-describedby="client-snackbar"
-          message={
-            <span id="client-snackbar" className={classes.message}>
-              <CheckCircleIcon className={classNames(classes.icon, classes.iconVariant)} />
-              Student created
-            </span>
-          }
-          action={[
-            <IconButton key="close" aria-label="close" color="inherit" onClick={handleClose}>
-              <CloseIcon className={classes.icon} />
-            </IconButton>,
-          ]}
-        />
-      </Snackbar>
     </>
   );
 }

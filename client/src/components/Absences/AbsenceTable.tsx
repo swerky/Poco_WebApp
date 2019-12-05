@@ -152,8 +152,8 @@ const StudentsTable: FunctionComponent<AbscenceTableProps> = ({students, handleD
                 {student.presences ? student.presences.map((presence: PresenceInterface) => (
                   <Grid key={"absences_" + presence.id} container className={classes.tableRow} alignItems="center">
                     <Grid item xs={2} key={"absenceFromDate_" + presence.id}>{presence.dateStart.format('DD.MM.YYYY')}</Grid>
-                    <Grid item xs={2} key={"absenceFromTime_" + presence.id}>{presence.dateStart.format('hh:mm')}</Grid>
-                    <Grid item xs={2} key={"absenceToTime_" + presence.id}>{presence.dateEnd.format('hh:mm')}</Grid>
+                    <Grid item xs={2} key={"absenceFromTime_" + presence.id}>{presence.dateStart.format('HH:mm')}</Grid>
+                    <Grid item xs={2} key={"absenceToTime_" + presence.id}>{presence.dateEnd.format('HH:mm')}</Grid>
                     <Grid item xs={2} key={"absenceReason_" + presence.id}>{presence.reason ? presence.reason: "-"}</Grid>
                     <Grid item xs={2} key={"absenceGoodExcuse_" + presence.id}>{presence.goodExcuse ? <ThumbUpIcon/>: <ThumbDownIcon/>}</Grid>
                     <Grid item xs={2} key={"absenceActions_" + presence.id}>

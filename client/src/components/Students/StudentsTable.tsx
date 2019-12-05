@@ -66,7 +66,7 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
         <div className={classes.spacer}/>
         <div className={classes.actions}>
           <Tooltip title="Add Student" aria-label="add student">
-            <Link to="studentForm">
+            <Link to="studentAdd">
               <PersonAdd/>
             </Link>
           </Tooltip>
@@ -75,8 +75,8 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
       <Table className={classes.table}>
         <TableHead>
           <TableRow key="metadata">
-            <TableCell key="studentFirstname">Firstname</TableCell>
-            <TableCell key="studentLastName">Name</TableCell>
+            <TableCell key="studentFirstname">First Name</TableCell>
+            <TableCell key="studentLastName">Last Name</TableCell>
             <TableCell key="studentEmail">Email</TableCell>
             <TableCell key="studentBirthday">Birthday</TableCell>
             <TableCell key="studentBatch">Batch</TableCell>
@@ -114,7 +114,9 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
               <TableCell component="th" scope="row" key={"name_actions_" + student.id}>
                 <Tooltip key={"ToolTip_Edit_" + student.id} title="Edit" aria-label="edit">
                   <IconButton className={classes.button} aria-label="edit">
-                    <EditIcon />
+                    <Link to={"studentEdit/" + student.id}>
+                      <EditIcon/>
+                    </Link>
                   </IconButton>
                 </Tooltip>
                 <Tooltip key={"ToolTip_Remove_" + student.id} title="Remove" aria-label="remove">
