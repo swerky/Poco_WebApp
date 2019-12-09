@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { useState, FunctionComponent } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
@@ -14,9 +14,10 @@ import PersonAdd from '@material-ui/icons/PersonAdd';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import InfoIcon from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
-
+import StudentDetails from './StudentDetails';
 
 
 /* STYLES */
@@ -50,9 +51,35 @@ interface StudentTableProps {
   handleDeleteStudent: (id: string) => void
 }
 
+interface DialogInfoProps {
+  student: StudentInterface
+}
+
 const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
   const classes = useStyles();
   const {students, handleDeleteStudent} = props
+
+  /* DIALOG INFO */
+  const DialogInfo: FunctionComponent<DialogInfoProps> = ({student}) => {
+    const [openInfoDialog, setOpenInfoDialog] = useState(false);
+    
+    const handleInfoStudent = () => {
+      setOpenInfoDialog(true);
+    }
+
+    const handleInfoStudentClose = () => {
+      setOpenInfoDialog(false);
+    }
+
+    return (
+      <>
+        <IconButton className={classes.button} aria-label="info" onClick={() => handleInfoStudent()}>
+          <InfoIcon />
+        </IconButton>
+        <StudentDetails student={student} open={openInfoDialog} handleClose={handleInfoStudentClose}/>
+      </>
+    );
+  }
 
   /* SHOW COMPONENT */
   return (
@@ -123,6 +150,9 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
                   <IconButton className={classes.button} aria-label="remove" onClick={() => handleDeleteStudent(student.id as string)}>
                     <DeleteIcon />
                   </IconButton>
+                </Tooltip>
+                <Tooltip key={"ToolTip_info_" + student.id} title="Info" aria-label="info">
+                  <DialogInfo student={student}/>
                 </Tooltip>
               </TableCell>
             </TableRow>
