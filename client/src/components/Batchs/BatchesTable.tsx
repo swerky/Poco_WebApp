@@ -55,13 +55,13 @@ const BatchesTable : FunctionComponent<BatchesTableProps> = ({batches}) => {
       <Toolbar>
         <div className={classes.title}>
           <Typography variant="h6" id="tableTitle">
-            Students
+            Batches
           </Typography>
         </div>
         <div className={classes.spacer}/>
         <div className={classes.actions}>
           <Tooltip title="Add Batch" aria-label="add batch">
-            <Link to="batchAdd">
+            <Link to="batchadd">
               <AddIcon/>
             </Link>
           </Tooltip>

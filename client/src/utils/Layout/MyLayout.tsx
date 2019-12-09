@@ -67,7 +67,7 @@ interface ResponsiveDrawerProps {
 
 interface ItemMenuProps {
   path: string,
-  key: string,
+  keyValue: string,
   text: string,
   icon: React.ReactElement<SvgIconProps>
 }
@@ -81,10 +81,10 @@ const MyLayout : FunctionComponent<ResponsiveDrawerProps> = ({container, childre
     setMobileOpen(!mobileOpen);
   };
 
-  const ItemMenu : FunctionComponent<ItemMenuProps> = ({path, key, text, icon}) => {
+  const ItemMenu : FunctionComponent<ItemMenuProps> = ({path, keyValue, text, icon}) => {
     return (
       <Link to={path}>
-        <ListItem button key={key}>
+        <ListItem button key={keyValue}>
           <ListItemIcon>{icon}</ListItemIcon>
           <ListItemText primary={text} />
         </ListItem>
@@ -97,9 +97,9 @@ const MyLayout : FunctionComponent<ResponsiveDrawerProps> = ({container, childre
       <div className={classes.toolbar} />
       <Divider />
         <List>
-          <ItemMenu path="/" key="absences" text="Absences" icon={<AlarmIcon/>}/>
-          <ItemMenu path="/students" key="students" text="Students" icon={<PersonIcon/>}/>
-          <ItemMenu path="/batches" key="batches" text="Batches" icon={<GroupIcon/>}/>
+          <ItemMenu path="/" keyValue="absences" text="Absences" icon={<AlarmIcon/>}/>
+          <ItemMenu path="/students" keyValue="students" text="Students" icon={<PersonIcon/>}/>
+          <ItemMenu path="/batches" keyValue="batches" text="Batches" icon={<GroupIcon/>}/>
       </List>
     </div>
   );

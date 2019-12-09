@@ -93,7 +93,7 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
         <div className={classes.spacer}/>
         <div className={classes.actions}>
           <Tooltip title="Add Student" aria-label="add student">
-            <Link to="studentAdd">
+            <Link to="studentadd">
               <PersonAdd/>
             </Link>
           </Tooltip>

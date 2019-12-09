@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import BatchesTable from './BatchesTable';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Batches : FunctionComponent = () => {
   const classes = useStyles();
+
+  useEffect(() => {
+    // Met à jour le titre du document via l’API du navigateur
+    document.title = `Batches`;
+  });
 
   /* GETTING EXISTING BATCH */
   const {loading, error, data} = useQuery(GET_BATCHES);

@@ -6,9 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import SelectField from '../../utils/components/SelectField';
-import {OptionType} from '../../utils/components/SelectField.interface';
 import StudentFormBatchProps from '../../interfaces/StudentFormBatch.interface';
-import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ServerError from '../../utils/Errors/ServerError';
 import {
@@ -16,7 +14,7 @@ import {
   MaterialUiPickersDate,
   KeyboardDatePicker
 } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/moment';
+import BatchesForm from '../Batchs/BatchesForm';
 import { useQuery } from '@apollo/react-hooks';
 import {BatchClass} from '../../interfaces/Student.interface';
 import {GET_BATCHES} from '../../queries/BatchQuery';
@@ -103,52 +101,7 @@ const StudentFormBatch: FunctionComponent<StudentFormBatchProps> = ({newBatch, s
               </IconButton>
             </Grid>
           </Grid>
-          <TextField
-                id="batch.name"
-                label="Name"
-                onChange={handleTextBatchChange('name')}
-                className={classes.input}
-                value={batch.name}
-                margin="normal" 
-              />
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid container justify="space-around">
-              <KeyboardDatePicker
-                required
-                disableToolbar
-                variant="inline"
-                format="dd.MM.yyyy"
-                margin="normal"
-                id="startingTime"
-                label="Start Date"
-                value={batch.startingTime}
-                onChange={(event) => handleDateBatchChange(event, 'startingTime')}
-                className={classes.input}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </Grid>
-          </MuiPickersUtilsProvider>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid container justify="space-around">
-              <KeyboardDatePicker
-                required
-                disableToolbar
-                variant="inline"
-                format="dd.MM.yyyy"
-                margin="normal"
-                id="endTime"
-                label="End Date"
-                value={batch.endTime}
-                onChange={(event) => handleDateBatchChange(event, 'endTime')}
-                className={classes.input}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </Grid>
-          </MuiPickersUtilsProvider>
+          <BatchesForm batch={batch} handleTextBatchChange={handleTextBatchChange} handleDateBatchChange={handleDateBatchChange}/>
         </Grid>
       }
     </Grid>
