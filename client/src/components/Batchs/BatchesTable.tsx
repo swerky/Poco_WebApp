@@ -16,6 +16,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
 import { BatchClass } from '../../interfaces/Student.interface';
+import BatchesFormAdd from './BatchesFormAdd';
 
 /* STYLES */
 const useStyles = makeStyles((theme: Theme) =>
@@ -61,9 +62,7 @@ const BatchesTable : FunctionComponent<BatchesTableProps> = ({batches}) => {
         <div className={classes.spacer}/>
         <div className={classes.actions}>
           <Tooltip title="Add Batch" aria-label="add batch">
-            <Link to="batchadd">
-              <AddIcon/>
-            </Link>
+            <BatchesFormAdd/>
           </Tooltip>
         </div>
       </Toolbar>
