@@ -12,10 +12,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
+import AlarmIcon from '@material-ui/icons/Alarm';
+import GroupIcon from '@material-ui/icons/Group';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import {Link} from "react-router-dom";
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
 const drawerWidth = 240;
 
@@ -62,6 +65,13 @@ interface ResponsiveDrawerProps {
   container?: Element;
 }
 
+interface ItemMenuProps {
+  path: string,
+  key: string,
+  text: string,
+  icon: React.ReactElement<SvgIconProps>
+}
+
 const MyLayout : FunctionComponent<ResponsiveDrawerProps> = ({container, children}) => {
   const classes = useStyles();
   const theme = useTheme();
@@ -71,23 +81,25 @@ const MyLayout : FunctionComponent<ResponsiveDrawerProps> = ({container, childre
     setMobileOpen(!mobileOpen);
   };
 
+  const ItemMenu : FunctionComponent<ItemMenuProps> = ({path, key, text, icon}) => {
+    return (
+      <Link to={path}>
+        <ListItem button key={key}>
+          <ListItemIcon>{icon}</ListItemIcon>
+          <ListItemText primary={text} />
+        </ListItem>
+      </Link>
+    )
+  }
+
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
         <List>
-          <Link to="/">
-            <ListItem button key="absence">
-                <ListItemIcon><AssignmentLateIcon/></ListItemIcon>
-                <ListItemText primary="Absence" />
-            </ListItem>
-          </Link>
-          <Link to="/students">
-            <ListItem button key="students">
-              <ListItemIcon><PersonIcon/></ListItemIcon>
-              <ListItemText primary="Students" />
-            </ListItem>
-          </Link>
+          <ItemMenu path="/" key="absences" text="Absences" icon={<AlarmIcon/>}/>
+          <ItemMenu path="/students" key="students" text="Students" icon={<PersonIcon/>}/>
+          <ItemMenu path="/batches" key="batches" text="Batches" icon={<GroupIcon/>}/>
       </List>
     </div>
   );

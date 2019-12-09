@@ -4,6 +4,7 @@ import Absence from '../../components/Absences/Absence';
 import Students from '../../components/Students/Students';
 import StudentFormAdd from '../../components/Students/StudentFormAdd';
 import StudentFormUpdate from '../../components/Students/StudentFormUpdate';
+import Batches from "../../components/Batchs/Batches";
 
 const MyRouter = () => {
   return (
@@ -12,6 +13,7 @@ const MyRouter = () => {
       <Route path="/students" exact component={Students} />
       <Route path="/studentadd" exact component={StudentFormAdd}/>
       <Route path="/studentedit/:id" exact component={StudentFormUpdate}/>
+      <Route path="/batches" exact component={Batches}/>
     </Switch>
   );
 }

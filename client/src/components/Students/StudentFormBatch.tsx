@@ -18,59 +18,9 @@ import {
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/moment';
 import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 import {BatchClass} from '../../interfaces/Student.interface';
+import {GET_BATCHES} from '../../queries/BatchQuery';
 
-/*const suggestions: OptionType[] = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
-  { label: 'Argentina' },
-  { label: 'Armenia' },
-  { label: 'Aruba' },
-  { label: 'Australia' },
-  { label: 'Austria' },
-  { label: 'Azerbaijan' },
-  { label: 'Bahamas' },
-  { label: 'Bahrain' },
-  { label: 'Bangladesh' },
-  { label: 'Barbados' },
-  { label: 'Belarus' },
-  { label: 'Belgium' },
-  { label: 'Belize' },
-  { label: 'Benin' },
-  { label: 'Bermuda' },
-  { label: 'Bhutan' },
-  { label: 'Bolivia, Plurinational State of' },
-  { label: 'Bonaire, Sint Eustatius and Saba' },
-  { label: 'Bosnia and Herzegovina' },
-  { label: 'Botswana' },
-  { label: 'Bouvet Island' },
-  { label: 'Brazil' },
-  { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label,
-}));*/
-
-const GET_BATCHES = gql`
-  {
-  	batches{
-      id
-      name
-      startingTime
-      endTime
-    }
-  }
-`;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
