@@ -32,3 +32,14 @@ export const DELETE_BATCH = gql`
     }
   }
 `;
+
+export const UPDATE_BATCH = gql`
+  mutation updateBatch($data: BatchUpdateInput, $where: BatchWhereUniqueInput!) {
+    updateBatch(data: $data, where: $where) {
+      id
+      name
+      startingTime
+      endTime
+    }
+  }
+`;

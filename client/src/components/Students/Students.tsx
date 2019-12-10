@@ -42,6 +42,7 @@ const Students : FunctionComponent = () => {
       variables: {where: {id: id}},
       update(cache, { data: { deleteStudent } }) {
         const existingStudents = cache.readQuery<StudentData>({ query: GET_STUDENTS });
+        console.log(existingStudents);
         if(existingStudents){
         const newStudents = existingStudents.students.filter(existingStudent => (existingStudent.id !== deleteStudent.id))
         cache.writeQuery({

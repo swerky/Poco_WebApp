@@ -26,6 +26,10 @@ interface StudentData {
   student: StudentInterface
 }
 
+interface StudentsData {
+  students: StudentInterface[]
+}
+
 interface NotificationSnackbarProps {
   open: boolean,
   handleClose: () => void
@@ -93,19 +97,19 @@ const StudentFormAdd: FunctionComponent = () => {
     const [newBatch, setNewBatch] = useState(false);
     const [open, setOpen] = React.useState(false);
     const [values, setValues] = useStudent();
-
+    const [redirect, setRedirect] = useState(false);
     /*** Mutation ***/
     const [udpateStudent, {loading: updateLoading, error: updateError}] = useMutation(UDPATE_STUDENT);
     
     /*** QUERY ***/
     const { loading : queryLoading, error: queryError, data } = useQuery<StudentData>(GET_STUDENT, {variables: {where:{id: id}}});
-    console.log(data);
+    //console.log(data);
     if(queryLoading) return <CircularProgress className={classes.progress} />;
     if(queryError) return <ServerError/>;
     if(!data)  {
       return <h1>No data with this student id</h1>
     } else if(values.id === undefined){
-      console.log(values);
+      //console.log(values);
       setValues(data.student);
     }
 
@@ -114,21 +118,23 @@ const StudentFormAdd: FunctionComponent = () => {
     const handleUpdate = () => {
       const query = makeDataQuery(values, newBatch, newSocialAssistant);
       udpateStudent({
-        variables: {data: query, id: id},
+        variables: {data: query, where: { id: id}},
         update(cache, { data: { updateStudent } }) {
-          const existingStudent = cache.readQuery<StudentInterface>({
-              query: GET_STUDENT
+          const existingStudent = cache.readQuery<StudentsData>({
+              query: GET_STUDENTS
           });
           if (existingStudent) {
-              cache.writeQuery<StudentInterface>({
-                  query: GET_STUDENT,
-                  data: {
-                      ...updateStudent
-                  },
-              });
+            let listStudents = existingStudent.students;
+            listStudents.map((student) => student.id === updateStudent.id ? updateStudent : student);
+            cache.writeQuery<StudentsData>({
+              query: GET_STUDENTS,
+              data: {
+                  students: listStudents
+              },
+            });
           }
       }
-      })
+      }).then(() => {setRedirect(true);})
     }
 
     /* SNACKBAR HANDLER */
@@ -136,9 +142,11 @@ const StudentFormAdd: FunctionComponent = () => {
         setOpen(false);
     }
 
+    /* REDIRECT */
+    if(redirect) return <Redirect to="/students"/>
+
     /*** SHOW COMPONENT ***/
     /** UPDATE **/
-    console.log(values);
     return (
       <div>
         <StudentForm 

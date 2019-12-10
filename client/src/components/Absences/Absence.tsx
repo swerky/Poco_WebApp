@@ -58,7 +58,7 @@ const Absence : FunctionComponent = () => {
   
   useEffect(() => {
     // Met à jour le titre du document via l’API du navigateur
-    document.title = `Absence`;
+    document.title = `Absences`;
   });
 
   /* METHODS */

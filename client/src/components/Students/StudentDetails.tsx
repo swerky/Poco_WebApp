@@ -56,7 +56,6 @@ const StudentDetails: FunctionComponent<StudentDetailsProps> = ({student, open, 
     }
   }
 
-  console.log(birthday);
   return (
     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" TransitionComponent={Transition} fullWidth={true} maxWidth="md">
         <DialogTitle id="form-dialog-title">Absence</DialogTitle>

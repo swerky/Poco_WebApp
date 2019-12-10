@@ -78,8 +78,6 @@ const StudentForm : FunctionComponent<StudentFormProps> = ({action,values,setVal
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
 
-  
-
   /* STEPPER MANAGER */ 
   const getSteps = () => {
     return ['Personnal info', 'Address info', 'Social info','Powercoders info'];
@@ -206,8 +204,6 @@ const StudentForm : FunctionComponent<StudentFormProps> = ({action,values,setVal
       
     }
   }
-
- 
 
   /* STEPPER */
   const totalSteps = () => {

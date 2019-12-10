@@ -9,13 +9,10 @@ import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import ErrorIcon from '@material-ui/icons/Error';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
 import classNames from 'classnames';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import ServerError from '../../utils/Errors/ServerError';
 import { useStudent } from './Students.hooks';
 import makeDataQuery from '../../services/Student.services';
 
@@ -92,8 +89,8 @@ const StudentFormAdd: FunctionComponent<StudentFormContainerProps> = ({ id }) =>
     const [values, setValues] = useStudent();
     const [newSocialAssistant, setNewSocialAssistant] = useState(false)
     const [newBatch, setNewBatch] = useState(false);
-    const [open, setOpen] = React.useState(false);
-
+    const [open, setOpen] = useState(false);
+    const [redirect, setRedirect] = useState(false);
     /*** Mutation ***/
     const [addStudent, { loading: mutationLoading, error: mutationError }] = useMutation(ADD_STUDENT);
     /*** FUNCTIONS ***/
@@ -118,7 +115,7 @@ const StudentFormAdd: FunctionComponent<StudentFormContainerProps> = ({ id }) =>
                 }
             }
         })
-            .then(() => setOpen(true))
+            .then(() => {setOpen(true); setRedirect(true);})
             .catch(() => setOpen(false))
     }
 
@@ -127,6 +124,8 @@ const StudentFormAdd: FunctionComponent<StudentFormContainerProps> = ({ id }) =>
         setOpen(false);
     }
 
+    /* REDIRECT */
+    if(redirect) return <Redirect to="/students"/>
     /*** SHOW COMPONENT ***/
     /** ADD **/
     return (

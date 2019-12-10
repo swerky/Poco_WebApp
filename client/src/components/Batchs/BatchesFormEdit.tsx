@@ -14,27 +14,27 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { TransitionProps } from '@material-ui/core/transitions';
 import Slide from '@material-ui/core/Slide';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_BATCH, GET_BATCHES } from '../../queries/BatchQuery';
+import { UPDATE_BATCH, GET_BATCHES } from '../../queries/BatchQuery';
 import BatchesDialog from './BatchesDialog';
 
 interface BatchData {
   batches: BatchClass[]
 }
 
+interface BatchesFormEditProps {
+  batch: BatchClass
+}
+
 /* BATCH FORM ADD */
-const BatchesFormAdd : FunctionComponent = () => {
-  const [batch, setBatch] = useState<BatchClass>({
-    name: "",
-    startingTime: moment(),
-    endTime: moment()
-  })
+const BatchesFormEdit : FunctionComponent<BatchesFormEditProps> = ({batch: oldBatch}) => {
+  const [batch, setBatch] = useState(oldBatch);
 
   /* MUTATION */
-  const [addBatch, {loading: mutationLoading, error: mutationError}] = useMutation(ADD_BATCH);
+  const [updateBatch, {loading: mutationLoading, error: mutationError}] = useMutation(UPDATE_BATCH);
 
   const handleSubmit = () => {
-    addBatch({
-      variables: { data: batch },
+    updateBatch({
+      variables: { data: batch, id: batch.id },
       update(cache, { data: { createBatch } }) {
         const existingBatches = cache.readQuery<BatchData>({
             query: GET_BATCHES
@@ -63,4 +63,4 @@ const BatchesFormAdd : FunctionComponent = () => {
   );
 }
 
-export default BatchesFormAdd;
+export default BatchesFormEdit;

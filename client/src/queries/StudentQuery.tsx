@@ -150,11 +150,6 @@ mutation deleteStudent($where: StudentWhereUniqueInput!){
     id
     firstName
     lastName
-    students {
-      id
-      firstName
-      lastName
-    }
   }
 }`
 
