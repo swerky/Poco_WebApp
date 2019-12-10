@@ -130,8 +130,8 @@ const StudentsTable: FunctionComponent<AbscenceTableProps> = ({students, handleD
               <Grid item xs={2}>{student.firstName}</Grid>
               <Grid item xs={2}>{student.lastName}</Grid>
               <Grid item xs={2}>{student.nbAbsence}</Grid>
-              <Grid item xs={2}>{student.timeMissed}</Grid>
-              <Grid item xs={2}>{student.pourcentage}</Grid>
+              <Grid item xs={2}>{student.timeMissed} h</Grid>
+              <Grid item xs={2}>{student.pourcentage}%</Grid>
               <Grid item xs={2}><EditButton id={student.id!} firstName={student.firstName!} lastName={student.lastName!} /></Grid>
             </Grid>
           </ExpansionPanelSummary>

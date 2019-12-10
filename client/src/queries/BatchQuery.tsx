@@ -10,3 +10,25 @@ export const GET_BATCHES = gql`
     }
   }
 `;
+
+export const ADD_BATCH = gql`
+  mutation addBatch($data: BatchCreateInput!) {
+    createBatch(data: $data){
+      id
+      name
+      startingTime
+      endTime
+    }
+  }
+`;
+
+export const DELETE_BATCH = gql`
+  mutation removeBatch($where:BatchWhereUniqueInput!) {
+    deleteBatch(where: $where){
+      id
+      name
+      startingTime
+      endTime
+    }
+  }
+`;

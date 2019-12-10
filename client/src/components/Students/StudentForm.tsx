@@ -2,7 +2,6 @@ import React, { useEffect, useState, FunctionComponent } from 'react';
 import FormGroup from '@material-ui/core/FormGroup';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import gql from 'graphql-tag';
 import { Select, Paper } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import {

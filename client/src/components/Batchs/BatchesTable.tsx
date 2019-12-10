@@ -17,6 +17,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
 import { BatchClass } from '../../interfaces/Student.interface';
 import BatchesFormAdd from './BatchesFormAdd';
+import { useMutation } from '@apollo/react-hooks';
+import { DELETE_BATCH, GET_BATCHES } from '../../queries/BatchQuery';
 
 /* STYLES */
 const useStyles = makeStyles((theme: Theme) =>
@@ -44,12 +46,30 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface BatchesTableProps {
+interface BatchesData {
   batches: BatchClass[]
 }
 
-const BatchesTable : FunctionComponent<BatchesTableProps> = ({batches}) => {
+const BatchesTable : FunctionComponent<BatchesData> = ({batches}) => {
   const classes = useStyles();
+  const [deleteBatch, {loading: deleteLoading, error: deleteError}] = useMutation(DELETE_BATCH);
+
+  const handleDeleteBatch = (id: string, name: string) => {
+    deleteBatch({
+      variables: {where: {id: id}},
+      update(cache, { data: { deleteBatch } }) {
+        const existingBatches = cache.readQuery<BatchesData>({ query: GET_BATCHES });
+        if(existingBatches){
+        const newBatches = existingBatches.batches.filter(existingBatch => (existingBatch.id !== deleteBatch.id))
+        console.log(newBatches);
+        cache.writeQuery({
+          query: GET_BATCHES,
+          data: { batches:  newBatches},
+        });
+        }
+      } 
+    })
+  }
 
   return (
     <Paper className={classes.root}>
@@ -93,6 +113,11 @@ const BatchesTable : FunctionComponent<BatchesTableProps> = ({batches}) => {
                     <Link to={"batchEdit/" + batch.id}>
                       <EditIcon/>
                     </Link>
+                  </IconButton>
+                </Tooltip>
+                <Tooltip key={"ToolTip_Remove_" + batch.id} title="Remove" aria-label="remove">
+                  <IconButton className={classes.button} aria-label="remove" onClick={() => handleDeleteBatch(batch.id!, batch.name)}>
+                    <DeleteIcon />
                   </IconButton>
                 </Tooltip>
               </TableCell>
