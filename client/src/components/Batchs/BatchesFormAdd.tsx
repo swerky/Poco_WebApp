@@ -58,7 +58,7 @@ const BatchesFormAdd : FunctionComponent = () => {
 
   return (
     <>
-      <BatchesDialog batch={batch} handleChangeBatch={handleChangeBatch} handleSubmit={handleSubmit} loading={mutationLoading}/>
+      <BatchesDialog batch={batch} handleChangeBatch={handleChangeBatch} handleSubmit={handleSubmit} loading={mutationLoading} icon={<AddIcon/>}/>
     </>
   );
 }

@@ -205,6 +205,28 @@ const StudentForm : FunctionComponent<StudentFormProps> = ({action,values,setVal
     }
   }
 
+  const handleIdBatchChange = (id: string) => {
+    let batch: BatchClass = (values.batch as BatchClass);
+    if(batch){
+      batch.id = id;
+      setValues((oldValues: StudentInterface) => ({
+        ...oldValues,
+        ["batch"]: batch
+      }))
+    }
+  }
+
+  const handleIdSocialAssistant = (id: string) => {
+    let socialAssistant: SocialAssistantInterface = (values.socialAssistant as SocialAssistantInterface);
+    if(socialAssistant){
+      socialAssistant.id = id;
+      setValues((oldValues: StudentInterface) => ({
+        ...oldValues,
+        ["socialAssistant"]: socialAssistant
+      }))
+    }
+  }
+
   /* STEPPER */
   const totalSteps = () => {
     return steps.length;
@@ -400,7 +422,13 @@ const StudentForm : FunctionComponent<StudentFormProps> = ({action,values,setVal
         value={values.organisation}
         margin="normal" 
       />
-      <StudentFormSocialAssistant newSocialAssistant={newSocialAssistant} setNewSocialAssistant={setNewSocialAssistant} socialAssistant={(values.socialAssistant as SocialAssistantInterface)} handleTextSocialAssistantChange={handleTextSocialAssistantChange}/>
+      <StudentFormSocialAssistant 
+        handleTextSocialAssistantChange={handleTextSocialAssistantChange} 
+        handleIdSocialAssistantChange={handleIdSocialAssistant}
+        newSocialAssistant={newSocialAssistant} 
+        setNewSocialAssistant={setNewSocialAssistant} 
+        socialAssistant={(values.socialAssistant as SocialAssistantInterface)} 
+      />
     </FormGroup>
   );
 
@@ -456,7 +484,7 @@ const StudentForm : FunctionComponent<StudentFormProps> = ({action,values,setVal
             value={values.foodCost}
             margin="normal" 
           />
-          <StudentFromBatch newBatch={newBatch} setNewBatch={setNewBatch} batch={(values.batch as BatchClass)} handleTextBatchChange={handleTextBatchChange} handleDateBatchChange={handleDateBatchChange}/>
+          <StudentFromBatch newBatch={newBatch} setNewBatch={setNewBatch} batch={(values.batch as BatchClass)} handleTextBatchChange={handleTextBatchChange} handleDateBatchChange={handleDateBatchChange} handleIdBatchChange={handleIdBatchChange} />
         </FormGroup>
     );
 

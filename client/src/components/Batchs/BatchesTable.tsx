@@ -10,13 +10,12 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
-import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
 import { BatchClass } from '../../interfaces/Student.interface';
 import BatchesFormAdd from './BatchesFormAdd';
+import BatchesFormEdit from './BatchesFormEdit';
 import { useMutation } from '@apollo/react-hooks';
 import { DELETE_BATCH, GET_BATCHES } from '../../queries/BatchQuery';
 
@@ -109,11 +108,7 @@ const BatchesTable : FunctionComponent<BatchesData> = ({batches}) => {
               </TableCell>
               <TableCell component="th" scope="row" key={"name_actions_" + batch.id}>
                 <Tooltip key={"ToolTip_Edit_" + batch.id} title="Edit" aria-label="edit">
-                  <IconButton className={classes.button} aria-label="edit">
-                    <Link to={"batchEdit/" + batch.id}>
-                      <EditIcon/>
-                    </Link>
-                  </IconButton>
+                  <BatchesFormEdit batch={batch} />
                 </Tooltip>
                 <Tooltip key={"ToolTip_Remove_" + batch.id} title="Remove" aria-label="remove">
                   <IconButton className={classes.button} aria-label="remove" onClick={() => handleDeleteBatch(batch.id!, batch.name)}>

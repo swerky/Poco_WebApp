@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
 import BatchesForm from './BatchesForm';
 import {BatchClass} from '../../interfaces/Student.interface';
@@ -13,8 +14,16 @@ import AddIcon from '@material-ui/icons/Add';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { TransitionProps } from '@material-ui/core/transitions';
 import Slide from '@material-ui/core/Slide';
-import { useMutation } from '@apollo/react-hooks';
-import { ADD_BATCH, GET_BATCHES } from '../../queries/BatchQuery';
+import IconButton from '@material-ui/core/IconButton'
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    button: {
+      margin: theme.spacing(1),
+    },
+  }),
+);
 
 interface BatchData {
   batches: BatchClass[]
@@ -24,7 +33,8 @@ interface BatchDialogProps {
   handleSubmit: () => void,
   handleChangeBatch: (batch: BatchClass) => void,
   batch: BatchClass,
-  loading: boolean
+  loading: boolean,
+  icon: React.ReactElement<SvgIconProps>
 }
 
 const Transition = React.forwardRef<unknown, TransitionProps>(function Transition(props, ref) {
@@ -32,9 +42,10 @@ const Transition = React.forwardRef<unknown, TransitionProps>(function Transitio
 });
 
 /* BATCH FORM ADD */
-const BatchesDialog : FunctionComponent<BatchDialogProps> = ({batch, handleSubmit, handleChangeBatch, loading}) => {
+const BatchesDialog : FunctionComponent<BatchDialogProps> = ({batch, handleSubmit, handleChangeBatch, loading, icon}) => {
+  const classes = useStyles();
   const [openDialog, setOpenDialog] = useState(false);
-
+  
   /* FUNCTIONS */
   const handleTextBatchChange = (name: keyof BatchClass) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
     handleChangeBatch({...batch, ["name"]: event.target.value});
@@ -54,9 +65,12 @@ const BatchesDialog : FunctionComponent<BatchDialogProps> = ({batch, handleSubmi
     setOpenDialog(true);
   }
 
+
   return (
     <>
-    <AddIcon onClick={handleOpen}/>
+    <IconButton className={classes.button} aria-label="remove" onClick={handleOpen}>
+      {icon}
+    </IconButton>
     <Dialog open={openDialog} onClose={handleClose} aria-labelledby="form-dialog-title" TransitionComponent={Transition}>
       <DialogTitle id="form-dialog-title">Add Batch</DialogTitle>
       <DialogContent>

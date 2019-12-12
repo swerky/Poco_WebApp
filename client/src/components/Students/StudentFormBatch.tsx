@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import AddIcon from '@material-ui/icons/Add';
@@ -18,7 +18,8 @@ import BatchesForm from '../Batchs/BatchesForm';
 import { useQuery } from '@apollo/react-hooks';
 import {BatchClass} from '../../interfaces/Student.interface';
 import {GET_BATCHES} from '../../queries/BatchQuery';
-
+import MomentUtils from '@date-io/moment';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -54,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const StudentFormBatch: FunctionComponent<StudentFormBatchProps> = ({newBatch, setNewBatch, batch, handleTextBatchChange, handleDateBatchChange}) => {
+const StudentFormBatch: FunctionComponent<StudentFormBatchProps> = ({newBatch, setNewBatch, batch, handleTextBatchChange, handleDateBatchChange, handleIdBatchChange}) => {
   const classes = useStyles();
 
   /* GETTING EXISTING BATCH */
@@ -77,7 +78,13 @@ const StudentFormBatch: FunctionComponent<StudentFormBatchProps> = ({newBatch, s
       {!newBatch ?
         <>
           <Grid item xs={11}>
-            <SelectField suggestions={suggestions} label="Search batch" placeholder="Search batch name"/>
+            <SelectField 
+              suggestions={suggestions} 
+              label="Search batch" 
+              placeholder="Search batch name" 
+              handleChangeValue={handleIdBatchChange} 
+              value={batch.id}
+            />
           </Grid>
           <Grid item xs={1}>
             <IconButton aria-label="add" onClick={() => setNewBatch(!newBatch)}>

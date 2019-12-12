@@ -5,6 +5,7 @@ export default interface StudentFormBatchProps {
   batch: BatchClass,
   handleTextBatchChange: (name: keyof BatchClass) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
   handleDateBatchChange: (date: MaterialUiPickersDate | null, name: keyof BatchClass) => void,
+  handleIdBatchChange: (id: string) => void,
   newBatch: boolean,
   setNewBatch: (newBatch: boolean) => void
 }

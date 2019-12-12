@@ -16,51 +16,6 @@ import { SingleValueProps } from 'react-select/src/components/SingleValue';
 import { Omit } from '@material-ui/types';
 import { ValueType } from 'react-select/src/types';
 import SelectFieldProps, {OptionType} from './SelectField.interface';
- 
-/*interface OptionType {
-  label: string;
-  value: string;
-}
-
-const suggestions: OptionType[] = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
-  { label: 'Argentina' },
-  { label: 'Armenia' },
-  { label: 'Aruba' },
-  { label: 'Australia' },
-  { label: 'Austria' },
-  { label: 'Azerbaijan' },
-  { label: 'Bahamas' },
-  { label: 'Bahrain' },
-  { label: 'Bangladesh' },
-  { label: 'Barbados' },
-  { label: 'Belarus' },
-  { label: 'Belgium' },
-  { label: 'Belize' },
-  { label: 'Benin' },
-  { label: 'Bermuda' },
-  { label: 'Bhutan' },
-  { label: 'Bolivia, Plurinational State of' },
-  { label: 'Bonaire, Sint Eustatius and Saba' },
-  { label: 'Bosnia and Herzegovina' },
-  { label: 'Botswana' },
-  { label: 'Bouvet Island' },
-  { label: 'Brazil' },
-  { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label,
-}));*/
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -207,14 +162,22 @@ const components = {
 
 /* TODO: Ajouter la list et la modification dans les props */
 /* StudentFormSocialAssistant */
-const SelectField : FunctionComponent<SelectFieldProps> = ({label, placeholder, suggestions}) => {
+const SelectField : FunctionComponent<SelectFieldProps> = ({label, placeholder, suggestions, handleChangeValue, value}) => {
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState<ValueType<OptionType>>(null);
 
+  if(value && single === null){
+    let selected = suggestions.find((suggestion) => suggestion.value === value)
+    console.log(selected);
+    setSingle(selected);
+  }
+
   // handelChangeSingle
   const handleChangeSingle = (value: ValueType<OptionType>) => {
+    let fieldValue = (value as any);
     setSingle(value);
+    handleChangeValue(fieldValue.value);
   };
 
   const selectStyles = {

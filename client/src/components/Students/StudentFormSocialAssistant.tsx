@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const SocialFormSocialAssistant : FunctionComponent<StudentFormSocialAssistantFormProps> = ({handleTextSocialAssistantChange, socialAssistant, newSocialAssistant, setNewSocialAssistant}: StudentFormSocialAssistantFormProps) => {
+const SocialFormSocialAssistant : FunctionComponent<StudentFormSocialAssistantFormProps> = ({handleTextSocialAssistantChange, socialAssistant, newSocialAssistant, setNewSocialAssistant, handleIdSocialAssistantChange}: StudentFormSocialAssistantFormProps) => {
   const classes = useStyles();
 
   /* GETTING EXISTING SOCIAL ASSISTANT */
@@ -85,7 +85,13 @@ const SocialFormSocialAssistant : FunctionComponent<StudentFormSocialAssistantFo
       {!newSocialAssistant ?
         <Grid container className={classes.selectRow}>
           <Grid item xs={11}>
-            <SelectField suggestions={suggestions} label="Search Social Assistant" placeholder="Search a social Assistant name"/>
+            <SelectField 
+              suggestions={suggestions} 
+              label="Search Social Assistant" 
+              placeholder="Search a social Assistant name" 
+              value={socialAssistant.id}
+              handleChangeValue={handleIdSocialAssistantChange}
+              />
           </Grid>
           <Grid item xs={1}>
             <Grid 
