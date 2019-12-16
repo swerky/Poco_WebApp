@@ -18,8 +18,6 @@ import BatchesForm from '../Batchs/BatchesForm';
 import { useQuery } from '@apollo/react-hooks';
 import {BatchClass} from '../../interfaces/Student.interface';
 import {GET_BATCHES} from '../../queries/BatchQuery';
-import MomentUtils from '@date-io/moment';
-import moment from 'moment';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
