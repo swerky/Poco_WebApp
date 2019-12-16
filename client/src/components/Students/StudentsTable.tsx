@@ -15,6 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import InfoIcon from '@material-ui/icons/Info';
+import PrintIcon from '@material-ui/icons/Print';
 import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
 import StudentDetails from './StudentDetails';
@@ -153,6 +154,13 @@ const StudentsTable : FunctionComponent<StudentTableProps> = (props) => {
                 </Tooltip>
                 <Tooltip key={"ToolTip_info_" + student.id} title="Info" aria-label="info">
                   <DialogInfo student={student}/>
+                </Tooltip>
+                <Tooltip key={"ToolTip_print_" + student.id} title="Print" aria-label="remove">
+                  <Link to={"/absencepdf/" + student.id}>
+                    <IconButton className={classes.button}>
+                      <PrintIcon />
+                    </IconButton>
+                  </Link>
                 </Tooltip>
               </TableCell>
             </TableRow>

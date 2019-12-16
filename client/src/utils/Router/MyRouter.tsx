@@ -16,7 +16,7 @@ const MyRouter = () => {
       <Route path="/studentedit/:id" exact component={StudentFormUpdate}/>
       <Route path="/batches" exact component={Batches}/>
       <Route path="/batchadd" exact component={BatchesFormAdd}/>
-      <Route path="/absencepdf" exact component={AbsencePdf}/>
+      <Route path="/absencepdf/:id" exact component={AbsencePdf}/>
     </Switch>
   );
 }
